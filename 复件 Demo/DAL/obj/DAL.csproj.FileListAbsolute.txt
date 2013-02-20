@@ -1,0 +1,9 @@
+F:\Demo\DAL\bin\Debug\DAL.dll
+F:\Demo\DAL\bin\Debug\DAL.pdb
+F:\Demo\DAL\obj\Debug\ResolveAssemblyReference.cache
+F:\Demo\DAL\obj\Debug\DAL.dll
+F:\Demo\DAL\obj\Debug\DAL.pdb
+F:\Demo\DAL\bin\Debug\DB.dll
+F:\Demo\DAL\bin\Debug\MODEL.dll
+F:\Demo\DAL\bin\Debug\MODEL.pdb
+F:\Demo\DAL\bin\Debug\DB.pdb

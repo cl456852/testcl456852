@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="Demo">
+</Property><Property Name="Solution File" Value="D:\document\Visual Studio 2010\复件 Demo\Demo.sln">
+</Property><Property Name="User Options File" Value="D:\document\Visual Studio 2010\复件 Demo\Demo.suo">
+</Property><Property Name="Date" Value="2011年2月8日">
+</Property><Property Name="Time" Value="18:32">
+</Property><Property Name="Log Number" Value="3">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="Demo.sln" Description="File successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\Demo.sln">
+</Event><Event ErrorLevel="0" Project="" Source="Demo.suo" Description="File successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\Demo.suo">
+</Event><Event ErrorLevel="0" Project="DB" Source="DB\DB.csproj" Description="Project file successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\DB\DB.csproj">
+</Event><Event ErrorLevel="0" Project="DB" Source="DB\DB.csproj.user" Description="Project user file successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\DB\DB.csproj.user">
+</Event><Event ErrorLevel="0" Project="DB" Source="DB\DBHelper.cs" Description="File successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\DB\DBHelper.cs">
+</Event><Event ErrorLevel="0" Project="DB" Source="DB\Properties\AssemblyInfo.cs" Description="File successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\DB\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="DB" Source="DB\DB.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="DB" Source="DB\DB.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="DAL" Source="DAL\DAL.csproj" Description="Project file successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\DAL\DAL.csproj">
+</Event><Event ErrorLevel="0" Project="DAL" Source="DAL\DAL.csproj.user" Description="Project user file successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\DAL\DAL.csproj.user">
+</Event><Event ErrorLevel="0" Project="DAL" Source="DAL\FileDAL.cs" Description="File successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\DAL\FileDAL.cs">
+</Event><Event ErrorLevel="0" Project="DAL" Source="DAL\Properties\AssemblyInfo.cs" Description="File successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\DAL\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="DAL" Source="DAL\DAL.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="DAL" Source="DAL\DAL.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="BLL" Source="BLL\BLL.csproj" Description="Project file successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\BLL\BLL.csproj">
+</Event><Event ErrorLevel="0" Project="BLL" Source="BLL\BLL.csproj.user" Description="Project user file successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\BLL\BLL.csproj.user">
+</Event><Event ErrorLevel="0" Project="BLL" Source="BLL\FileBLL.cs" Description="File successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\BLL\FileBLL.cs">
+</Event><Event ErrorLevel="0" Project="BLL" Source="BLL\Properties\AssemblyInfo.cs" Description="File successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\BLL\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="BLL" Source="BLL\BLL.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="BLL" Source="BLL\BLL.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="MODEL" Source="MODEL\MODEL.csproj" Description="Project file successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\MODEL\MODEL.csproj">
+</Event><Event ErrorLevel="0" Project="MODEL" Source="MODEL\MODEL.csproj.user" Description="Project user file successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\MODEL\MODEL.csproj.user">
+</Event><Event ErrorLevel="0" Project="MODEL" Source="MODEL\MyFileInfo.cs" Description="File successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\MODEL\MyFileInfo.cs">
+</Event><Event ErrorLevel="0" Project="MODEL" Source="MODEL\Properties\AssemblyInfo.cs" Description="File successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\MODEL\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="MODEL" Source="MODEL\MODEL.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="MODEL" Source="MODEL\MODEL.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Test" Source="Test\Test.csproj" Description="Project file successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\Test\Test.csproj">
+</Event><Event ErrorLevel="0" Project="Test" Source="Test\Test.csproj.user" Description="Project user file successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\Test\Test.csproj.user">
+</Event><Event ErrorLevel="0" Project="Test" Source="Test\Program.cs" Description="File successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\Test\Program.cs">
+</Event><Event ErrorLevel="0" Project="Test" Source="Test\Properties\AssemblyInfo.cs" Description="File successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\Test\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="Test" Source="Test\Test.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Test" Source="Test\Test.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="UI1" Source="UI1\UI1.csproj" Description="Project file successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\UI1\UI1.csproj">
+</Event><Event ErrorLevel="0" Project="UI1" Source="UI1\UI1.csproj.user" Description="Project user file successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\UI1\UI1.csproj.user">
+</Event><Event ErrorLevel="0" Project="UI1" Source="UI1\FolderDialog.cs" Description="File successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\UI1\FolderDialog.cs">
+</Event><Event ErrorLevel="0" Project="UI1" Source="UI1\Form1.cs" Description="File successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\UI1\Form1.cs">
+</Event><Event ErrorLevel="0" Project="UI1" Source="UI1\Form1.Designer.cs" Description="File successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\UI1\Form1.Designer.cs">
+</Event><Event ErrorLevel="0" Project="UI1" Source="UI1\Form2.cs" Description="File successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\UI1\Form2.cs">
+</Event><Event ErrorLevel="0" Project="UI1" Source="UI1\Form2.Designer.cs" Description="File successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\UI1\Form2.Designer.cs">
+</Event><Event ErrorLevel="0" Project="UI1" Source="UI1\Program.cs" Description="File successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\UI1\Program.cs">
+</Event><Event ErrorLevel="0" Project="UI1" Source="UI1\Properties\AssemblyInfo.cs" Description="File successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\UI1\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="UI1" Source="UI1\Properties\Resources.Designer.cs" Description="File successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\UI1\Properties\Resources.Designer.cs">
+</Event><Event ErrorLevel="0" Project="UI1" Source="UI1\Properties\Settings.Designer.cs" Description="File successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\UI1\Properties\Settings.Designer.cs">
+</Event><Event ErrorLevel="0" Project="UI1" Source="UI1\Properties\Settings.settings" Description="File successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\UI1\Properties\Settings.settings">
+</Event><Event ErrorLevel="0" Project="UI1" Source="UI1\Form1.resx" Description="File successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\UI1\Form1.resx">
+</Event><Event ErrorLevel="0" Project="UI1" Source="UI1\Form2.resx" Description="File successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\UI1\Form2.resx">
+</Event><Event ErrorLevel="0" Project="UI1" Source="UI1\Properties\Resources.resx" Description="File successfully backed up as D:\document\Visual Studio 2010\复件 Demo\Backup2\UI1\Properties\Resources.resx">
+</Event><Event ErrorLevel="0" Project="UI1" Source="UI1\UI1.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="UI1" Source="UI1\UI1.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="Demo.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="Demo.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="DB" Source="DB\DB.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="DAL" Source="DAL\DAL.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="BLL" Source="BLL\BLL.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="MODEL" Source="MODEL\MODEL.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Test" Source="Test\Test.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="UI1" Source="UI1\UI1.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

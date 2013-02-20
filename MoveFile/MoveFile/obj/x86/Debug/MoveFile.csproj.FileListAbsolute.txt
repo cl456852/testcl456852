@@ -1,0 +1,30 @@
+d:\document\visual studio 2010\Projects\MoveFile\MoveFile\bin\Debug\MoveFile.exe
+d:\document\visual studio 2010\Projects\MoveFile\MoveFile\bin\Debug\MoveFile.pdb
+d:\document\visual studio 2010\Projects\MoveFile\MoveFile\obj\x86\Debug\ResolveAssemblyReference.cache
+d:\document\visual studio 2010\Projects\MoveFile\MoveFile\obj\x86\Debug\MoveFile.Form1.resources
+d:\document\visual studio 2010\Projects\MoveFile\MoveFile\obj\x86\Debug\MoveFile.Properties.Resources.resources
+d:\document\visual studio 2010\Projects\MoveFile\MoveFile\obj\x86\Debug\MoveFile.exe
+d:\document\visual studio 2010\Projects\MoveFile\MoveFile\obj\x86\Debug\MoveFile.pdb
+d:\document\visual studio 2010\Projects\MoveFile\MoveFile\bin\Debug\MoveFile.exe.config
+d:\document\visual studio 2010\Projects\MoveFile\MoveFile\obj\x86\Debug\ResGen.read.1.tlog
+d:\document\visual studio 2010\Projects\MoveFile\MoveFile\obj\x86\Debug\ResGen.write.1.tlog
+D:\我的资料库\Documents\pagenew\MoveFile\MoveFile\bin\Debug\MoveFile.exe.config
+D:\我的资料库\Documents\pagenew\MoveFile\MoveFile\obj\x86\Debug\MoveFile.exe
+D:\我的资料库\Documents\pagenew\MoveFile\MoveFile\obj\x86\Debug\MoveFile.pdb
+D:\我的资料库\Documents\pagenew\MoveFile\MoveFile\bin\Debug\MoveFile.exe
+D:\我的资料库\Documents\pagenew\MoveFile\MoveFile\bin\Debug\MoveFile.pdb
+D:\我的资料库\Documents\pagenew\MoveFile\MoveFile\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\我的资料库\Documents\pagenew\MoveFile\MoveFile\obj\x86\Debug\MoveFile.Form1.resources
+D:\我的资料库\Documents\pagenew\MoveFile\MoveFile\obj\x86\Debug\MoveFile.Properties.Resources.resources
+D:\我的资料库\Documents\pagenew\MoveFile\MoveFile\obj\x86\Debug\ResGen.read.1.tlog
+D:\我的资料库\Documents\pagenew\MoveFile\MoveFile\obj\x86\Debug\ResGen.write.1.tlog
+D:\我的资料库\Documents\pagenew\software\MoveFile\MoveFile\bin\Debug\MoveFile.exe.config
+D:\我的资料库\Documents\pagenew\software\MoveFile\MoveFile\obj\x86\Debug\MoveFile.exe
+D:\我的资料库\Documents\pagenew\software\MoveFile\MoveFile\obj\x86\Debug\MoveFile.pdb
+D:\我的资料库\Documents\pagenew\software\MoveFile\MoveFile\bin\Debug\MoveFile.exe
+D:\我的资料库\Documents\pagenew\software\MoveFile\MoveFile\bin\Debug\MoveFile.pdb
+D:\我的资料库\Documents\pagenew\software\MoveFile\MoveFile\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\我的资料库\Documents\pagenew\software\MoveFile\MoveFile\obj\x86\Debug\MoveFile.Form1.resources
+D:\我的资料库\Documents\pagenew\software\MoveFile\MoveFile\obj\x86\Debug\MoveFile.Properties.Resources.resources
+D:\我的资料库\Documents\pagenew\software\MoveFile\MoveFile\obj\x86\Debug\ResGen.read.1.tlog
+D:\我的资料库\Documents\pagenew\software\MoveFile\MoveFile\obj\x86\Debug\ResGen.write.1.tlog

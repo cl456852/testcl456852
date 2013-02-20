@@ -1,0 +1,11 @@
+F:\Demo\BLL\bin\Debug\BLL.dll
+F:\Demo\BLL\bin\Debug\BLL.pdb
+F:\Demo\BLL\obj\Debug\ResolveAssemblyReference.cache
+F:\Demo\BLL\obj\Debug\BLL.dll
+F:\Demo\BLL\obj\Debug\BLL.pdb
+F:\Demo\BLL\bin\Debug\DAL.dll
+F:\Demo\BLL\bin\Debug\MODEL.dll
+F:\Demo\BLL\bin\Debug\DB.dll
+F:\Demo\BLL\bin\Debug\DB.pdb
+F:\Demo\BLL\bin\Debug\MODEL.pdb
+F:\Demo\BLL\bin\Debug\DAL.pdb

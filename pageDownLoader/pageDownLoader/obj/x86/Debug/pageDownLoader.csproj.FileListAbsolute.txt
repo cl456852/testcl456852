@@ -1,0 +1,18 @@
+d:\documents\visual studio 2010\Projects\pageDownLoader\pageDownLoader\bin\Debug\pageDownLoader.exe
+d:\documents\visual studio 2010\Projects\pageDownLoader\pageDownLoader\bin\Debug\pageDownLoader.pdb
+d:\documents\visual studio 2010\Projects\pageDownLoader\pageDownLoader\obj\x86\Debug\ResolveAssemblyReference.cache
+d:\documents\visual studio 2010\Projects\pageDownLoader\pageDownLoader\obj\x86\Debug\pageDownLoader.Form1.resources
+d:\documents\visual studio 2010\Projects\pageDownLoader\pageDownLoader\obj\x86\Debug\pageDownLoader.Properties.Resources.resources
+d:\documents\visual studio 2010\Projects\pageDownLoader\pageDownLoader\obj\x86\Debug\GenerateResource.read.1.tlog
+d:\documents\visual studio 2010\Projects\pageDownLoader\pageDownLoader\obj\x86\Debug\GenerateResource.write.1.tlog
+d:\documents\visual studio 2010\Projects\pageDownLoader\pageDownLoader\obj\x86\Debug\pageDownLoader.exe
+d:\documents\visual studio 2010\Projects\pageDownLoader\pageDownLoader\obj\x86\Debug\pageDownLoader.pdb
+D:\我的资料库\Documents\pagenew\software\pageDownLoader\pageDownLoader\obj\x86\Debug\pageDownLoader.exe
+D:\我的资料库\Documents\pagenew\software\pageDownLoader\pageDownLoader\obj\x86\Debug\pageDownLoader.pdb
+D:\我的资料库\Documents\pagenew\software\pageDownLoader\pageDownLoader\bin\Debug\pageDownLoader.exe
+D:\我的资料库\Documents\pagenew\software\pageDownLoader\pageDownLoader\bin\Debug\pageDownLoader.pdb
+D:\我的资料库\Documents\pagenew\software\pageDownLoader\pageDownLoader\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\我的资料库\Documents\pagenew\software\pageDownLoader\pageDownLoader\obj\x86\Debug\pageDownLoader.Form1.resources
+D:\我的资料库\Documents\pagenew\software\pageDownLoader\pageDownLoader\obj\x86\Debug\pageDownLoader.Properties.Resources.resources
+D:\我的资料库\Documents\pagenew\software\pageDownLoader\pageDownLoader\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\我的资料库\Documents\pagenew\software\pageDownLoader\pageDownLoader\obj\x86\Debug\GenerateResource.write.1.tlog
