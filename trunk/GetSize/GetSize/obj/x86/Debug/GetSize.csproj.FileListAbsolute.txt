@@ -1,0 +1,10 @@
+D:\我的资料库\Documents\pagenew\software\GetSize\GetSize\bin\Debug\GetSize.exe
+D:\我的资料库\Documents\pagenew\software\GetSize\GetSize\bin\Debug\GetSize.pdb
+D:\我的资料库\Documents\pagenew\software\GetSize\GetSize\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\我的资料库\Documents\pagenew\software\GetSize\GetSize\obj\x86\Debug\GetSize.Form1.resources
+D:\我的资料库\Documents\pagenew\software\GetSize\GetSize\obj\x86\Debug\GetSize.Properties.Resources.resources
+D:\我的资料库\Documents\pagenew\software\GetSize\GetSize\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\我的资料库\Documents\pagenew\software\GetSize\GetSize\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\我的资料库\Documents\pagenew\software\GetSize\GetSize\obj\x86\Debug\GetSize.exe
+D:\我的资料库\Documents\pagenew\software\GetSize\GetSize\obj\x86\Debug\GetSize.pdb
+D:\我的资料库\Documents\pagenew\software\GetSize\GetSize\bin\Debug\Jurassic.dll

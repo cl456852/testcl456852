@@ -1,0 +1,35 @@
+D:\文档\Visual Studio 2008\Projects\复件 Demo\DB\bin\Debug\DB.dll
+D:\文档\Visual Studio 2008\Projects\复件 Demo\DB\bin\Debug\DB.pdb
+D:\文档\Visual Studio 2008\Projects\复件 Demo\DB\obj\Debug\ResolveAssemblyReference.cache
+D:\文档\Visual Studio 2008\Projects\复件 Demo\DB\obj\Debug\DB.dll
+D:\文档\Visual Studio 2008\Projects\复件 Demo\DB\obj\Debug\DB.pdb
+D:\文档\Visual Studio 2008\Projects\复件 Demo\DB\bin\Debug\MODEL.dll
+D:\文档\Visual Studio 2008\Projects\复件 Demo\DB\bin\Debug\MODEL.pdb
+D:\document\复件 Demo\DB\bin\Debug\DB.dll
+D:\document\复件 Demo\DB\bin\Debug\DB.pdb
+D:\document\复件 Demo\DB\bin\Debug\MODEL.dll
+D:\document\复件 Demo\DB\bin\Debug\MODEL.pdb
+D:\document\复件 Demo\DB\obj\Debug\ResolveAssemblyReference.cache
+D:\document\复件 Demo\DB\obj\Debug\DB.dll
+D:\document\复件 Demo\DB\obj\Debug\DB.pdb
+D:\文档\Visual Studio 2008\复件 Demo\DB\bin\Debug\DB.dll
+D:\文档\Visual Studio 2008\复件 Demo\DB\bin\Debug\DB.pdb
+D:\文档\Visual Studio 2008\复件 Demo\DB\bin\Debug\MODEL.dll
+D:\文档\Visual Studio 2008\复件 Demo\DB\bin\Debug\MODEL.pdb
+D:\文档\Visual Studio 2008\复件 Demo\DB\obj\Debug\ResolveAssemblyReference.cache
+D:\文档\Visual Studio 2008\复件 Demo\DB\obj\Debug\DB.dll
+D:\文档\Visual Studio 2008\复件 Demo\DB\obj\Debug\DB.pdb
+D:\Documents\Visual Studio 2008\复件 Demo\DB\bin\Debug\DB.dll
+D:\Documents\Visual Studio 2008\复件 Demo\DB\bin\Debug\DB.pdb
+D:\Documents\Visual Studio 2008\复件 Demo\DB\bin\Debug\MODEL.dll
+D:\Documents\Visual Studio 2008\复件 Demo\DB\bin\Debug\MODEL.pdb
+D:\Documents\Visual Studio 2008\复件 Demo\DB\obj\Debug\ResolveAssemblyReference.cache
+D:\Documents\Visual Studio 2008\复件 Demo\DB\obj\Debug\DB.dll
+D:\Documents\Visual Studio 2008\复件 Demo\DB\obj\Debug\DB.pdb
+D:\document\Visual Studio 2010\复件 Demo\DB\bin\Debug\DB.dll
+D:\document\Visual Studio 2010\复件 Demo\DB\bin\Debug\DB.pdb
+D:\document\Visual Studio 2010\复件 Demo\DB\bin\Debug\MODEL.dll
+D:\document\Visual Studio 2010\复件 Demo\DB\bin\Debug\MODEL.pdb
+D:\document\Visual Studio 2010\复件 Demo\DB\obj\Debug\ResolveAssemblyReference.cache
+D:\document\Visual Studio 2010\复件 Demo\DB\obj\Debug\DB.dll
+D:\document\Visual Studio 2010\复件 Demo\DB\obj\Debug\DB.pdb

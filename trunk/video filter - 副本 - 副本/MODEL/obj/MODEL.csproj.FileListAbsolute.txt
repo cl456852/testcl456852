@@ -1,0 +1,5 @@
+F:\Demo\MODEL\bin\Debug\MODEL.dll
+F:\Demo\MODEL\bin\Debug\MODEL.pdb
+F:\Demo\MODEL\obj\Debug\ResolveAssemblyReference.cache
+F:\Demo\MODEL\obj\Debug\MODEL.dll
+F:\Demo\MODEL\obj\Debug\MODEL.pdb
