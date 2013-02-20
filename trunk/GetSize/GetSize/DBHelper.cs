@@ -29,16 +29,11 @@ namespace DB
         public static int ExecuteSql(string sql)
         {
             int i = 0;
-            //using (SqlConnection conn = new SqlConnection(connstr))
-           // {
                 Console.WriteLine(sql);
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 i = cmd.ExecuteNonQuery();
                 conn.Close();
-
-                //conn.Dispose();
-            //}
             
             return i;
         }
