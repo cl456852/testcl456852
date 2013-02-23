@@ -14,14 +14,15 @@ namespace BLL
     public class FileBLL
     {
 
-
-        Analysis ana;
+       // Analysis ana;
+        _18javAnaysis ana;
         Filter filter;
 
         public FileBLL()
         {
             filter = new Filter();
-            ana = new Analysis();
+          //  ana = new Analysis();
+            ana = new _18javAnaysis();
         }
 
         public List<MyFileInfo> getFileList()
