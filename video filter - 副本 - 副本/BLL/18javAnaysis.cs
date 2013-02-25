@@ -5,17 +5,19 @@ using System.Text;
 using System.Collections;
 using System.Text.RegularExpressions;
 using GetSize;
+using System.IO;
 
 namespace BLL
 {
     public class _18javAnaysis
     {
+        Regex nIn1Reg = new Regex(@"Permanent Link to \d\d In 1|Permanent Link to \d In 1|Permanent Link to \d\d-In-1|Permanent Link to \d-In-1");
         Regex r = new Regex("Download <strong>.*?</strong>");
         Regex sizeRegex = new Regex("Size: .*?.<br />");
         Regex actressRegex = new Regex("Actress : .*?</p>");
         Regex imageRex = new Regex("http://www.18-jav.com/wp-content/.*?jpg");
         Regex torrentRex=new Regex("http://www.18-jav.com/./\\?download=.*?\"");
-        public ArrayList alys(string content)
+        public ArrayList alys(string content,string path)
         {
             ArrayList resList = new ArrayList();
             string[] contents = content.Split(new string[] { "<h3>" }, StringSplitOptions.RemoveEmptyEntries);
@@ -23,6 +25,18 @@ namespace BLL
             {
                 if (!s.Contains("Torrent Name"))
                     continue;
+                if (nIn1Reg.IsMatch(s))
+                {
+                    if (!File.Exists(path))
+                    {
+                        File.Create(path).Close() ;
+                    }
+                    StreamWriter sw = File.AppendText(path);
+                    sw.Write(s);
+                    sw.Flush();
+                    sw.Close();
+                    continue;
+                }
                 His his = new His();
                 his.OriginalHtml = s;
                 his.Vid = r.Match(s).Value.Replace("Download <strong>", "").Replace("</strong>", "");
