@@ -83,6 +83,8 @@ namespace DB
 
         public static void insertHis(His his)
         {
+            if (his.Actress.Length > 250)
+                his.Actress = his.Actress.Substring(0, 248);
             string sql = string.Format(insertHisSql, his.Vid, his.Size,his.Actress.Replace("'","''"), his.FileCount, his.Files.Replace("'","''"));
             using (SqlConnection conn = new SqlConnection(connstr))
             {
