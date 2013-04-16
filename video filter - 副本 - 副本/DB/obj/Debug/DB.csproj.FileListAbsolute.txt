@@ -70,3 +70,10 @@ D:\我的资料库\Documents\pagenew\software\video filter - 副本 - 副本\DB\
 D:\我的资料库\Documents\pagenew\software\video filter - 副本 - 副本\DB\obj\Debug\ResolveAssemblyReference.cache
 D:\我的资料库\Documents\pagenew\software\video filter - 副本 - 副本\DB\obj\Debug\DB.dll
 D:\我的资料库\Documents\pagenew\software\video filter - 副本 - 副本\DB\obj\Debug\DB.pdb
+C:\testcl456852\video filter - 副本 - 副本\DB\bin\Debug\DB.dll
+C:\testcl456852\video filter - 副本 - 副本\DB\bin\Debug\DB.pdb
+C:\testcl456852\video filter - 副本 - 副本\DB\bin\Debug\MODEL.dll
+C:\testcl456852\video filter - 副本 - 副本\DB\bin\Debug\MODEL.pdb
+C:\testcl456852\video filter - 副本 - 副本\DB\obj\Debug\ResolveAssemblyReference.cache
+C:\testcl456852\video filter - 副本 - 副本\DB\obj\Debug\DB.dll
+C:\testcl456852\video filter - 副本 - 副本\DB\obj\Debug\DB.pdb

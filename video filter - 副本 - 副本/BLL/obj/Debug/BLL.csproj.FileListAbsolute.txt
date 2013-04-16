@@ -120,3 +120,4 @@ D:\我的资料库\Documents\pagenew\software\video filter - 副本 - 副本\BLL
 D:\我的资料库\Documents\pagenew\software\video filter - 副本 - 副本\BLL\obj\Debug\ResolveAssemblyReference.cache
 D:\我的资料库\Documents\pagenew\software\video filter - 副本 - 副本\BLL\obj\Debug\BLL.dll
 D:\我的资料库\Documents\pagenew\software\video filter - 副本 - 副本\BLL\obj\Debug\BLL.pdb
+C:\testcl456852\video filter - 副本 - 副本\BLL\obj\Debug\ResolveAssemblyReference.cache
