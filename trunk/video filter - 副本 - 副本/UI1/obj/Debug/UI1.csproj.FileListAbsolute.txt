@@ -194,3 +194,12 @@ D:\我的资料库\Documents\pagenew\software\video filter - 副本 - 副本\UI1
 D:\我的资料库\Documents\pagenew\software\video filter - 副本 - 副本\UI1\obj\Debug\UI1.Form1.resources
 D:\我的资料库\Documents\pagenew\software\video filter - 副本 - 副本\UI1\obj\Debug\UI1.Form2.resources
 D:\我的资料库\Documents\pagenew\software\video filter - 副本 - 副本\UI1\obj\Debug\UI1.Properties.Resources.resources
+C:\testcl456852\video filter - 副本 - 副本\UI1\obj\Debug\UI1.exe
+C:\testcl456852\video filter - 副本 - 副本\UI1\obj\Debug\UI1.pdb
+C:\testcl456852\video filter - 副本 - 副本\UI1\obj\Debug\ResolveAssemblyReference.cache
+C:\testcl456852\video filter - 副本 - 副本\UI1\obj\Debug\UI1.Form1.resources
+C:\testcl456852\video filter - 副本 - 副本\UI1\obj\Debug\UI1.Form2.resources
+C:\testcl456852\video filter - 副本 - 副本\UI1\obj\Debug\UI1.Properties.Resources.resources
+C:\testcl456852\video filter - 副本 - 副本\UI1\obj\Debug\GenerateResource-ResGen.read.1.tlog
+C:\testcl456852\video filter - 副本 - 副本\UI1\obj\Debug\GenerateResource.read.1.tlog
+C:\testcl456852\video filter - 副本 - 副本\UI1\obj\Debug\GenerateResource-ResGen.write.1.tlog

@@ -142,3 +142,5 @@ D:\我的资料库\Documents\pagenew\software\video filter - 副本 - 副本\Tes
 D:\我的资料库\Documents\pagenew\software\video filter - 副本 - 副本\Test\obj\Debug\ResolveAssemblyReference.cache
 D:\我的资料库\Documents\pagenew\software\video filter - 副本 - 副本\Test\obj\Debug\Test.exe
 D:\我的资料库\Documents\pagenew\software\video filter - 副本 - 副本\Test\obj\Debug\Test.pdb
+C:\testcl456852\video filter - 副本 - 副本\Test\obj\Debug\ResolveAssemblyReference.cache
+C:\testcl456852\video filter - 副本 - 副本\Test\obj\Debug\Test.pdb
