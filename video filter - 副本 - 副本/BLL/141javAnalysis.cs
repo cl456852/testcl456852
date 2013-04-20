@@ -13,7 +13,7 @@ namespace BLL
         Regex r = new Regex("<br>VID:.*?");
         Regex sizeRegex = new Regex("<br>Size:.*?");
         Regex actressRegex = new Regex("<br>Actress:.*?");
-        Regex imageRex = new Regex("141JAV_files/.*?\"");
+        Regex imageRex = new Regex("/movies/.*?\"");
 
         //http://www.141jav.com/movies/MILD833.jpg
         public ArrayList alys(string content, string path)
@@ -59,9 +59,13 @@ namespace BLL
 
         void getHtml(His his, string size)
         {
-            string imgUrl ="" imageRex.Match(his.OriginalHtml).Value;
+            string imgUrl ="http://www.141jav.com/"+ imageRex.Match(his.OriginalHtml).Value;
             
-            his.Html = "<a href=\"" + torrentUrl + "><img src=\"" + imgUrl + "\"/></a><br>" + his.Vid + "<br>" + size + "<br>" + "<br>" + his.Actress + "<br>";
+            his.Html = "<img src=\"" + imgUrl + "\"/><br>" + his.Vid + "<br>" + size + "<br>" + "<br>" + his.Actress + "<br>";
+            his.Html += "<a href=\"http://www.141jav.com/file.php?n=\"" + his.Vid + "&q=torrage"+">torrage</a>";
+            his.Html += "<a href=\"http://www.141jav.com/file.php?n=\"" + his.Vid + "&q=ws" + ">ws</a>";
+            his.Html += "<a href=\"http://www.141jav.com/file.php?n=\"" + his.Vid + "&q=zoink" + ">zoink</a>";
+            his.Html += "<a href=\"http://www.141jav.com/file.php?n=\"" + his.Vid + "&q=torcahe" + ">torcahe</a>";
 
         }
     }
