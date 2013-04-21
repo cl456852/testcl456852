@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Collections;
+using System.Threading;
 
 namespace pageDownLoader
 {
@@ -59,12 +60,12 @@ namespace pageDownLoader
         private void button2_Click(object sender, EventArgs e)
         {
             Donwloader downloader = new Donwloader();
-            for (int i = 1; i <= 1248; i++)
+            for (int i = 1; i <= 52; i++)
             {
                 string url = "http://www.18-jav.com/?paged=" + i;
                 string html = downloader.GetHtml(url);
                 string name = url.Replace('/', '_').Replace(":", "^").Replace("?","wenhao");
-                downloader.SaveFile(html, name + ".htm");
+                downloader.SaveFile(html,@"D:\我的资料库\Documents\pagenew\page\18Jav20130411"+"\\"+ name + ".htm");
             }
         }
 
@@ -74,11 +75,11 @@ namespace pageDownLoader
         {
             Regex r;
             Donwloader downloader = new Donwloader();
-            for (int month = 7; month <= 12; month++)
+            for (int month = 1; month <= 3; month++)
             {
                 for (int i = 1; i <= DateTime.DaysInMonth(year, month); i++)
                 {
-                    r = new Regex(@"/Daily.php\?date=2012-"+month+"-"+i+@"&start=\d");
+                    r = new Regex(@"/Daily.php\?date=2013-"+month+"-"+i+@"&start=\d");
                     string url="http://hellojav.com/Daily.php?date=";
                     url += year + "-" + month + "-" + i;
                     string html = downloader.GetHtml(url);
@@ -104,5 +105,39 @@ namespace pageDownLoader
                 }
             }
         }
+
+        string _141javUrl="http://www.141jav.com/latest/";
+        Donwloader downloader = new Donwloader();
+        private void button4_Click(object sender, EventArgs e)
+        {
+            WaitCallback callBack;
+            callBack = new WaitCallback(downLoad);
+
+            bool flag = ThreadPool.SetMaxThreads(1, 1);
+            for (int month = 3; month <= 3; month++)
+            {
+                for (int i = 1; i <= DateTime.DaysInMonth(year, month); i++)
+                {
+                    ThreadPool.QueueUserWorkItem(callBack, _141javUrl + "2013-" + month + "-" + i + "/1");
+                }
+            }
+
+           //downLoad("http://www.141jav.com/latest/2013-02-20/1");
+        }
+        Regex _141JavReg = new Regex("<a href=\"[0-9]*\">禄</a></div>");
+        private void downLoad(object datetime)
+        {
+            string url=(string)datetime;
+            string html = downloader.GetHtml( datetime.ToString());
+
+            downloader.SaveFile(html, "d:\\141Jav\\" + url.Replace('/', '_').Replace(":", "^").Replace("?", "wenhao") + ".htm");
+            string next = _141JavReg.Match(html).Value.Replace("<a href=\"", "").Replace("\">禄</a></div>", "");
+            string nextUrl = url.Substring(0, url.LastIndexOf('/')+1)+next;
+            if (next != "")
+                downLoad(nextUrl);
+
+        }
+
+
     }
 }
