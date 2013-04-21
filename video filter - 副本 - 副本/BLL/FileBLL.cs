@@ -14,15 +14,15 @@ namespace BLL
     public class FileBLL
     {
 
-       // Analysis ana;
-        _18javAnaysis ana;
+    //    Analysis ana;
+        _141javAnalysis ana;
         Filter filter;
 
         public FileBLL()
         {
             filter = new Filter();
-          //  ana = new Analysis();
-            ana = new _18javAnaysis();
+           // ana = new Analysis();
+            ana = new _141javAnalysis();
         }
 
         public List<MyFileInfo> getFileList()
@@ -42,7 +42,7 @@ namespace BLL
 
                 sr.Close();
                 
-                ArrayList list= ana.alys(content);
+                ArrayList list= ana.alys(content,Path.Combine(directoryStr,"nIn1.htm"));
                 foreach (His his in list)
                 {
                     if (filter.checkValid(his))
