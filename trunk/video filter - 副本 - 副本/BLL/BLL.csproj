@@ -68,6 +68,7 @@
     <Compile Include="Analysis.cs" />
     <Compile Include="FileBLL.cs" />
     <Compile Include="Filter.cs" />
+    <Compile Include="HelloJavAnalysis.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
