@@ -27,9 +27,8 @@ namespace BLL
                 string[] infos=info.Split(new string[]{"<h1>","<br />","</h1>"},StringSplitOptions.RemoveEmptyEntries);
                 his.Actress=infos[0];
                 string[] infos1=infos[1].Split(',');
-                his.Id=infos1[0];
                 string size=infos1[2].Trim();
-                his.Vid = r.Match(s).Value.Replace("<br />VID:", "").Trim();
+                his.Vid = infos1[0].Trim();
                 //if (his.Vid.Split('-').Length > 2)
                 //{
                 //    his.Vid = his.Vid.Substring(0, his.Vid.LastIndexOf('-'));
@@ -62,9 +61,9 @@ namespace BLL
         //http://hellojav.com/include/file_down.php?idx=19631
         void getHtml(His his, string size)
         {
-            string imgUrl = imageRex.Match(his.OriginalHtml).Value;
-            string torrentUrl = torrentRex.Match(his.OriginalHtml).Value.Replace("popupPos(","").Replace(",","");
-            his.Html = "<a href=\"" + torrentUrl + "><img src=\"" + imgUrl + "\"/></a><br>" + his.Vid + "<br>" + size + "<br>" + "<br>" + his.Actress + "<br>";
+            string imgUrl = imageRex.Match(his.OriginalHtml).Value.Replace("none\" src=\"","").Replace("\"","");
+            string torrentUrl ="http://hellojav.com/include/file_down.php?idx="+ torrentRex.Match(his.OriginalHtml).Value.Replace("popupPos(","").Replace(",","");
+            his.Html = "<a href=\"" + torrentUrl + "\"><img src=\"" + imgUrl + "\"/></a><br>" + his.Vid + "<br>" + size + "<br>" + "<br>" + his.Actress + "<br>";
 
         }
     }
