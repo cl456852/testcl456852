@@ -5,22 +5,32 @@ using System.Text;
 using Framework.interf;
 using Framework.abs;
 using System.IO;
+using RarbgDownloader;
+using System.Threading;
 
 namespace RarbgDownloader
 {
     public class RarbgLstDl : AbsLstDl
     {
-        public override void Download(string url,string path)
+        
+        public override void Download(object obj)
         {
+            AsynObj o = (AsynObj)obj;
             List<string> list = new List<string>();
 
 
-            string content = tool.GetHtml(url);
+            string content = tool.GetHtml(o.Url);
                list.Add(content  );
-               if (path != null)
+               if (o.Path != null)
                {
-                   tool.SaveFile(content, Path.Combine(path, url.Replace('/', '_').Replace(":", "^").Replace("?", "wenhao")));
+                   tool.SaveFile(content, Path.Combine(o.Path, o.Url.Replace('/', '_').Replace(":", "^").Replace("?", "wenhao")));
+               
                }
+               RarbgSgDl sgDl = new RarbgSgDl();
+               AsynObj asynObj = new AsynObj();
+               asynObj.Path = o.Path;
+               asynObj.Content = content;
+               ThreadPool.QueueUserWorkItem(sgDl.Download, asynObj);
             
             
         }
