@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Threading;
 using Framework;
 using Framework.interf;
+using RarbgDownloader;
 
 namespace ForumDonwloader
 {
@@ -21,17 +22,18 @@ namespace ForumDonwloader
 
         private void button1_Click(object sender, EventArgs e)
         {
+            
+            string url = textBox1.Text;
+            int start =Convert.ToInt32( textBox2.Text);
+            int end = Convert.ToInt32(textBox3.Text);
             IListPageDownloader lstDl = Config.Factory.createlstDl();
             WaitCallback callBack;
-            callBack = new WaitCallback(downLoad);
+            callBack = new WaitCallback(lstDl.Download);
 
-            bool flag = ThreadPool.SetMaxThreads(1, 1);
-            for (int month = 3; month <= 3; month++)
+          
+            for (int i = start; i <= end; i++)
             {
-                for (int i = 1; i <= DateTime.DaysInMonth(year, month); i++)
-                {
-                    ThreadPool.QueueUserWorkItem(callBack, _141javUrl + "2013-" + month + "-" + i + "/1");
-                }
+                ThreadPool.QueueUserWorkItem(callBack,string.Format(url,i));
             }
         }
 

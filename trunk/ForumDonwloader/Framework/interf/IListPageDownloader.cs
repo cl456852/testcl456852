@@ -8,6 +8,6 @@ namespace Framework.interf
 {
     public interface IListPageDownloader
     {
-        List<string> Download(string url, int start, int end, string path);
+        void Download(string url, string path);
     }
 }
