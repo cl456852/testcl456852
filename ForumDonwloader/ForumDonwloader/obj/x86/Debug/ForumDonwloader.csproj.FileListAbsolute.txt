@@ -1,0 +1,4 @@
+c:\users\administrator\documents\visual studio 2010\Projects\ForumDonwloader\ForumDonwloader\obj\x86\Debug\ForumDonwloader.Form1.resources
+c:\users\administrator\documents\visual studio 2010\Projects\ForumDonwloader\ForumDonwloader\obj\x86\Debug\ForumDonwloader.Properties.Resources.resources
+c:\users\administrator\documents\visual studio 2010\Projects\ForumDonwloader\ForumDonwloader\obj\x86\Debug\ForumDonwloader.csproj.GenerateResource.Cache
+c:\users\administrator\documents\visual studio 2010\Projects\ForumDonwloader\ForumDonwloader\obj\x86\Debug\ForumDonwloader.csprojResolveAssemblyReference.cache

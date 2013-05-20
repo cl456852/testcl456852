@@ -1,0 +1,7 @@
+c:\users\administrator\documents\visual studio 2010\Projects\ForumDonwloader\RarbgDownloader\bin\Debug\RarbgDownloader.dll
+c:\users\administrator\documents\visual studio 2010\Projects\ForumDonwloader\RarbgDownloader\bin\Debug\RarbgDownloader.pdb
+c:\users\administrator\documents\visual studio 2010\Projects\ForumDonwloader\RarbgDownloader\bin\Debug\Framework.dll
+c:\users\administrator\documents\visual studio 2010\Projects\ForumDonwloader\RarbgDownloader\bin\Debug\Framework.pdb
+c:\users\administrator\documents\visual studio 2010\Projects\ForumDonwloader\RarbgDownloader\obj\Debug\RarbgDownloader.csprojResolveAssemblyReference.cache
+c:\users\administrator\documents\visual studio 2010\Projects\ForumDonwloader\RarbgDownloader\obj\Debug\RarbgDownloader.dll
+c:\users\administrator\documents\visual studio 2010\Projects\ForumDonwloader\RarbgDownloader\obj\Debug\RarbgDownloader.pdb
