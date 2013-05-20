@@ -16,3 +16,5 @@ D:\我的资料库\Documents\pagenew\software\pageDownLoader\pageDownLoader\obj\
 D:\我的资料库\Documents\pagenew\software\pageDownLoader\pageDownLoader\obj\x86\Debug\pageDownLoader.Properties.Resources.resources
 D:\我的资料库\Documents\pagenew\software\pageDownLoader\pageDownLoader\obj\x86\Debug\GenerateResource.read.1.tlog
 D:\我的资料库\Documents\pagenew\software\pageDownLoader\pageDownLoader\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Administrator\Documents\testcl456852\pageDownLoader\pageDownLoader\obj\x86\Debug\pageDownLoader.exe
+C:\Users\Administrator\Documents\testcl456852\pageDownLoader\pageDownLoader\obj\x86\Debug\pageDownLoader.pdb

@@ -1,0 +1,9 @@
+c:\users\administrator\documents\visual studio 2010\Projects\ForumDonwloader\Test\bin\Debug\Test.exe
+c:\users\administrator\documents\visual studio 2010\Projects\ForumDonwloader\Test\bin\Debug\Test.pdb
+c:\users\administrator\documents\visual studio 2010\Projects\ForumDonwloader\Test\bin\Debug\Framework.dll
+c:\users\administrator\documents\visual studio 2010\Projects\ForumDonwloader\Test\bin\Debug\Framework.pdb
+c:\users\administrator\documents\visual studio 2010\Projects\ForumDonwloader\Test\obj\x86\Debug\Test.csprojResolveAssemblyReference.cache
+c:\users\administrator\documents\visual studio 2010\Projects\ForumDonwloader\Test\obj\x86\Debug\Test.exe
+c:\users\administrator\documents\visual studio 2010\Projects\ForumDonwloader\Test\obj\x86\Debug\Test.pdb
+C:\Users\Administrator\Documents\testcl456852\ForumDonwloader\Test\obj\x86\Debug\Test.exe
+C:\Users\Administrator\Documents\testcl456852\ForumDonwloader\Test\obj\x86\Debug\Test.pdb
