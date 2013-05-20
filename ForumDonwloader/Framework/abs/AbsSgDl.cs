@@ -11,7 +11,7 @@ namespace Framework.abs
     {
        protected DlTool dt = new DlTool();
 
-       abstract public List<string> Download(List<string> stringList, string path);
+       abstract public void Download(object obj);
        
     }
 }

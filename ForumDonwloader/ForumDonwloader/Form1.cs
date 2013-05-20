@@ -22,10 +22,11 @@ namespace ForumDonwloader
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            IListPageDownloader lpd = Config.Factory.createlstDl();
             string url = textBox1.Text;
             int start =Convert.ToInt32( textBox2.Text);
             int end = Convert.ToInt32(textBox3.Text);
+            string path = textBox4.Text;
             IListPageDownloader lstDl = Config.Factory.createlstDl();
             WaitCallback callBack;
             callBack = new WaitCallback(lstDl.Download);
@@ -33,13 +34,10 @@ namespace ForumDonwloader
           
             for (int i = start; i <= end; i++)
             {
-                ThreadPool.QueueUserWorkItem(callBack,string.Format(url,i));
+                ThreadPool.QueueUserWorkItem(lpd.Download,new AsynObj(path,url));
             }
         }
 
-        private void Download()
-        {
-
-        }
+      
     }
 }
