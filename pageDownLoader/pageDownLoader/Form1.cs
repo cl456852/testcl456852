@@ -14,7 +14,7 @@ namespace pageDownLoader
 {
     public partial class Form1 : Form
     {
-        int year=2012;
+        int year=2013;
         //int month=1;
         public Form1()
         {
@@ -60,12 +60,12 @@ namespace pageDownLoader
         private void button2_Click(object sender, EventArgs e)
         {
             Donwloader downloader = new Donwloader();
-            for (int i = 1; i <= 52; i++)
+            for (int i = 1; i <= 176; i++)
             {
                 string url = "http://www.18-jav.com/?paged=" + i;
                 string html = downloader.GetHtml(url);
                 string name = url.Replace('/', '_').Replace(":", "^").Replace("?","wenhao");
-                downloader.SaveFile(html,@"D:\我的资料库\Documents\pagenew\page\18Jav20130411"+"\\"+ name + ".htm");
+                downloader.SaveFile(html,@"D:\我的资料库\Documents\pagenew\page\18Jav20130509"+"\\"+ name + ".htm");
             }
         }
 
@@ -75,7 +75,7 @@ namespace pageDownLoader
         {
             Regex r;
             Donwloader downloader = new Donwloader();
-            for (int month = 1; month <= 3; month++)
+            for (int month = 4; month <= 4; month++)
             {
                 for (int i = 1; i <= DateTime.DaysInMonth(year, month); i++)
                 {
@@ -114,7 +114,7 @@ namespace pageDownLoader
             callBack = new WaitCallback(downLoad);
 
             bool flag = ThreadPool.SetMaxThreads(1, 1);
-            for (int month = 3; month <= 3; month++)
+            for (int month = 4; month <= 4; month++)
             {
                 for (int i = 1; i <= DateTime.DaysInMonth(year, month); i++)
                 {

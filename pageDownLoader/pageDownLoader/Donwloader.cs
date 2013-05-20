@@ -10,14 +10,16 @@ namespace pageDownLoader
 {
     public class Donwloader
     {
+   
         public string GetHtml(string url)
         {
             Console.WriteLine(url);
             string str = string.Empty;
             try
             {
+                WebProxy proxy = new WebProxy("http://127.0.0.1:8087/", true);
                 WebRequest request = WebRequest.Create(url);
-                request.Timeout = 30000;
+                request.Proxy = proxy;
                 request.Headers.Set("Pragma", "no-cache");
                 WebResponse response = request.GetResponse();
                 Stream streamReceive = response.GetResponseStream();
