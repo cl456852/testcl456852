@@ -34,7 +34,7 @@ namespace ForumDonwloader
 					lock (syncRoot) 
 					{
                         if (factory == null)
-                            factory = (AbstractFactory)Assembly.Load(ConfigurationSettings.AppSettings["factoryName"]).CreateInstance(ConfigurationSettings.AppSettings["factoryName"]); 
+                            factory = (AbstractFactory)Assembly.Load(ConfigurationSettings.AppSettings["assemblyName"]).CreateInstance(ConfigurationSettings.AppSettings["factoryName"]); 
 					}
 				}
 

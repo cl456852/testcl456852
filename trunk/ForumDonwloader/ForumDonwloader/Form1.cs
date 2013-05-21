@@ -30,11 +30,11 @@ namespace ForumDonwloader
             IListPageDownloader lstDl = Config.Factory.createlstDl();
             WaitCallback callBack;
             callBack = new WaitCallback(lstDl.Download);
-
+            bool b= ThreadPool.SetMaxThreads(40, 40);
           
             for (int i = start; i <= end; i++)
             {
-                ThreadPool.QueueUserWorkItem(lpd.Download,new AsynObj(path,url));
+                ThreadPool.QueueUserWorkItem(lpd.Download,new AsynObj(path,string.Format( url,i)));
             }
         }
 

@@ -25,7 +25,7 @@ namespace RarbgDownloader
                 {
                     if (!m.Value.Contains("#comments"))
                     {
-                        ThreadPool.QueueUserWorkItem(work, new AsynObj(o.Path, o.Url));
+                        ThreadPool.QueueUserWorkItem(work, new AsynObj(o.Path, "http://rarbg.com"+m.Value.Replace("href=","").Replace("\"","")));
                     }
                 }
             
@@ -35,12 +35,12 @@ namespace RarbgDownloader
         private void work(object obj)
         {
             AsynObj o = (AsynObj)obj;
-            string content = dt.GetHtml("http://rarbg.com/" + o.Url);
+            string content = dt.GetHtml(o.Url);
             singlePageList.Add(content);
             if (obj != null)
-                dt.SaveFile(content, Path.Combine(o.Path, o.Url.Replace('/', '_').Replace(":", "^").Replace("?", "wenhao")));
+                dt.SaveFile(content, Path.Combine(o.Path, o.Url.Replace('/', '_').Replace(":", "^").Replace("?", "wenhao"))+".htm");
 
-            string url = "http://rarbg.com/" + regex.Match(content).Value;
+            string url = "http://rarbg.com/" + torrentRegex.Match(content).Value;
             dt.downLoadFile(url, Path.Combine(o.Path, url.Substring(url.LastIndexOf('=') + 1)));
         }
     }
