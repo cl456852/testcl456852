@@ -20,10 +20,12 @@ namespace RarbgDownloader
 
 
             string content = tool.GetHtml(o.Url);
+            string[] contents = content.Split(new string[]{ "<td align=\"center\">"},StringSplitOptions.RemoveEmptyEntries);
+            content = contents[1];
                list.Add(content  );
                if (o.Path != null)
                {
-                   tool.SaveFile(content, Path.Combine(o.Path, o.Url.Replace('/', '_').Replace(":", "^").Replace("?", "wenhao")));
+                   tool.SaveFile(content, Path.Combine(o.Path, o.Url.Replace('/', '_').Replace(":", "^").Replace("?", "wenhao"))+".htm");
                
                }
                RarbgSgDl sgDl = new RarbgSgDl();
