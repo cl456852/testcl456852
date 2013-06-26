@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pageDownLoader", "pageDownLoader\pageDownLoader.csproj", "{496827F1-C643-4574-9961-BF4F95551197}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloJavConvert", "HelloJavConvert\HelloJavConvert.csproj", "{23013F0F-A18C-4519-B87D-9A1FE0AD2BD6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -13,6 +15,10 @@ Global
 		{496827F1-C643-4574-9961-BF4F95551197}.Debug|x86.Build.0 = Debug|x86
 		{496827F1-C643-4574-9961-BF4F95551197}.Release|x86.ActiveCfg = Release|x86
 		{496827F1-C643-4574-9961-BF4F95551197}.Release|x86.Build.0 = Release|x86
+		{23013F0F-A18C-4519-B87D-9A1FE0AD2BD6}.Debug|x86.ActiveCfg = Debug|x86
+		{23013F0F-A18C-4519-B87D-9A1FE0AD2BD6}.Debug|x86.Build.0 = Debug|x86
+		{23013F0F-A18C-4519-B87D-9A1FE0AD2BD6}.Release|x86.ActiveCfg = Release|x86
+		{23013F0F-A18C-4519-B87D-9A1FE0AD2BD6}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
