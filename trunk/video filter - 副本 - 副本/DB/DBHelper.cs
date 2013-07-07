@@ -71,7 +71,14 @@ namespace DB
         public static int searchHis(His his)
         {
             int res;
-            string sql = string.Format(seachHisSql, his.Vid, his.Size);
+            string sql="";
+            if (his.Size > 0)
+            {
+
+                sql = string.Format(seachHisSql, his.Vid, his.Size);
+            }
+            else
+                return 0;
             using (SqlConnection conn = new SqlConnection(connstr))
             {
                 conn.Open();

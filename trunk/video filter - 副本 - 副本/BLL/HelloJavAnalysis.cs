@@ -24,11 +24,11 @@ namespace BLL
                 His his = new His();
                 his.OriginalHtml = s;
                 string info = r.Match(s).Value;
-                string[] infos=info.Split(new string[]{"<h1>","<br/>","</h1>"},StringSplitOptions.None);
-                his.Actress=infos[1];
-                string[] infos1=infos[2].Split(',');
-                string size=infos1[2].Trim();
-                his.Vid = infos1[0].Trim();
+                string[] infos=info.Split(new string[]{"<h1>","<br/>","</h1>",","},StringSplitOptions.RemoveEmptyEntries);
+               // his.Actress=infos[1];
+              //  string[] infos1=infos[2].Split(',');
+                string size=infos[2].Trim();
+                his.Vid = infos[0].Trim();
                 //if (his.Vid.Split('-').Length > 2)
                 //{
                 //    his.Vid = his.Vid.Substring(0, his.Vid.LastIndexOf('-'));
