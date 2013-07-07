@@ -60,12 +60,12 @@ namespace pageDownLoader
         private void button2_Click(object sender, EventArgs e)
         {
             Donwloader downloader = new Donwloader();
-            for (int i = 1; i <= 176; i++)
+            for (int i = 1; i <= 435; i++)
             {
                 string url = "http://www.18-jav.com/?paged=" + i;
                 string html = downloader.GetHtml(url);
                 string name = url.Replace('/', '_').Replace(":", "^").Replace("?","wenhao");
-                downloader.SaveFile(html,@"D:\我的资料库\Documents\pagenew\page\18Jav20130509"+"\\"+ name + ".htm");
+                downloader.SaveFile(html,@"D:\我的资料库\Documents\pagenew\page\18Jav20130625"+"\\"+ name + ".htm");
             }
         }
 
@@ -75,12 +75,12 @@ namespace pageDownLoader
         {
             Regex r;
             Donwloader downloader = new Donwloader();
-            for (int month = 4; month <= 4; month++)
+            for (int month = 6; month <= 6; month++)
             {
                 for (int i = 1; i <= DateTime.DaysInMonth(year, month); i++)
                 {
-                    r = new Regex(@"/Daily.php\?date=2013-"+month+"-"+i+@"&start=\d");
-                    string url="http://hellojav.com/Daily.php?date=";
+                    r = new Regex(@"/Daily.php\?date=2013-" + month + "-" + i + @"&start=\d?\d");
+                    string url="http://www.hellojav.com/Daily.php?date=";
                     url += year + "-" + month + "-" + i;
                     string html = downloader.GetHtml(url);
 
@@ -93,8 +93,8 @@ namespace pageDownLoader
                     foreach (Match m in mc)
                     {
                         Html ht = new Html();
-                        ht.Content = downloader.GetHtml("http://hellojav.com"+m.Value);
-                        ht.Name = ("http://hellojav.com" + m.Value).Replace('/', '_').Replace(":", "^").Replace("?", "wenhao");
+                        ht.Content = downloader.GetHtml("http://www.hellojav.com"+m.Value);
+                        ht.Name = ("http://www.hellojav.com" + m.Value).Replace('/', '_').Replace(":", "^").Replace("?", "wenhao");
                         htmls.Add(ht);
 
                     }
