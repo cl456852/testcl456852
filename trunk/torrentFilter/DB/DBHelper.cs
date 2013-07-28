@@ -14,6 +14,7 @@ namespace DB
         static string checkTorrentSql = "select count(*) from his where LOWER([file])='{0}'";
         static string insertTorrentSql = "insert into his values('{0}',{1},'{2}',getdate(),'{3}')";
         public static string connstr = @"server=localhost\SQLEXPRESS;uid=sa;pwd=a;database=cd";
+        static string checkFilesSql = "select count(*) from files where filename={0} and length>100";
         //static string connstr = "server=MICROSOF-8335F8\\SQLEXPRESS;uid=sa;pwd=a;database=cd";
         public static SqlConnection conn = new SqlConnection(connstr);
         //static string connstr = "server=.;uid=sa;pwd=a;database=cd";
@@ -126,6 +127,19 @@ namespace DB
                 SqlCommand sc = new SqlCommand(sql, conn);
                 sc.ExecuteNonQuery();
             }
+        }
+
+        public static int checkFiles(HisTorrent his)
+        {
+            int res = 0;
+            string sql = string.Format(checkFilesSql, his.File + his.Ext);
+            using (SqlConnection conn = new SqlConnection(connstr))
+            {
+                conn.Open();
+                SqlCommand sc = new SqlCommand(sql, conn);
+                res = Convert.ToInt32(sc.ExecuteScalar());
+            }
+            return res;
         }
     }
 }
