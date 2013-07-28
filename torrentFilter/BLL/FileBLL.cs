@@ -69,7 +69,7 @@ namespace BLL
                                 trt.File = s.Substring(0, s.LastIndexOf('.'));
                                 trt.Ext = s.Substring(s.LastIndexOf('.'));
                                 listTorrent.Add(trt);
-                                if (DBHelper.checkTorrent(trt) > 0 && trt.Size > 10 * 1024 * 1024)
+                                if (trt.Size > 100* 1024 * 1024 &&( DBHelper.checkTorrent(trt) > 0||DBHelper.checkFiles(trt)>0))
                                 {
                                     flag = false;
                                     break;
@@ -87,7 +87,7 @@ namespace BLL
                             trt.File = name.Substring(0, name.LastIndexOf('.'));
                             trt.Ext = name.Substring(name.LastIndexOf('.'));
                             listTorrent.Add(trt);
-                            if (DBHelper.checkTorrent(trt) > 0 && trt.Size > 10 * 1024 * 1024)
+                            if (trt.Size > 100 * 1024 * 1024 && (DBHelper.checkTorrent(trt) > 0 || DBHelper.checkFiles(trt) > 0))
                             {
                                 flag = false;
                             }
