@@ -5,6 +5,7 @@ using System.Text;
 using System.Net;
 using System.IO;
 using System.Threading;
+using System.Net.Sockets;
 
 namespace Framework.tool
 {
@@ -16,7 +17,7 @@ namespace Framework.tool
             string str = string.Empty;
             try
             {
-
+                Singl.mr.WaitOne();
                 CookieContainer cookieContainer = new CookieContainer();
                 Cookie LastVisit = new Cookie("LastVisit", "1369113747", "/", "rarbg.com");
                 Cookie MarketGidStorage = new Cookie("MarketGidStorage", "%7B%220%22%3A%7B%22svspr%22%3A%22http%3A%2F%2Frarbg.com%2Fbot_check.php%22%2C%22svsds%22%3A9%2C%22TejndEEDj%22%3A%22MTM2OTEwNTQ3MjkzMTIxNTMxNDU%3D%22%7D%2C%22C2153%22%3A%7B%22page%22%3A5%2C%22time%22%3A1369113744213%2C%22mg_id%22%3A%2213894%22%2C%22mg_type%22%3A%22news%22%7D%7D", "/", "rarbg.com");
@@ -43,12 +44,24 @@ namespace Framework.tool
                 str = streamReader.ReadToEnd();
                 streamReader.Close();
             }
+            catch (WebException ex)
+            {
+                Console.WriteLine(ex.Message);
+                if (ex.Status.ToString() == "ReceiveFailure")
+                {
+                    AppendFile(url, "d:\\test\\fail.txt");
+                    Singl.mr.Reset();
+                    Thread.Sleep(60000);
+                    Singl.mr.Set();
+                    return "";
+                }
+                else if (!ex.Message.Contains("404"))
+                    str = GetHtml(url);
+                
+            }
             catch (Exception ex)
             {
-                Console.WriteLine("GET PATE ERROR  " + url);
                 Console.WriteLine(ex.Message);
-                if (!ex.Message.Contains("404"))
-                    str = GetHtml(url);
             }
             finally
             {
@@ -72,20 +85,40 @@ namespace Framework.tool
             fs.Close();
         }
 
+        public void AppendFile(string content,string fileName)
+        {
+            StreamWriter sw = File.AppendText(fileName);
+            sw.WriteLine(content);
+            sw.Flush();
+            sw.Close();   
+        }
+
         public void downLoadFile(string url,string name)
         {
             try
             {
+                Singl.mr.WaitOne();
                 Console.WriteLine(url);
                 WebClient myWebClient = new WebClient();
                 myWebClient.DownloadFile(url, name);
             }
-            catch (Exception e)
+            catch (WebException ex)
             {
-                Console.WriteLine("GET PATE ERROR  " + url);
-                Console.WriteLine(e.Message);
-                if (!e.Message.Contains("404"))
+                Console.WriteLine(ex.Message);
+                if (ex.Status.ToString() == "ReceiveFailure")
+                {
+                    AppendFile(url, "d:\\test\\fail.txt");
+                    Singl.mr.Reset();
+                    Thread.Sleep(60000);
+                    Singl.mr.Set();
+                }
+                else if (!ex.Message.Contains("404"))
                     downLoadFile(url, name);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
             finally
             {

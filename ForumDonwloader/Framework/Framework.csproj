@@ -49,6 +49,7 @@
     <Compile Include="interf\ISinglePageDonwloader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tool\DlTool.cs" />
+    <Compile Include="tool\Singl.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
