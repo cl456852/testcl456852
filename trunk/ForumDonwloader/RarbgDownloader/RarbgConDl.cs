@@ -12,8 +12,15 @@ namespace RarbgDownloader
     public class RarbgConDl : AbsConDl
     {
         Regex regex=new Regex(@"download.php\?id=.*?\.torrent");
+        Regex genresRegex = new Regex(@"Genres.*</a>");
+        Regex genresRegex1 = new Regex("search=.*?\"");
         public override void Download(string content,string path)
         {
+            MatchCollection genresMatches;
+            Match genres = genresRegex.Match(content);
+            if(genres.Value!="")
+                genresMatches = genresRegex1.Matches(genres.Value);
+
             string url ="http://rarbg.com/"+ regex.Match(content).Value;
             dt.downLoadFile(url,Path.Combine(path, url.Substring(url.LastIndexOf('=')+1)));
         }

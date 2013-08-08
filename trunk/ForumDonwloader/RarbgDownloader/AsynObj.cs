@@ -12,7 +12,7 @@ namespace RarbgDownloader
         {
 
         }
-        public AsynObj(string path,string url)
+        public AsynObj(string path, string url)
         {
             Path = path;
             Url = url;

@@ -14,12 +14,13 @@ namespace RarbgDownloader
         List<string> singlePageList = new List<string>();
         Regex regex = new Regex("href=\"/torrent/.*?\"");
         Regex torrentRegex = new Regex(@"download.php\?id=.*?\.torrent");
+        Regex genresRegex = new Regex(@"Genres.*</a>");
+        Regex genresRegex1 = new Regex("search=.*?\"");
         //http://rarbg.com/torrent/u1xt7vg
         public override void Download(object obj)
         {
             AsynObj o = (AsynObj)obj;
-            List<string> list = new List<string>();
-          
+
                 MatchCollection mc = regex.Matches(o.Content);
                 foreach (Match m in mc)
                 {
@@ -34,14 +35,23 @@ namespace RarbgDownloader
 
         private void work(object obj)
         {
+            MatchCollection genresMatches;
             AsynObj o = (AsynObj)obj;
             string content = dt.GetHtml(o.Url);
             singlePageList.Add(content);
             if (obj != null)
                 dt.SaveFile(content, Path.Combine(o.Path, o.Url.Replace('/', '_').Replace(":", "^").Replace("?", "wenhao"))+".htm");
-
+            Match genres = genresRegex.Match(content);
+            if (genres.Value != "")
+                genresMatches = genresRegex1.Matches(genres.Value);
             string url = "http://rarbg.com/" + torrentRegex.Match(content).Value;
             dt.downLoadFile(url, Path.Combine(o.Path, url.Substring(url.LastIndexOf('=') + 1)));
+        }
+
+        private bool check(string genreStr)
+        {
+            string[] genres = genreStr.Split(',');
+
         }
     }
 }
