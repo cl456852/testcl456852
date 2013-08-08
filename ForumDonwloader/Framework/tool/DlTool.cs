@@ -17,7 +17,7 @@ namespace Framework.tool
             string str = string.Empty;
             try
             {
-                Singl.mr.WaitOne();
+                //Singl.mr.WaitOne();
                 CookieContainer cookieContainer = new CookieContainer();
                 Cookie LastVisit = new Cookie("LastVisit", "1369113747", "/", "rarbg.com");
                 Cookie MarketGidStorage = new Cookie("MarketGidStorage", "%7B%220%22%3A%7B%22svspr%22%3A%22http%3A%2F%2Frarbg.com%2Fbot_check.php%22%2C%22svsds%22%3A9%2C%22TejndEEDj%22%3A%22MTM2OTEwNTQ3MjkzMTIxNTMxNDU%3D%22%7D%2C%22C2153%22%3A%7B%22page%22%3A5%2C%22time%22%3A1369113744213%2C%22mg_id%22%3A%2213894%22%2C%22mg_type%22%3A%22news%22%7D%7D", "/", "rarbg.com");
@@ -37,6 +37,8 @@ namespace Framework.tool
                 request.UserAgent = "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.64 Safari/537.31";
                 request.Timeout = 30000;
                 // request.Headers.Set("Pragma", "no-cache");
+                WebProxy proxy = new WebProxy("127.0.0.1", 8087);
+                request.Proxy = proxy;
                 WebResponse response = request.GetResponse();
                 Stream streamReceive = response.GetResponseStream();
                 Encoding encoding = Encoding.GetEncoding("GB2312");
@@ -50,9 +52,9 @@ namespace Framework.tool
                 if (ex.Status.ToString() == "ReceiveFailure")
                 {
                     AppendFile(url, "d:\\test\\fail.txt");
-                    Singl.mr.Reset();
+                   // Singl.mr.Reset();
                     Thread.Sleep(60000);
-                    Singl.mr.Set();
+                 //   Singl.mr.Set();
                     return "";
                 }
                 else if (!ex.Message.Contains("404"))
@@ -97,10 +99,13 @@ namespace Framework.tool
         {
             try
             {
-                Singl.mr.WaitOne();
+                //Singl.mr.WaitOne();
                 Console.WriteLine(url);
                 WebClient myWebClient = new WebClient();
+                WebProxy proxy = new WebProxy("127.0.0.1", 8087);
+                myWebClient.Proxy = proxy;
                 myWebClient.DownloadFile(url, name);
+                
             }
             catch (WebException ex)
             {
@@ -108,9 +113,9 @@ namespace Framework.tool
                 if (ex.Status.ToString() == "ReceiveFailure")
                 {
                     AppendFile(url, "d:\\test\\fail.txt");
-                    Singl.mr.Reset();
+                 //   Singl.mr.Reset();
                     Thread.Sleep(60000);
-                    Singl.mr.Set();
+                //    Singl.mr.Set();
                 }
                 else if (!ex.Message.Contains("404"))
                     downLoadFile(url, name);

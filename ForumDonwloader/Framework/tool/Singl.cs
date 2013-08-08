@@ -8,7 +8,7 @@ namespace Framework.tool
 {
     public class Singl
     {
-        public static ManualResetEvent mr = new ManualResetEvent(true);
+        //public static ManualResetEvent mr = new ManualResetEvent(true);
 
         
     }
