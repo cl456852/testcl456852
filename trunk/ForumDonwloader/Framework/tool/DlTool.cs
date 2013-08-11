@@ -37,7 +37,7 @@ namespace Framework.tool
                 request.UserAgent = "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.64 Safari/537.31";
                 request.Timeout = 30000;
                 // request.Headers.Set("Pragma", "no-cache");
-                WebProxy proxy = new WebProxy("127.0.0.1", 8087);
+                WebProxy proxy = new WebProxy("127.0.0.1", 8088);
                 request.Proxy = proxy;
                 WebResponse response = request.GetResponse();
                 Stream streamReceive = response.GetResponseStream();
@@ -97,14 +97,35 @@ namespace Framework.tool
 
         public void downLoadFile(string url,string name)
         {
+            Console.WriteLine(url);
             try
             {
-                //Singl.mr.WaitOne();
-                Console.WriteLine(url);
-                WebClient myWebClient = new WebClient();
-                WebProxy proxy = new WebProxy("127.0.0.1", 8087);
-                myWebClient.Proxy = proxy;
-                myWebClient.DownloadFile(url, name);
+                CookieContainer cookieContainer = new CookieContainer();
+                Cookie LastVisit = new Cookie("LastVisit", "1369113747", "/", "rarbg.com");
+                Cookie MarketGidStorage = new Cookie("MarketGidStorage", "%7B%220%22%3A%7B%22svspr%22%3A%22http%3A%2F%2Frarbg.com%2Fbot_check.php%22%2C%22svsds%22%3A9%2C%22TejndEEDj%22%3A%22MTM2OTEwNTQ3MjkzMTIxNTMxNDU%3D%22%7D%2C%22C2153%22%3A%7B%22page%22%3A5%2C%22time%22%3A1369113744213%2C%22mg_id%22%3A%2213894%22%2C%22mg_type%22%3A%22news%22%7D%7D", "/", "rarbg.com");
+                Cookie __utma = new Cookie("__utma", "211336342.1333136546.1369105449.1369109171.1369112684.3", "/", "rarbg.com");
+                Cookie __utmb = new Cookie("__utmb", "211336342.5.10.1369112684", "/", "rarbg.com");
+                Cookie __utmc = new Cookie("__utmb", "211336342", "/", "rarbg.com");
+                Cookie __utmz = new Cookie("__utmb", "211336342.1369105449.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)", "/", "rarbg.com");
+                Cookie bSbTZF2j = new Cookie("bSbTZF2j", "6BdPQ9qs", "/", "rarbg.com");
+                cookieContainer.Add(LastVisit);
+                cookieContainer.Add(__utma);
+                cookieContainer.Add(__utmb);
+                cookieContainer.Add(__utmc);
+                cookieContainer.Add(__utmz);
+                cookieContainer.Add(bSbTZF2j);
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+                request.CookieContainer = cookieContainer;
+                request.UserAgent = "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.64 Safari/537.31";
+                request.Timeout = 30000;
+                // request.Headers.Set("Pragma", "no-cache");
+                WebProxy proxy = new WebProxy("127.0.0.1", 8088);
+                request.Proxy = proxy;
+                WebResponse response = request.GetResponse();
+                Stream streamReceive = response.GetResponseStream();
+                FileStream fstream = new FileStream(name, FileMode.Create);
+                streamReceive.CopyTo(fstream);
+                fstream.Close();
                 
             }
             catch (WebException ex)
