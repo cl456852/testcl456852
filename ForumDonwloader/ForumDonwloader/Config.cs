@@ -5,11 +5,13 @@ using System.Text;
 using Framework;
 using System.Configuration;
 using System.Reflection;
+using System.Collections;
 
 namespace ForumDonwloader
 {
     public class Config
     {
+
         private static volatile AbstractFactory factory;
 		
 		/// <summary>
