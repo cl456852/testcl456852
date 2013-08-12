@@ -43,7 +43,22 @@ namespace BLL
             {
                 if (p.EndsWith(".torrent"))
                 {
-                    BDict torrentFile = BencodingUtils.DecodeFile(p) as BDict;
+                    BDict torrentFile=null;
+                    bool hasBigFile = false;
+                    try
+                    {
+                        torrentFile = BencodingUtils.DecodeFile(p) as BDict;
+                    }
+                    catch(Exception e)
+                    {
+                        string decodeErr = Path.Combine(Path.GetDirectoryName(p), "decodeErr");
+                        if (!Directory.Exists(decodeErr))
+                        {
+                            Directory.CreateDirectory(decodeErr);
+                        }
+                        File.Move(p, Path.Combine(decodeErr, Path.GetFileName(p)));
+                        Console.WriteLine("decode Error  " + p);
+                    }
                     if (torrentFile != null)
                     {
                         bool flag = true;
@@ -60,16 +75,25 @@ namespace BLL
                             {
                                 BDict bd = (BDict)b[i];
                                 long length = ((BInt)bd["length"]).Value;
+                                if (length > 25 * 1024 * 1024)
+                                    hasBigFile = true;
                                 BList list = (BList)bd["path"];
                                 string s = ((BString)list[list.Count - 1]).Value;
                                 HisTorrent trt = new HisTorrent();
                                 trt.CreateTime = DateTime.Now;
                                 trt.Path = p;
                                 trt.Size = length;
-                                trt.File = s.Substring(0, s.LastIndexOf('.'));
-                                trt.Ext = s.Substring(s.LastIndexOf('.'));
+                                if (s.LastIndexOf('.') > 0)
+                                {
+                                    trt.File = s.Substring(0, s.LastIndexOf('.'));
+                                    trt.Ext = s.Substring(s.LastIndexOf('.'));
+                                }
+                                else
+                                {
+                                    trt.File = s;
+                                }
                                 listTorrent.Add(trt);
-                                if (trt.Size > 100* 1024 * 1024 &&( DBHelper.checkTorrent(trt) > 0||DBHelper.checkFiles(trt)>0))
+                                if (trt.Size > 100 * 1024 * 1024 && (DBHelper.checkTorrent(trt) > 0 || DBHelper.checkFiles(trt) > 0))
                                 {
                                     flag = false;
                                     break;
@@ -79,6 +103,7 @@ namespace BLL
                         }
                         else
                         {
+                            hasBigFile = true;
                             HisTorrent trt = new HisTorrent();
                             trt.CreateTime = DateTime.Now;
                             trt.Path = p;
@@ -92,7 +117,7 @@ namespace BLL
                                 flag = false;
                             }
                         }
-                        if (flag)
+                        if (flag && hasBigFile)
                         {
                             foreach (HisTorrent his in listTorrent)
                             {
@@ -101,16 +126,41 @@ namespace BLL
                         }
                         else
                         {
-                            string dupPath = Path.Combine(Path.GetDirectoryName(p), "duplicate");
-                            if (!Directory.Exists(dupPath))
+                            if (!hasBigFile)
                             {
-                                Directory.CreateDirectory(dupPath);
+                                string noBigFile = Path.Combine(Path.GetDirectoryName(p), "noBigFile");
+                                if (!Directory.Exists(noBigFile))
+                                {
+                                    Directory.CreateDirectory(noBigFile);
+                                }
+                                File.Move(p, Path.Combine(noBigFile, Path.GetFileName(p)));
+                                Console.WriteLine(p + "  no Big File");
                             }
-                            File.Move(p, Path.Combine(dupPath, Path.GetFileName(p)));
+                            else
+                            {
+                                string dupPath = Path.Combine(Path.GetDirectoryName(p), "duplicate");
+                                if (!Directory.Exists(dupPath))
+                                {
+                                    Directory.CreateDirectory(dupPath);
+                                }
+                                File.Move(p, Path.Combine(dupPath, Path.GetFileName(p)));
+                                Console.WriteLine(p + "  Duplicate");
+                            }
                         }
                     }
                     else
-                        Console.WriteLine("decode Error  " + p);
+                    {
+                        if (File.Exists(p))
+                        {
+                            string decodeErr = Path.Combine(Path.GetDirectoryName(p), "decodeErr");
+                            if (!Directory.Exists(decodeErr))
+                            {
+                                Directory.CreateDirectory(decodeErr);
+                            }
+                            File.Move(p, Path.Combine(decodeErr, Path.GetFileName(p)));
+                            Console.WriteLine("decode Error  " + p);
+                        }
+                    }
                 }
 
             }
