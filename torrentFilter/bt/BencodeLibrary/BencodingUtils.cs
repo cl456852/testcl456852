@@ -32,7 +32,7 @@ namespace BencodeLibrary
         static BencodingUtils()
         {
             // Extended ASCII encoding - http://stackoverflow.com/questions/4623650/encode-to-single-byte-extended-ascii-values
-            ExtendedASCIIEncoding = Encoding.GetEncoding(437);
+            ExtendedASCIIEncoding = Encoding.GetEncoding("UTF-8");
         }
 
         /// <summary>

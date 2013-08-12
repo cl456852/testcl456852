@@ -11,7 +11,7 @@ namespace DB
     {
         static string seachHisSql = "select * from his1 where LOWER(vid)=LOWER('{0}') and ABS((size-{1})/{1})<0.05 ";
         static string insertHisSql = "insert into his1 values('{0}',{1},'{2}',{3},'{4}',getdate())";
-        static string checkTorrentSql = "select count(*) from his where LOWER([file])='{0}'";
+        static string checkTorrentSql = "select count(*) from his where LOWER([file])='{0}' and size> 104857600";
         static string insertTorrentSql = "insert into his values('{0}',{1},'{2}',getdate(),'{3}')";
         public static string connstr = @"server=localhost\SQLEXPRESS;uid=sa;pwd=a;database=cd";
         static string checkFilesSql = "select count(*) from files where filename='{0}' and length>100";
@@ -132,13 +132,15 @@ namespace DB
         public static int checkFiles(HisTorrent his)
         {
             int res = 0;
-            string sql = string.Format(checkFilesSql, his.File + his.Ext);
+            string sql = string.Format(checkFilesSql, his.File.Replace("'", "''"), his.Size, his.Path.Replace("'", "''") + his.Ext);
             using (SqlConnection conn = new SqlConnection(connstr))
             {
                 conn.Open();
                 SqlCommand sc = new SqlCommand(sql, conn);
                 res = Convert.ToInt32(sc.ExecuteScalar());
             }
+            if (res > 0)
+                Console.WriteLine(his.Path + "  already downloaded");
             return res;
         }
     }
