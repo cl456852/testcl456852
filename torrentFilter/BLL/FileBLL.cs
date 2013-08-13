@@ -51,13 +51,7 @@ namespace BLL
                     }
                     catch(Exception e)
                     {
-                        string decodeErr = Path.Combine(Path.GetDirectoryName(p), "decodeErr");
-                        if (!Directory.Exists(decodeErr))
-                        {
-                            Directory.CreateDirectory(decodeErr);
-                        }
-                        File.Move(p, Path.Combine(decodeErr, Path.GetFileName(p)));
-                        Console.WriteLine("decode Error  " + p);
+                        moveFile("decodeErr", p);
                     }
                     if (torrentFile != null)
                     {
@@ -109,8 +103,15 @@ namespace BLL
                             trt.Path = p;
                             trt.Size = ((BInt)(torrentFile["info"] as BDict)["length"]).Value;
                             string name = ((BString)(torrentFile["info"] as BDict)["name"]).Value;
-                            trt.File = name.Substring(0, name.LastIndexOf('.'));
-                            trt.Ext = name.Substring(name.LastIndexOf('.'));
+                            if (name.LastIndexOf('.') > 0)
+                            {
+                                trt.File = name.Substring(0, name.LastIndexOf('.'));
+                                trt.Ext =name.Substring(name.LastIndexOf('.'));
+                            }
+                            else
+                            {
+                                trt.File = name;
+                            }
                             listTorrent.Add(trt);
                             if (trt.Size > 100 * 1024 * 1024 && (DBHelper.checkTorrent(trt) > 0 || DBHelper.checkFiles(trt) > 0))
                             {
@@ -128,38 +129,17 @@ namespace BLL
                         {
                             if (!hasBigFile)
                             {
-                                string noBigFile = Path.Combine(Path.GetDirectoryName(p), "noBigFile");
-                                if (!Directory.Exists(noBigFile))
-                                {
-                                    Directory.CreateDirectory(noBigFile);
-                                }
-                                File.Move(p, Path.Combine(noBigFile, Path.GetFileName(p)));
-                                Console.WriteLine(p + "  no Big File");
+                                moveFile("noBigFile", p);
                             }
                             else
                             {
-                                string dupPath = Path.Combine(Path.GetDirectoryName(p), "duplicate");
-                                if (!Directory.Exists(dupPath))
-                                {
-                                    Directory.CreateDirectory(dupPath);
-                                }
-                                File.Move(p, Path.Combine(dupPath, Path.GetFileName(p)));
-                                Console.WriteLine(p + "  Duplicate");
+                                moveFile("duplicate", p);
                             }
                         }
                     }
                     else
                     {
-                        if (File.Exists(p))
-                        {
-                            string decodeErr = Path.Combine(Path.GetDirectoryName(p), "decodeErr");
-                            if (!Directory.Exists(decodeErr))
-                            {
-                                Directory.CreateDirectory(decodeErr);
-                            }
-                            File.Move(p, Path.Combine(decodeErr, Path.GetFileName(p)));
-                            Console.WriteLine("decode Error  " + p);
-                        }
+                        moveFile("decodeErr", p);
                     }
                 }
 
@@ -169,7 +149,29 @@ namespace BLL
 
 
         }
+        void moveFile(string folderNmae,string path)
+        {
+            if (File.Exists(path))
+            {
+                string targetDir = Path.Combine(Path.GetDirectoryName(path), folderNmae);
+                if (!Directory.Exists(targetDir))
+                {
+                    Directory.CreateDirectory(targetDir);
+                }
+                try
+                {
+                    File.Move(path, Path.Combine(targetDir, Path.GetFileName(path)));
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("path too long    " + path);
+                    File.Move(path, Path.Combine(targetDir, Path.GetFileName(path)).Substring(0,240)+".torrent");
+                    Console.WriteLine("path too long    "+Path.Combine(targetDir, Path.GetFileName(path)).Substring(0, 240) + ".torrent");
+                }
+                Console.WriteLine(folderNmae + " " + path);
+            }
 
+        }
        
     }
 }
