@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 
 namespace pageDownLoader
 {
-    public class Donwloader
+    public class Downloader
     {
    
         public string GetHtml(string url)
