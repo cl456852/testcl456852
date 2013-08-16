@@ -22,7 +22,7 @@ namespace HelloJavConvert
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Donwloader down = new Donwloader();
+            Downloader down = new Downloader();
             Regex r = new Regex("idx=\\d*\"");
            // Regex reg=new Regex("idx=.*?\"");
             Regex reg = new Regex("mkln.*?http");
@@ -33,9 +33,9 @@ namespace HelloJavConvert
                 string html= getHtmlPost("http://www.hellojav.com/include/file_downpage.php",m.Value.Replace("\"",""));
                 string newStr = reg.Match(html).Value;
                 string[] strs = newStr.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
-                string idx ="idx="+ strs[0].Replace("mkln('", "").Replace("'","").Replace("\"","").Trim();
+                string idx ="idx="+ strs[0].Replace("mkln('", "").Replace("'","").Replace("\"","").Trim().Replace("=","%3d");
                 string tvy = "tvy=" + strs[1].Replace("'", "").Replace("\"", "").Trim();
-                string ksf = "ksf=MTIxLjc5LjE0NC45OQ==";
+                string ksf = "ksf=OC4zNS4yMDEuMTE1";
                 oringi = oringi.Replace(m.Value, "http://www.hellojav.com/include/file_down.php?"+idx+"&"+ksf+"&"+tvy);
                 
             }
@@ -73,7 +73,7 @@ namespace HelloJavConvert
             string str=string.Empty;
             try
             {
-                byte[] data = Encoding.Default.GetBytes(postInfo + "&ksf=MTIxLjc5LjE0NC45OQ==");
+                byte[] data = Encoding.Default.GetBytes(postInfo + "&ksf=OC4zNS4yMDEuMTE1");
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://www.hellojav.com/include/file_downpage.php");
                 request.ContentType = "application/x-www-form-urlencoded";
                 //request.Connection = "keep-alive";

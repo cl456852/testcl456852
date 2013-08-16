@@ -23,7 +23,7 @@ namespace pageDownLoader
         //http://javjunkies.com/main/2012/01-01-3/
         private void button1_Click(object sender, EventArgs e)
         {
-            Donwloader downloader = new Donwloader();
+            Downloader downloader = new Downloader();
 
             for (int month = 2; month <= 12; month++)
             {
@@ -59,13 +59,13 @@ namespace pageDownLoader
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Donwloader downloader = new Donwloader();
-            for (int i = 1; i <= 435; i++)
+            Downloader downloader = new Downloader();
+            for (int i = 1; i <= 330; i++)
             {
                 string url = "http://www.18-jav.com/?paged=" + i;
                 string html = downloader.GetHtml(url);
                 string name = url.Replace('/', '_').Replace(":", "^").Replace("?","wenhao");
-                downloader.SaveFile(html,@"D:\我的资料库\Documents\pagenew\page\18Jav20130625"+"\\"+ name + ".htm");
+                downloader.SaveFile(html,@"D:\我的资料库\Documents\pagenew\page\18Jav20130731"+"\\"+ name + ".htm");
             }
         }
 
@@ -74,8 +74,8 @@ namespace pageDownLoader
         private void button3_Click(object sender, EventArgs e)
         {
             Regex r;
-            Donwloader downloader = new Donwloader();
-            for (int month = 6; month <= 6; month++)
+            Downloader downloader = new Downloader();
+            for (int month = 7; month <= 7; month++)
             {
                 for (int i = 1; i <= DateTime.DaysInMonth(year, month); i++)
                 {
@@ -106,36 +106,51 @@ namespace pageDownLoader
             }
         }
 
-        string _141javUrl="http://www.141jav.com/latest/";
-        Donwloader downloader = new Donwloader();
+        string _141javUrl = "http://www.141jav.com/month/2013-07/";
+      
         private void button4_Click(object sender, EventArgs e)
         {
             WaitCallback callBack;
             callBack = new WaitCallback(downLoad);
 
             bool flag = ThreadPool.SetMaxThreads(1, 1);
-            for (int month = 4; month <= 4; month++)
+            for (int month = 1; month <= 129; month++)
             {
-                for (int i = 1; i <= DateTime.DaysInMonth(year, month); i++)
-                {
-                    ThreadPool.QueueUserWorkItem(callBack, _141javUrl + "2013-" + month + "-" + i + "/1");
-                }
+               
+                    ThreadPool.QueueUserWorkItem(callBack, _141javUrl + month);
+                
             }
-
-           //downLoad("http://www.141jav.com/latest/2013-02-20/1");
         }
         Regex _141JavReg = new Regex("<a href=\"[0-9]*\">禄</a></div>");
+        Regex r = new Regex("view/.*?\"");
         private void downLoad(object datetime)
         {
+            
+            WaitCallback callBack;
+            callBack = new WaitCallback(downloadSg);
+
+            Downloader downloader = new Downloader();
             string url=(string)datetime;
             string html = downloader.GetHtml( datetime.ToString());
+            MatchCollection mc= r.Matches(html);
+            foreach (Match m in mc)
+            {
+                ThreadPool.QueueUserWorkItem(callBack, "http://www.141jav.com/"+m.Value.Replace("\"",""));
+            }
+            downloader.SaveFile(html, "e:\\141Jav\\" + url.Replace('/', '_').Replace(":", "^").Replace("?", "wenhao") + ".htm");
+            //string next = _141JavReg.Match(html).Value.Replace("<a href=\"", "").Replace("\">禄</a></div>", "");
+            //string nextUrl = url.Substring(0, url.LastIndexOf('/')+1)+next;
+            //if (next != "")
+            //    downLoad(nextUrl);
 
-            downloader.SaveFile(html, "d:\\141Jav\\" + url.Replace('/', '_').Replace(":", "^").Replace("?", "wenhao") + ".htm");
-            string next = _141JavReg.Match(html).Value.Replace("<a href=\"", "").Replace("\">禄</a></div>", "");
-            string nextUrl = url.Substring(0, url.LastIndexOf('/')+1)+next;
-            if (next != "")
-                downLoad(nextUrl);
+        }
 
+        private void downloadSg(object url)
+        {
+            string urlString = (string)url;
+            Downloader downloader = new Downloader();
+            string html = downloader.GetHtml((string)url);
+            downloader.SaveFile(html, "e:\\141Jav\\" + urlString.Replace('/', '_').Replace(":", "^").Replace("?", "wenhao") + ".htm");
         }
 
 
