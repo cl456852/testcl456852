@@ -38,7 +38,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(201, 21);
             this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "d:\\result.htm";
+            this.textBox1.Text = "E:\\hellojav\\result.htm";
             // 
             // button1
             // 
