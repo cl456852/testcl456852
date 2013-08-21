@@ -10,11 +10,15 @@ using System.IO;
 using System.Text.RegularExpressions;
 using pageDownLoader;
 using System.Net;
+using System.Diagnostics;
+using System.Threading;
 
 namespace HelloJavConvert
 {
     public partial class Form1 : Form
     {
+        List<string> fileList = new List<string>();
+        string ksf = "";
         public Form1()
         {
             InitializeComponent();
@@ -22,6 +26,8 @@ namespace HelloJavConvert
 
         private void button1_Click(object sender, EventArgs e)
         {
+            initFileList();
+            getKsf();
             Downloader down = new Downloader();
             Regex r = new Regex("idx=\\d*\"");
            // Regex reg=new Regex("idx=.*?\"");
@@ -35,11 +41,13 @@ namespace HelloJavConvert
                 string newStr = reg.Match(html).Value;
                 string[] strs = newStr.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
                 string idx ="idx="+ strs[0].Replace("mkln('", "").Replace("'","").Replace("\"","").Trim().Replace("=","%3d");
-                string tvy = "tvy=" + strs[1].Replace("'", "").Replace("\"", "").Trim();
-                string ksf = "ksf=OC4zNS4yMDEuOTk=";
-                oringi = oringi.Replace(m.Value, idx+".torrent");
-                getFile("http://www.hellojav.com/include/file_down.php?" + idx + "&" + ksf + "&" + tvy, idx);
-
+                if (!fileList.Contains(idx + ".torrent"))
+                {
+                    string tvy = "tvy=" + strs[1].Replace("'", "").Replace("\"", "").Trim();
+                    
+                    getFile("http://www.hellojav.com/include/file_down.php?" + idx + "&" + "ksf=" + ksf + "&" + tvy, idx);
+                }
+                oringi = oringi.Replace(m.Value, idx + ".torrent");
                 
             }
             down.SaveFile(oringi, "d:\\res.htm");
@@ -76,7 +84,7 @@ namespace HelloJavConvert
             string str=string.Empty;
             try
             {
-                byte[] data = Encoding.Default.GetBytes(postInfo + "&ksf=OC4zNS4yMDEuOTk=");
+                byte[] data = Encoding.Default.GetBytes(postInfo + "&ksf="+ksf);
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://www.hellojav.com/include/file_downpage.php");
                // WebProxy proxy = new WebProxy("127.0.0.1", 8087);
                 //request.Proxy = proxy;
@@ -152,9 +160,24 @@ namespace HelloJavConvert
 
                 WebResponse response = request.GetResponse();
                 Stream streamReceive = response.GetResponseStream();
+                MemoryStream mStream = new MemoryStream();
+                streamReceive.CopyTo(mStream);
+                mStream.Position = 0;
+                Encoding encoding = Encoding.GetEncoding("GB2312");
+                StreamReader streamReader = new StreamReader(mStream, encoding);
+                str = streamReader.ReadToEnd();
+                if (str.Contains("You have exceeded"))
+                {
+                    reConnect();
+                    Thread.Sleep(7000);
+                    getKsf();
+                    getFile(url, id);
+                    return str;
+                }
+                mStream.Position = 0;
                 string path= Path.GetDirectoryName(textBox1.Text);
                 FileStream fstream = new FileStream(Path.Combine(path,id+".torrent"), FileMode.Create);
-                streamReceive.CopyTo(fstream);
+                mStream.CopyTo(fstream);
                 fstream.Close();
             }
             catch (Exception ex)
@@ -165,6 +188,66 @@ namespace HelloJavConvert
                     str = getHtmlPost(url,id);
             }
             return str;
+        }
+
+        void reConnect()
+        {
+            ProcessStartInfo start = new ProcessStartInfo("rasdial");//设置运行的命令行文件问ping.exe文件，这个文件系统会自己找到
+            //如果是其它exe文件，则有可能需要指定详细路径，如运行winRar.exe
+            start.Arguments = "宽带连接 /disconnect";//设置命令参数
+            start.CreateNoWindow = true;//不显示dos命令行窗口
+            start.RedirectStandardOutput = true;//
+            start.RedirectStandardInput = true;//
+            start.UseShellExecute = false;//是否指定操作系统外壳进程启动程序
+            Process p = Process.Start(start);
+            Console.WriteLine("disconnected");
+            Thread.Sleep(5000);
+            ProcessStartInfo start1 = new ProcessStartInfo("rasdial");//设置运行的命令行文件问ping.exe文件，这个文件系统会自己找到
+            //如果是其它exe文件，则有可能需要指定详细路径，如运行winRar.exe
+            start1.Arguments = "宽带连接 300000162885 68819054";//设置命令参数
+            start1.UseShellExecute = false;//是否指定操作系统外壳进程启动程序
+            Process p1 = Process.Start(start1);
+            Console.WriteLine("connected");
+        }
+
+        private void getKsf()
+        {
+            byte[] b = Encoding.Default.GetBytes(GetIP());
+            ksf = Convert.ToBase64String(b);
+
+        }
+
+        private string GetIP()
+        {
+            string tempip = "";
+            try
+            {
+                WebRequest wr = WebRequest.Create("http://iframe.ip138.com/ic.asp");
+                Stream s = wr.GetResponse().GetResponseStream();
+                StreamReader sr = new StreamReader(s, Encoding.Default);
+                string all = sr.ReadToEnd(); //读取网站的数据
+
+                int start = all.IndexOf("[") + 1;
+                int end = all.IndexOf("]", start);
+                tempip = all.Substring(start, end - start);
+                Console.WriteLine(tempip);
+                sr.Close();
+                s.Close();
+            }
+            catch
+            {
+            }
+            return tempip;
+        }
+
+        private void initFileList()
+        {
+            string path=textBox1.Text.Substring(0,textBox1.Text.LastIndexOf("\\"));
+            String[] paths = Directory.GetFiles(path, "*", SearchOption.TopDirectoryOnly);
+            foreach (string p in paths)
+            {
+                fileList.Add(Path.GetFileName(p));
+            }
         }
 
     }
