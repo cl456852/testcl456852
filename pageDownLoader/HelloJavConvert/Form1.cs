@@ -47,7 +47,7 @@ namespace HelloJavConvert
                     
                     getFile("http://www.hellojav.com/include/file_down.php?" + idx + "&" + "ksf=" + ksf + "&" + tvy, idx);
                 }
-                oringi = oringi.Replace(m.Value, idx + ".torrent");
+                oringi = oringi.Replace("http://hellojav.com/include/file_down.php?"+m.Value, idx.Replace("%3d","").Replace("idx=","") + ".torrent/");
                 
             }
             down.SaveFile(oringi, "d:\\res.htm");
@@ -176,7 +176,7 @@ namespace HelloJavConvert
                 }
                 mStream.Position = 0;
                 string path= Path.GetDirectoryName(textBox1.Text);
-                FileStream fstream = new FileStream(Path.Combine(path,id+".torrent"), FileMode.Create);
+                FileStream fstream = new FileStream(Path.Combine(path, id.Replace("%3d", "").Replace("idx=", "") + ".torrent"), FileMode.Create);
                 mStream.CopyTo(fstream);
                 fstream.Close();
             }
