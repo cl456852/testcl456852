@@ -76,7 +76,7 @@ namespace RarbgDownloader
         {
             string[] okname = DlConfig.demo4["notokname"].ToString().Split(',');
             foreach (string s in okname)
-                if (name.Contains(s))
+                if (name.Contains(s.ToLower()))
                     return false;
             return true;
         }
@@ -85,7 +85,7 @@ namespace RarbgDownloader
         {
             string[] okname = DlConfig.demo4["okname"].ToString().Split(',');
             foreach (string s in okname)
-                if (name.Contains(s))
+                if (name.Contains(s.ToLower()))
                     return true;
             return false;
         }
