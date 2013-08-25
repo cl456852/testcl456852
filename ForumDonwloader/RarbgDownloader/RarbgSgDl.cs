@@ -68,6 +68,7 @@ namespace RarbgDownloader
                 else
                     dt.downLoadFile(url, Path.Combine(o.Path, "notok", genreStr + "$$" + url.Substring(url.LastIndexOf('=') + 1)));
             }
+            //加入genres name 组合判断
             else
                 dt.downLoadFile(url, Path.Combine(o.Path,"unknown", url.Substring(url.LastIndexOf('=') + 1)));
         }
