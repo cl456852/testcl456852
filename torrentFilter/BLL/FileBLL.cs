@@ -38,7 +38,7 @@ namespace BLL
         public void process(string directoryStr)
         {
            
-            String[] path = Directory.GetFiles(directoryStr, "*", SearchOption.AllDirectories);
+            String[] path = Directory.GetFiles(directoryStr, "*", SearchOption.TopDirectoryOnly);
             foreach (String p in path)
             {
                 if (p.EndsWith(".torrent"))
