@@ -38,7 +38,7 @@ namespace Framework.tool
                 request.Timeout = 30000;
                 // request.Headers.Set("Pragma", "no-cache");
                 WebProxy proxy = new WebProxy("127.0.0.1", 8088);
-                request.Proxy = proxy;
+                //request.Proxy = proxy;
                 WebResponse response = request.GetResponse();
                 Stream streamReceive = response.GetResponseStream();
                 Encoding encoding = Encoding.GetEncoding("GB2312");
@@ -120,7 +120,7 @@ namespace Framework.tool
                 request.Timeout = 30000;
                 // request.Headers.Set("Pragma", "no-cache");
                 WebProxy proxy = new WebProxy("127.0.0.1", 8088);
-                request.Proxy = proxy;
+              //  request.Proxy = proxy;
                 WebResponse response = request.GetResponse();
                 Stream streamReceive = response.GetResponseStream();
                 FileStream fstream = new FileStream(name, FileMode.Create);
