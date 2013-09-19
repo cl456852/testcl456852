@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace GetSize
+namespace BLL
 {
     public class His
     {

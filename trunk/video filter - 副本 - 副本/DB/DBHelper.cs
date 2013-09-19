@@ -4,7 +4,7 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 using MODEL;
-using GetSize;
+using BLL;
 namespace DB
 {
     public class DBHelper

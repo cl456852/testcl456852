@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 using System.Xml;
 using System.Collections;
 
-namespace GetSize
+namespace BLL
 {
     public class Analysis
     {

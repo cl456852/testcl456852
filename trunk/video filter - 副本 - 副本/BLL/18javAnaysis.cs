@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Collections;
 using System.Text.RegularExpressions;
-using GetSize;
+using BLL;
 using System.IO;
 
 namespace BLL
@@ -40,7 +40,7 @@ namespace BLL
                 His his = new His();
                 his.OriginalHtml = s;
                 his.Vid = r.Match(s).Value.Replace("Download <strong>", "").Replace("</strong>", "");
-                if (his.Vid.Split('-').Length > 2)
+                if (his.Vid.Split('-').Length > 2 && Tool.IsNum( his.Vid.Split('-')[1]))   //对于xxx-av-1234的修改，只考虑两个-的情况
                 {
                     his.Vid = his.Vid.Substring(0, his.Vid.LastIndexOf('-'));
                 }
@@ -79,5 +79,7 @@ namespace BLL
             his.Html="<a href=\""+torrentUrl+"><img src=\""+imgUrl+"\"/></a><br>"+his.Vid+"<br>"+size+"<br>"+"<br>"+his.Actress+"<br>";
             
         }
+
+
     }
 }
