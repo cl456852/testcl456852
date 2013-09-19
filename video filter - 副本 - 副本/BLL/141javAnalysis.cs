@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Collections;
 using System.Text.RegularExpressions;
-using GetSize;
+using BLL;
 
 namespace BLL
 {

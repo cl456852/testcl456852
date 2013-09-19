@@ -7,7 +7,7 @@ using System.IO;
 using System.Collections;
 using MODEL;
 using System.Text.RegularExpressions;
-using GetSize;
+using BLL;
 
 namespace BLL
 {
@@ -15,17 +15,17 @@ namespace BLL
     {
 
     //    Analysis ana;
-        //_18javAnaysis ana;
-       // HelloJavAnalysis ana;
-        _141javAnalysis ana;
+        _18javAnaysis ana;
+        //HelloJavAnalysis ana;
+       // _141javAnalysisNew ana;
         Filter filter;
 
         public FileBLL()
         {
             filter = new Filter();
            // ana = new Analysis();
-            ana = new _141javAnalysis();
-          //  ana = new _18javAnaysis();
+           // ana = new _141javAnalysis();
+            ana = new _18javAnaysis();
         }
 
         public List<MyFileInfo> getFileList()
@@ -50,7 +50,7 @@ namespace BLL
                 {
                     if (filter.checkValid(his))
                     {
-                        resultHTML += his.Html;
+                        resultHTML += his.Html+"<br/>\r\n";
                     }
                 }
 

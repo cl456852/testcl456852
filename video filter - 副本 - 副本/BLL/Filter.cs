@@ -8,12 +8,14 @@ using System.IO;
 using DB;
 using System.Text.RegularExpressions;
 
-namespace GetSize
+
+namespace BLL
 {
     public class Filter
     {
         List<MyFileInfo> list;
         Regex reg1 = new Regex("[a-z]");
+        Regex reg2 = new Regex("[a-z].*");
         public Filter()
         {
 
@@ -29,68 +31,83 @@ namespace GetSize
             }
             id = id.ToLower();
             bool flag = true;
-
-            string letter = "";
-            string number = "";
-            bool isEndofLetter = false;
-            for (int i = 0; i < id.Length; i++)                        //修改   对于出现KIDM235A  KIDM235B
-                if (reg1.IsMatch(id[i].ToString()))
+            if (Tool.IsNum(id))
+            {
+                foreach (MyFileInfo info in list)
                 {
-                    if (isEndofLetter)
+                    if (info.FileName.Contains(id) || info.Directory.Contains(id))
+                    {
+                        flag = false;
                         break;
+                    }
+                }
+        
+            }
+            else
+            {
+                id = reg2.Match(id).Value;
+                string letter = "";
+                string number = "";
+                bool isEndofLetter = false;
+                for (int i = 0; i < id.Length; i++)                        //修改   对于出现KIDM235A  KIDM235B
+                    if (reg1.IsMatch(id[i].ToString()))
+                    {
+                        if (isEndofLetter)
+                            break;
+                        else
+                            letter += id[i];
+                    }
                     else
-                        letter += id[i];
-                }
-                else
+                    {
+                        number += id[i];
+                        isEndofLetter = true;
+                    }
+
+                string[] searchStr = { letter, number };
+
+
+                Regex r = new Regex("[^a-z]" + searchStr[0] + @"(\s){0,3}[-_]?(\s){0,3}(0){0,3}" + searchStr[1] + "[^0-9]|^" + searchStr[0] + @"(\s){0,3}[-_]?(\s){0,3}(0){0,3}" + searchStr[1] + "$|[^a-z]" + searchStr[0] + @"(\s){0,3}[-_]?(\s){0,3}(0){0,3}" + searchStr[1] + "$|^" + searchStr[0] + @"(\s){0,3}[-_]?(\s){0,3}(0){0,3}" + searchStr[1] + "[^0-9]");
+                for (int i = 0; i < list.Count; i++)
                 {
-                    number += id[i];
-                    isEndofLetter = true;
+
+                    flag = true;
+
+                    string fileName = Path.GetFileNameWithoutExtension(list[i].FileName.ToLower());
+                    string directoryName = list[i].Directory.ToLower();
+                    string extension = list[i].Extension;
+                    double len = list[i].Length;
+                    //if (((fileName.Contains(searchStr[0]) && fileName.Contains(searchStr[1]) && checkDistance(fileName, searchStr[0], searchStr[1]) || directoryName.Contains(searchStr[0]) && directoryName.Contains(searchStr[1]) && checkDistance(directoryName, searchStr[0], searchStr[1])) && !fileName.Contains("incomplete")) && (len > 400||extension.ToLower()==".mds"))
+                    //{
+                    //    flag = false;
+                    //    break;
+
+                    //}
+
+                    if ((len > 400 || extension.ToLower() == ".mds") && (r.IsMatch(fileName) || r.IsMatch(directoryName)) && !fileName.Contains("incomplete"))
+                    {
+                        flag = false;
+                        break;
+
+                    }
+
+
                 }
 
-            string[] searchStr = { letter, number };
+                }
 
-
-            Regex r = new Regex("[^a-z]" + searchStr[0] + @"(\s){0,3}[-_]?(\s){0,3}(0){0,3}" + searchStr[1] + "[^0-9]|^" + searchStr[0] + @"(\s){0,3}[-_]?(\s){0,3}(0){0,3}" + searchStr[1] + "$|[^a-z]" + searchStr[0] + @"(\s){0,3}[-_]?(\s){0,3}(0){0,3}" + searchStr[1] + "$|^" + searchStr[0] + @"(\s){0,3}[-_]?(\s){0,3}(0){0,3}" + searchStr[1] + "[^0-9]");
-            for (int i = 0; i < list.Count; i++)
-            {
-
-                flag = true;
-
-                string fileName = Path.GetFileNameWithoutExtension(list[i].FileName.ToLower());
-                string directoryName = list[i].Directory.ToLower();
-                string extension = list[i].Extension;
-                double len = list[i].Length;
-                //if (((fileName.Contains(searchStr[0]) && fileName.Contains(searchStr[1]) && checkDistance(fileName, searchStr[0], searchStr[1]) || directoryName.Contains(searchStr[0]) && directoryName.Contains(searchStr[1]) && checkDistance(directoryName, searchStr[0], searchStr[1])) && !fileName.Contains("incomplete")) && (len > 400||extension.ToLower()==".mds"))
-                //{
-                //    flag = false;
-                //    break;
-
-                //}
-
-                if ((len > 400 || extension.ToLower() == ".mds") && (r.IsMatch(fileName) || r.IsMatch(directoryName)) && !fileName.Contains("incomplete"))
+                if (flag)
                 {
-                    flag = false;
-                    break;
-
+                    flag = checkHis(his);
                 }
 
 
 
 
-            }
-
-            if (flag)
-            {
-                flag = checkHis(his);
-            }
-
-
-
-
-            if (flag)
-            {
-                DBHelper.insertHis(his);
-            }
+                if (flag)
+                {
+                    DBHelper.insertHis(his);
+                }
+            
             return flag;
         }
 
