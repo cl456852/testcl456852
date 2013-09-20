@@ -76,7 +76,7 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(409, 21);
             this.textBox4.TabIndex = 4;
-            this.textBox4.Text = "d:\\test";
+            this.textBox4.Text = "e:\\test";
             // 
             // button2
             // 

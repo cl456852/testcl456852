@@ -37,8 +37,8 @@ namespace Framework.tool
                 request.UserAgent = "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.64 Safari/537.31";
                 request.Timeout = 30000;
                 // request.Headers.Set("Pragma", "no-cache");
-                WebProxy proxy = new WebProxy("127.0.0.1", 8088);
-                //request.Proxy = proxy;
+                WebProxy proxy = new WebProxy("127.0.0.1", 8087);
+                request.Proxy = proxy;
                 WebResponse response = request.GetResponse();
                 Stream streamReceive = response.GetResponseStream();
                 Encoding encoding = Encoding.GetEncoding("GB2312");
@@ -119,10 +119,13 @@ namespace Framework.tool
                 request.UserAgent = "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.64 Safari/537.31";
                 request.Timeout = 30000;
                 // request.Headers.Set("Pragma", "no-cache");
-                WebProxy proxy = new WebProxy("127.0.0.1", 8088);
-              //  request.Proxy = proxy;
+                WebProxy proxy = new WebProxy("127.0.0.1", 8087);
+                request.Proxy = proxy;
                 WebResponse response = request.GetResponse();
                 Stream streamReceive = response.GetResponseStream();
+                string path = Path.GetDirectoryName(name);
+                if (!Directory.Exists(path))
+                    Directory.CreateDirectory(path);
                 FileStream fstream = new FileStream(name, FileMode.Create);
                 streamReceive.CopyTo(fstream);
                 fstream.Close();
