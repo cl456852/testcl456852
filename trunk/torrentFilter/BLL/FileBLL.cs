@@ -22,6 +22,8 @@ namespace BLL
         _141javAnalysis ana;
         Filter filter;
 
+
+        DateTime startTime;
         public FileBLL()
         {
             filter = new Filter();
@@ -37,7 +39,7 @@ namespace BLL
 
         public void process(string directoryStr)
         {
-           
+            startTime = new DateTime();
             String[] path = Directory.GetFiles(directoryStr, "*", SearchOption.TopDirectoryOnly);
             foreach (String p in path)
             {
@@ -149,11 +151,33 @@ namespace BLL
 
 
         }
-        void moveFile(string folderNmae,string path)
+
+        void check(HisTorrent trt)
+        {
+            HisTorrent temp;
+            HisTorrent[] res = DBHelper.checkFiles1(trt);
+            if (res != null)
+            {
+                foreach(HisTorrent t in res)
+                {
+                if (t.Size > trt.Size||t.CreateTime<startTime)
+                {
+                    moveFile("duplicate", trt.Path);
+                }
+                else
+                {
+                    moveFile("duplicate", t.Path);
+                }
+                }
+            }
+        }
+
+
+        void moveFile(string folderName,string path)
         {
             if (File.Exists(path))
             {
-                string targetDir = Path.Combine(Path.GetDirectoryName(path), folderNmae);
+                string targetDir = Path.Combine(Path.GetDirectoryName(path), folderName);
                 if (!Directory.Exists(targetDir))
                 {
                     Directory.CreateDirectory(targetDir);
@@ -168,7 +192,7 @@ namespace BLL
                     File.Move(path, Path.Combine(targetDir, Path.GetFileName(path)).Substring(0,240)+".torrent");
                     Console.WriteLine("path too long    "+Path.Combine(targetDir, Path.GetFileName(path)).Substring(0, 240) + ".torrent");
                 }
-                Console.WriteLine(folderNmae + " " + path);
+                Console.WriteLine(folderName + " " + path);
             }
 
         }

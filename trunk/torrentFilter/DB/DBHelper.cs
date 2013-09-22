@@ -143,5 +143,10 @@ namespace DB
                 Console.WriteLine(his.Path + "  already downloaded");
             return res;
         }
+
+        public static HisTorrent[] checkFiles1(HisTorrent his)
+        {
+            return null;
+        }
     }
 }
