@@ -21,7 +21,7 @@ namespace DB
         public static SqlConnection conn = new SqlConnection(connstr);
         static string checkFilesSql1 = "  select * from his where ";
         //static string connstr = "server=.;uid=sa;pwd=a;database=cd";
-        static string filterString = "_avc_hd,_avc,_hd,";
+        static string filterString = "_avc_hd,_avc,_hd,720p,1080p,480p,_,480,720,1080,[,],.,2000,4000,8000,12000,6000,1500, ,";
         public static int ExecuteSql(string sql)
         {
             int i = 0;
@@ -190,6 +190,47 @@ namespace DB
                     list.Add(t);    
                 }
                 return list;
+
+            }
+        }
+
+        public static Dictionary<string, HisTorrent> getList(string filterStr)
+        {
+            string[] strs = filterStr.Split(',');
+
+            string filterStr1 = " REPLACE([file],LOWER('" + strs[0] + "'),'') ";
+            for (int i = 1; i < strs.Length; i++)
+            {
+         
+                filterStr1 = "REPLACE(" + filterStr1 + ",'" + strs[i] + "','') ";
+            }
+            Dictionary<string, HisTorrent> dic = new Dictionary<string, HisTorrent>();
+
+            string sql = "select " + filterStr1 + " as [file] ,createtime,[path],[size],ext from his where size>100*1024*1024 order by createtime";
+            using (SqlConnection conn = new SqlConnection(connstr))
+            {
+                conn.Open();
+                SqlCommand sc = new SqlCommand(sql, conn);
+                SqlDataReader reader = sc.ExecuteReader();
+                while (reader.Read())
+                {
+                    HisTorrent t = new HisTorrent();
+                    t.File = reader["file"].ToString();
+                    t.CreateTime = Convert.ToDateTime(reader["createtime"]);
+                    t.Ext = reader["ext"].ToString();
+                    t.Path = reader["path"].ToString();
+                    t.Size = Convert.ToInt64(reader["size"].ToString());
+                    try
+                    {
+                        dic.Add(t.File, t);
+                    }
+                    catch (ArgumentException e)
+                    {
+                        dic.Remove(t.File);
+                        dic.Add(t.File, t);
+                    }
+                }
+                return dic;
 
             }
         }

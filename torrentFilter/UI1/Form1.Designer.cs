@@ -41,9 +41,9 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Location = new System.Drawing.Point(12, 39);
             this.dataGridView1.Name = "dataGridView1";
@@ -85,8 +85,8 @@
             // 
             // textBox2
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox2.Location = new System.Drawing.Point(12, 8);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(756, 21);
@@ -127,7 +127,6 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.TopMost = true;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
