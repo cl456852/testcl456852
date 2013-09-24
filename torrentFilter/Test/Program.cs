@@ -21,7 +21,7 @@ namespace Test
 
         void jsTest()
         {
-            var engine = new Jurassic.ScriptEngine();
+           // var engine = new Jurassic.ScriptEngine();
 //            Console.WriteLine(engine.Evaluate(@"eval(function(p, a, c, k, e, d) {
 //	e = function(c) {
 //		return (c < a ? '' : e(parseInt(c / a)))

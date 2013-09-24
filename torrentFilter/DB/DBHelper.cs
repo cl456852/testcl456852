@@ -17,7 +17,9 @@ namespace DB
         static string checkFilesSql = "select count(*) from files where filename='{0}' and length>100";
         //static string connstr = "server=MICROSOF-8335F8\\SQLEXPRESS;uid=sa;pwd=a;database=cd";
         public static SqlConnection conn = new SqlConnection(connstr);
+        static string checkFilesSql1 = "  select * from his where ";
         //static string connstr = "server=.;uid=sa;pwd=a;database=cd";
+        static string filterString = "_avc_hd,_avc,_hd,";
         public static int ExecuteSql(string sql)
         {
             int i = 0;
@@ -144,9 +146,39 @@ namespace DB
             return res;
         }
 
-        public static HisTorrent[] checkFiles1(HisTorrent his)
+        public static List<HisTorrent> checkFiles1(HisTorrent his)
         {
-            return null;
+            string[] strs = filterString.Split(',');
+            string filterStr = " REPLACE('{0}','"+strs[0]+"','') ";
+            string filterStr1 = " REPLACE([file],' " + strs[0] + "','') ";
+            for (int i = 1; i < strs.Length; i++)
+            {
+                filterStr = "REPLACE(" + filterStr + ",'" + strs[i] + "','') ";
+                filterStr1 = "REPLACE(" + filterStr1 + ",'" + strs[i] + "','') ";
+            }
+            List<HisTorrent> list = new List<HisTorrent>();
+
+            string sql = string.Format(checkFilesSql1 + filterStr + "=" + filterStr1, his.File.Replace("'", "''"));
+            using (SqlConnection conn = new SqlConnection(connstr))
+            {
+                conn.Open();
+                SqlCommand sc = new SqlCommand(sql, conn);
+                SqlDataReader reader = sc.ExecuteReader();
+                while (reader.Read())
+                {
+                    HisTorrent t= new HisTorrent();
+                    t.File = reader["file"].ToString();
+                    t.CreateTime =Convert.ToDateTime(reader["createtime"]);
+                    t.Ext = reader["ext"].ToString();
+                    t.Path = reader["path"].ToString();
+                    t.Size = Convert.ToInt64(reader["size"].ToString());
+                    list.Add(t);    
+                }
+                return list;
+
+            }
         }
+
+        
     }
 }

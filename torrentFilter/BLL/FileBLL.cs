@@ -16,9 +16,9 @@ namespace BLL
     public class FileBLL
     {
 
-    //    Analysis ana;
+        //    Analysis ana;
         //_18javAnaysis ana;
-       // HelloJavAnalysis ana;
+        // HelloJavAnalysis ana;
         _141javAnalysis ana;
         Filter filter;
 
@@ -27,9 +27,9 @@ namespace BLL
         public FileBLL()
         {
             filter = new Filter();
-           // ana = new Analysis();
+            // ana = new Analysis();
             ana = new _141javAnalysis();
-          //  ana = new _18javAnaysis();
+            //  ana = new _18javAnaysis();
         }
 
         public List<MyFileInfo> getFileList()
@@ -39,19 +39,19 @@ namespace BLL
 
         public void process(string directoryStr)
         {
-            startTime = new DateTime();
+            startTime = DateTime.Now;
             String[] path = Directory.GetFiles(directoryStr, "*", SearchOption.TopDirectoryOnly);
             foreach (String p in path)
             {
                 if (p.EndsWith(".torrent"))
                 {
-                    BDict torrentFile=null;
+                    BDict torrentFile = null;
                     bool hasBigFile = false;
                     try
                     {
                         torrentFile = BencodingUtils.DecodeFile(p) as BDict;
                     }
-                    catch(Exception e)
+                    catch (Exception e)
                     {
                         moveFile("decodeErr", p);
                     }
@@ -89,7 +89,7 @@ namespace BLL
                                     trt.File = s;
                                 }
                                 listTorrent.Add(trt);
-                                if (trt.Size > 100 * 1024 * 1024 && (DBHelper.checkTorrent(trt) > 0 || DBHelper.checkFiles(trt) > 0))
+                                if (!check(trt))
                                 {
                                     flag = false;
                                     break;
@@ -108,14 +108,14 @@ namespace BLL
                             if (name.LastIndexOf('.') > 0)
                             {
                                 trt.File = name.Substring(0, name.LastIndexOf('.'));
-                                trt.Ext =name.Substring(name.LastIndexOf('.'));
+                                trt.Ext = name.Substring(name.LastIndexOf('.'));
                             }
                             else
                             {
                                 trt.File = name;
                             }
                             listTorrent.Add(trt);
-                            if (trt.Size > 100 * 1024 * 1024 && (DBHelper.checkTorrent(trt) > 0 || DBHelper.checkFiles(trt) > 0))
+                            if (!check(trt))
                             {
                                 flag = false;
                             }
@@ -125,17 +125,6 @@ namespace BLL
                             foreach (HisTorrent his in listTorrent)
                             {
                                 DBHelper.insertTorrent(his);
-                            }
-                        }
-                        else
-                        {
-                            if (!hasBigFile)
-                            {
-                                moveFile("noBigFile", p);
-                            }
-                            else
-                            {
-                                moveFile("duplicate", p);
                             }
                         }
                     }
@@ -152,28 +141,39 @@ namespace BLL
 
         }
 
-        void check(HisTorrent trt)
+        bool check(HisTorrent trt)
         {
-            HisTorrent temp;
-            HisTorrent[] res = DBHelper.checkFiles1(trt);
-            if (res != null)
+            bool flag = true; ;
+            if (trt.Size > 100 * 1024 * 1024)
             {
-                foreach(HisTorrent t in res)
-                {
-                if (t.Size > trt.Size||t.CreateTime<startTime)
+                if (DBHelper.checkFiles(trt) > 0)
                 {
                     moveFile("duplicate", trt.Path);
+                    return false;
                 }
-                else
+                List<HisTorrent> res = DBHelper.checkFiles1(trt);
+
+                foreach (HisTorrent t in res)
                 {
-                    moveFile("duplicate", t.Path);
+                    if (t.Size > trt.Size || t.CreateTime < startTime)
+                    {
+                        moveFile("duplicate", trt.Path);
+                        flag = false;
+                        break;
+                    }
+                    else
+                    {
+                        moveFile("duplicate", t.Path);
+                    }
                 }
-                }
+                return flag;
             }
+            else
+                return true;
         }
 
 
-        void moveFile(string folderName,string path)
+        void moveFile(string folderName, string path)
         {
             if (File.Exists(path))
             {
@@ -189,14 +189,14 @@ namespace BLL
                 catch (Exception e)
                 {
                     Console.WriteLine("path too long    " + path);
-                    File.Move(path, Path.Combine(targetDir, Path.GetFileName(path)).Substring(0,240)+".torrent");
-                    Console.WriteLine("path too long    "+Path.Combine(targetDir, Path.GetFileName(path)).Substring(0, 240) + ".torrent");
+                    File.Move(path, Path.Combine(targetDir, Path.GetFileName(path)).Substring(0, 240) + ".torrent");
+                    Console.WriteLine("path too long    " + Path.Combine(targetDir, Path.GetFileName(path)).Substring(0, 240) + ".torrent");
                 }
                 Console.WriteLine(folderName + " " + path);
             }
 
         }
-       
+
     }
 }
 
