@@ -16,20 +16,13 @@ namespace BLL
     public class FileBLL
     {
 
-        //    Analysis ana;
-        //_18javAnaysis ana;
-        // HelloJavAnalysis ana;
-        _141javAnalysis ana;
-        Filter filter;
-
+        static string filterString = "_avc_hd,_avc,_hd,720p,1080p,480p,_,480,720,1080,[,],.,2000,4000,8000,12000,6000,1500, ,540,qhd,fullhd,-";
+        Dictionary<string, HisTorrent> dic;
 
         DateTime startTime;
         public FileBLL()
         {
-            filter = new Filter();
-            // ana = new Analysis();
-            ana = new _141javAnalysis();
-            //  ana = new _18javAnaysis();
+     
         }
 
         public List<MyFileInfo> getFileList()
@@ -39,6 +32,7 @@ namespace BLL
 
         public void process(string directoryStr)
         {
+            getList();
             startTime = DateTime.Now;
             String[] path = Directory.GetFiles(directoryStr, "*", SearchOption.TopDirectoryOnly);
             foreach (String p in path)
@@ -124,7 +118,11 @@ namespace BLL
                         {
                             foreach (HisTorrent his in listTorrent)
                             {
-                                DBHelper.insertTorrent(his);
+                                if (his.Size > 100 * 1024 * 1024)
+                                {
+                                    DBHelper.insertTorrent(his);
+                                    dic.Add(filterName(his.File), his);
+                                }
                             }
                         }
                     }
@@ -143,7 +141,7 @@ namespace BLL
 
         bool check(HisTorrent trt)
         {
-            bool flag = true; ;
+            bool flag = true;
             if (trt.Size > 100 * 1024 * 1024)
             {
                 if (DBHelper.checkFiles(trt) > 0)
@@ -151,15 +149,22 @@ namespace BLL
                     moveFile("duplicate", trt.Path);
                     return false;
                 }
-                List<HisTorrent> res = DBHelper.checkFiles1(trt);
-
-                foreach (HisTorrent t in res)
+                HisTorrent t;
+                try
                 {
-                    if (t.Size > trt.Size || t.CreateTime < startTime)
+                    t = dic[filterName( trt.File)];
+                }
+                catch (KeyNotFoundException e)
+                {
+                    t = null;
+                }
+                if (t != null)
+                {
+
+                    if (t.Size >= trt.Size || t.CreateTime < startTime)
                     {
                         moveFile("duplicate", trt.Path);
                         flag = false;
-                        break;
                     }
                     else
                     {
@@ -195,6 +200,22 @@ namespace BLL
                 Console.WriteLine(folderName + " " + path);
             }
 
+        }
+
+        void getList()
+        {
+            dic = DBHelper.getList(filterString);
+        }
+
+        string filterName(string fileName)
+        {
+            fileName = fileName.ToLower();
+            string[] strs = filterString.Split(new string[]{","},StringSplitOptions.RemoveEmptyEntries);
+            foreach (string s in strs)
+            {
+                fileName = fileName.Replace(s, "");
+            }
+            return fileName;
         }
 
     }
