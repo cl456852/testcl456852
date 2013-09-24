@@ -47,10 +47,10 @@ namespace HelloJavConvert
                     
                     getFile("http://www.hellojav.com/include/file_down.php?" + idx + "&" + "ksf=" + ksf + "&" + tvy, idx);
                 }
-                oringi = oringi.Replace("http://hellojav.com/include/file_down.php?"+m.Value, idx.Replace("%3d","").Replace("idx=","") + ".torrent/");
+                oringi = oringi.Replace("http://hellojav.com/include/file_down.php?"+m.Value, idx.Replace("%3d","").Replace("idx=","") + ".torrent\"");
                 
             }
-            down.SaveFile(oringi, "d:\\res.htm");
+            down.SaveFile(oringi, "e:\\res.htm");
         }
 
         string readFile(string path)
