@@ -64,6 +64,9 @@ namespace pageDownLoader
 
         public void SaveFile(string content, string fileName)
         {
+            string dir=Path.GetDirectoryName(fileName);
+            if (!Directory.Exists(dir))
+                Directory.CreateDirectory(dir);
             //实例化一个文件流--->与写入文件相关联
             FileStream fs = new FileStream(fileName, FileMode.Create);
             //实例化一个StreamWriter-->与fs相关联

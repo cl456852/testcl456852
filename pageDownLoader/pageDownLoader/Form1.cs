@@ -60,12 +60,13 @@ namespace pageDownLoader
         private void button2_Click(object sender, EventArgs e)
         {
             Downloader downloader = new Downloader();
-            for (int i = 1; i <= 330; i++)
+            for (int i = 1; i <= 13; i++)
             {
-                string url = "http://www.18-jav.com/?paged=" + i;
+                //string url = "http://www.18-jav.com/?paged=" + i;
+                string url = "http://www.18-jav.com/?s=xxx-av&paged=" + i;
                 string html = downloader.GetHtml(url);
                 string name = url.Replace('/', '_').Replace(":", "^").Replace("?","wenhao");
-                downloader.SaveFile(html,@"D:\我的资料库\Documents\pagenew\page\18Jav20130731"+"\\"+ name + ".htm");
+                downloader.SaveFile(html, @"E:\document\Documents\pagenew\page\18Javxxx-av" + "\\" + name + ".htm");
             }
         }
 
@@ -75,7 +76,7 @@ namespace pageDownLoader
         {
             Regex r;
             Downloader downloader = new Downloader();
-            for (int month = 7; month <= 7; month++)
+            for (int month = 8; month <= 8; month++)
             {
                 for (int i = 1; i <= DateTime.DaysInMonth(year, month); i++)
                 {
@@ -100,13 +101,13 @@ namespace pageDownLoader
                     }
                     foreach (Html ht in htmls)
                     {
-                        downloader.SaveFile(ht.Content, "d:\\helloJav\\"+ht.Name + ".htm");
+                        downloader.SaveFile(ht.Content, "e:\\helloJav\\"+ht.Name + ".htm");
                     }
                 }
             }
         }
 
-        string _141javUrl = "http://www.141jav.com/month/2013-07/";
+        string _141javUrl = "http://www.141jav.com/month/2013-08/";
       
         private void button4_Click(object sender, EventArgs e)
         {
@@ -114,7 +115,7 @@ namespace pageDownLoader
             callBack = new WaitCallback(downLoad);
 
             bool flag = ThreadPool.SetMaxThreads(1, 1);
-            for (int month = 1; month <= 129; month++)
+            for (int month = 1; month <= 100; month++)
             {
                
                     ThreadPool.QueueUserWorkItem(callBack, _141javUrl + month);
@@ -137,7 +138,7 @@ namespace pageDownLoader
             {
                 ThreadPool.QueueUserWorkItem(callBack, "http://www.141jav.com/"+m.Value.Replace("\"",""));
             }
-            downloader.SaveFile(html, "e:\\141Jav\\" + url.Replace('/', '_').Replace(":", "^").Replace("?", "wenhao") + ".htm");
+            downloader.SaveFile(html, "E:\\document\\Documents\\pagenew\\page\\141Jav201308\\" + url.Replace('/', '_').Replace(":", "^").Replace("?", "wenhao") + ".htm");
             //string next = _141JavReg.Match(html).Value.Replace("<a href=\"", "").Replace("\">禄</a></div>", "");
             //string nextUrl = url.Substring(0, url.LastIndexOf('/')+1)+next;
             //if (next != "")
@@ -150,7 +151,7 @@ namespace pageDownLoader
             string urlString = (string)url;
             Downloader downloader = new Downloader();
             string html = downloader.GetHtml((string)url);
-            downloader.SaveFile(html, "e:\\141Jav\\" + urlString.Replace('/', '_').Replace(":", "^").Replace("?", "wenhao") + ".htm");
+            downloader.SaveFile(html, "E:\\document\\Documents\\pagenew\\page\\141Jav201308\\" + urlString.Replace('/', '_').Replace(":", "^").Replace("?", "wenhao") + ".htm");
         }
 
 
