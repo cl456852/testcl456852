@@ -16,7 +16,7 @@ namespace BLL
     public class FileBLL
     {
 
-        static string filterString = "_avc_hd,_avc,_hd,720p,1080p,480p,_,480,720,1080,[,],.,2000,4000,8000,12000,6000,1500, ,540,qhd,fullhd,-";
+        static string filterString = "_avc_hd,_avc,_hd,720p,1080p,480p,_,480,720,1080,[,],.,2000,4000,8000,12000,6000,1500, ,540,qhd,fullhd,-,high";
         Dictionary<string, HisTorrent> dic;
 
         DateTime startTime;
@@ -114,6 +114,10 @@ namespace BLL
                                 flag = false;
                             }
                         }
+                        if (!hasBigFile)
+                        {
+                            moveFile("noBigFile", p);
+                        }
                         if (flag && hasBigFile)
                         {
                             foreach (HisTorrent his in listTorrent)
@@ -121,7 +125,14 @@ namespace BLL
                                 if (his.Size > 100 * 1024 * 1024)
                                 {
                                     DBHelper.insertTorrent(his);
-                                    dic.Add(filterName(his.File), his);
+                                    try
+                                    {
+                                        dic.Add(filterName(his.File), his);
+                                    }catch(ArgumentException e)
+                                    {
+                                        dic.Remove(filterName(his.File));
+                                        dic.Add(filterName(his.File), his);
+                                    }
                                 }
                             }
                         }
@@ -153,6 +164,7 @@ namespace BLL
                 try
                 {
                     t = dic[filterName( trt.File)];
+            
                 }
                 catch (KeyNotFoundException e)
                 {
@@ -205,6 +217,10 @@ namespace BLL
         void getList()
         {
             dic = DBHelper.getList(filterString);
+            foreach (string s in dic.Keys)
+            {
+                Console.WriteLine(s);
+            }
         }
 
         string filterName(string fileName)

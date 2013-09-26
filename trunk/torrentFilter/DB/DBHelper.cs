@@ -198,7 +198,7 @@ namespace DB
         {
             string[] strs = filterStr.Split(',');
 
-            string filterStr1 = " REPLACE([file],LOWER('" + strs[0] + "'),'') ";
+            string filterStr1 = " REPLACE(LOWER([file]),'" + strs[0] + "','') ";
             for (int i = 1; i < strs.Length; i++)
             {
          
