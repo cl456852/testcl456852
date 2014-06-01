@@ -19,7 +19,7 @@ namespace RarbgDownloader
             List<string> list = new List<string>();
 
 
-            string content = tool.GetHtml(o.Url);
+            string content = tool.GetHtml(o.Url,DlConfig.useProxy);
             if (content != "")
             {
                 string[] contents = content.Split(new string[] { "<td align=\"center\">" }, StringSplitOptions.RemoveEmptyEntries);

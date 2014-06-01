@@ -64,3 +64,14 @@ D:\我的资料库\Documents\pagenew\复件 Demo\BLL\bin\Debug\DB.pdb
 D:\我的资料库\Documents\pagenew\复件 Demo\BLL\obj\Debug\ResolveAssemblyReference.cache
 D:\我的资料库\Documents\pagenew\复件 Demo\BLL\obj\Debug\BLL.dll
 D:\我的资料库\Documents\pagenew\复件 Demo\BLL\obj\Debug\BLL.pdb
+D:\document\new\work\复件 Demo\BLL\bin\Debug\BLL.dll
+D:\document\new\work\复件 Demo\BLL\bin\Debug\BLL.pdb
+D:\document\new\work\复件 Demo\BLL\bin\Debug\DAL.dll
+D:\document\new\work\复件 Demo\BLL\bin\Debug\MODEL.dll
+D:\document\new\work\复件 Demo\BLL\bin\Debug\DB.dll
+D:\document\new\work\复件 Demo\BLL\bin\Debug\DAL.pdb
+D:\document\new\work\复件 Demo\BLL\bin\Debug\MODEL.pdb
+D:\document\new\work\复件 Demo\BLL\bin\Debug\DB.pdb
+D:\document\new\work\复件 Demo\BLL\obj\Debug\ResolveAssemblyReference.cache
+D:\document\new\work\复件 Demo\BLL\obj\Debug\BLL.dll
+D:\document\new\work\复件 Demo\BLL\obj\Debug\BLL.pdb

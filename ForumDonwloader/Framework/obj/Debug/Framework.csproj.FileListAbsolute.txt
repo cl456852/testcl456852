@@ -2,3 +2,12 @@ c:\users\administrator\documents\visual studio 2010\Projects\ForumDonwloader\Fra
 c:\users\administrator\documents\visual studio 2010\Projects\ForumDonwloader\Framework\bin\Debug\Framework.pdb
 c:\users\administrator\documents\visual studio 2010\Projects\ForumDonwloader\Framework\obj\Debug\Framework.dll
 c:\users\administrator\documents\visual studio 2010\Projects\ForumDonwloader\Framework\obj\Debug\Framework.pdb
+D:\work\ForumDonwloader\Framework\bin\Debug\Framework.dll
+D:\work\ForumDonwloader\Framework\bin\Debug\Framework.pdb
+D:\work\ForumDonwloader\Framework\obj\Debug\Framework.dll
+D:\work\ForumDonwloader\Framework\obj\Debug\Framework.pdb
+D:\document\new\work\ForumDonwloader\Framework\bin\Debug\Framework.dll
+D:\document\new\work\ForumDonwloader\Framework\bin\Debug\Framework.pdb
+D:\document\new\work\ForumDonwloader\Framework\obj\Debug\ResolveAssemblyReference.cache
+D:\document\new\work\ForumDonwloader\Framework\obj\Debug\Framework.dll
+D:\document\new\work\ForumDonwloader\Framework\obj\Debug\Framework.pdb

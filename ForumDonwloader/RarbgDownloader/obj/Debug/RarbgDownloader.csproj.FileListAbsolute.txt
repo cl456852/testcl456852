@@ -5,3 +5,17 @@ c:\users\administrator\documents\visual studio 2010\Projects\ForumDonwloader\Rar
 c:\users\administrator\documents\visual studio 2010\Projects\ForumDonwloader\RarbgDownloader\obj\Debug\RarbgDownloader.csprojResolveAssemblyReference.cache
 c:\users\administrator\documents\visual studio 2010\Projects\ForumDonwloader\RarbgDownloader\obj\Debug\RarbgDownloader.dll
 c:\users\administrator\documents\visual studio 2010\Projects\ForumDonwloader\RarbgDownloader\obj\Debug\RarbgDownloader.pdb
+D:\work\ForumDonwloader\RarbgDownloader\bin\Debug\RarbgDownloader.dll
+D:\work\ForumDonwloader\RarbgDownloader\bin\Debug\RarbgDownloader.pdb
+D:\work\ForumDonwloader\RarbgDownloader\bin\Debug\Framework.dll
+D:\work\ForumDonwloader\RarbgDownloader\bin\Debug\Framework.pdb
+D:\work\ForumDonwloader\RarbgDownloader\obj\Debug\RarbgDownloader.csprojResolveAssemblyReference.cache
+D:\work\ForumDonwloader\RarbgDownloader\obj\Debug\RarbgDownloader.dll
+D:\work\ForumDonwloader\RarbgDownloader\obj\Debug\RarbgDownloader.pdb
+D:\document\new\work\ForumDonwloader\RarbgDownloader\bin\Debug\RarbgDownloader.dll
+D:\document\new\work\ForumDonwloader\RarbgDownloader\bin\Debug\RarbgDownloader.pdb
+D:\document\new\work\ForumDonwloader\RarbgDownloader\bin\Debug\Framework.dll
+D:\document\new\work\ForumDonwloader\RarbgDownloader\bin\Debug\Framework.pdb
+D:\document\new\work\ForumDonwloader\RarbgDownloader\obj\Debug\ResolveAssemblyReference.cache
+D:\document\new\work\ForumDonwloader\RarbgDownloader\obj\Debug\RarbgDownloader.dll
+D:\document\new\work\ForumDonwloader\RarbgDownloader\obj\Debug\RarbgDownloader.pdb

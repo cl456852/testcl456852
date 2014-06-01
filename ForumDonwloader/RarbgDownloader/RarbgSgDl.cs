@@ -40,7 +40,7 @@ namespace RarbgDownloader
             string genreStr="";
             MatchCollection genresMatches;
             AsynObj o = (AsynObj)obj;
-            string content = dt.GetHtml(o.Url);
+            string content = dt.GetHtml(o.Url,DlConfig.useProxy);
             string url = "http://rarbg.com/" + torrentRegex.Match(content).Value;
             if (obj != null)
                 dt.SaveFile(content, Path.Combine(o.Path, o.Url.Replace('/', '_').Replace(":", "^").Replace("?", "wenhao"))+".htm");
@@ -53,24 +53,24 @@ namespace RarbgDownloader
             }
             if (check1( url.Substring(url.LastIndexOf('=') + 1).ToLower()))
             {
-                dt.downLoadFile(url, Path.Combine(o.Path, genreStr + "$$" + url.Substring(url.LastIndexOf('=') + 1)));
+                dt.downLoadFile(url, Path.Combine(o.Path, genreStr + "$$" + url.Substring(url.LastIndexOf('=') + 1)),DlConfig.useProxy);
                 return;
             }
             if (!check2(url.Substring(url.LastIndexOf('=') + 1).ToLower()))
             {
-                dt.downLoadFile(url, Path.Combine(o.Path, "notok", genreStr + "$$" + url.Substring(url.LastIndexOf('=') + 1)));
+                dt.downLoadFile(url, Path.Combine(o.Path, "notok", genreStr + "$$" + url.Substring(url.LastIndexOf('=') + 1)),DlConfig.useProxy);
                 return;
             }
             if (genres != null && genres.Value != "")
             {
                 if( check(genreStr.Substring(0, genreStr.Length - 1)))
-                    dt.downLoadFile(url, Path.Combine(o.Path,genreStr+"$$"+ url.Substring(url.LastIndexOf('=') + 1)));
+                    dt.downLoadFile(url, Path.Combine(o.Path,genreStr+"$$"+ url.Substring(url.LastIndexOf('=') + 1)),DlConfig.useProxy);
                 else
-                    dt.downLoadFile(url, Path.Combine(o.Path, "notok", genreStr + "$$" + url.Substring(url.LastIndexOf('=') + 1)));
+                    dt.downLoadFile(url, Path.Combine(o.Path, "notok", genreStr + "$$" + url.Substring(url.LastIndexOf('=') + 1)),DlConfig.useProxy);
             }
             //加入genres name 组合判断
             else
-                dt.downLoadFile(url, Path.Combine(o.Path,"unknown", url.Substring(url.LastIndexOf('=') + 1)));
+                dt.downLoadFile(url, Path.Combine(o.Path,"unknown", url.Substring(url.LastIndexOf('=') + 1)),DlConfig.useProxy);
         }
 
         private bool check2(string name)

@@ -67,7 +67,7 @@ namespace MoveFile
                 foreach(FileInfo f in fileInfos)
                 {
 
-                    if (f.Length / 1024 / 1024 > 70 && (f.Extension == ".bt!" || f.Extension == ".!ut" || f.Extension == ".bc!"))
+                    if (f.Length / 1024 / 1024 > 70 && (f.Extension == ".bt!" || f.Extension == ".!ut" || f.Extension == ".bc!"||f.Extension==".az!"))
                     {
                         hasIncomplete = true;
                         continue;
