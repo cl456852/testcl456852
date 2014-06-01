@@ -11,6 +11,7 @@ using MODEL;
 using BLL;
 using DAL;
 using DB;
+using System.IO;
 namespace UI1
 {
     public partial class Form1 : Form
@@ -69,6 +70,11 @@ namespace UI1
             {
 
                 Form2 f2 = new Form2(duplicateList);
+                foreach (MyFileInfo myFileInfo in duplicateList)
+                {
+                    if (myFileInfo.Length > 70)
+                        moveFile(myFileInfo);
+                }
                 f2.Show();
             }
             else
@@ -76,6 +82,19 @@ namespace UI1
             refresh();
         }
 
+        private void moveFile(MyFileInfo myFileInfo)
+        {
+            if(!Directory.Exists(myFileInfo.DirectoryName[0] + ":\\duplicate\\"))
+                Directory.CreateDirectory(myFileInfo.DirectoryName[0] + ":\\duplicate\\");
+            string newPath = Path.Combine(myFileInfo.DirectoryName[0] + ":\\duplicate\\", myFileInfo.FileName);
+            while (File.Exists(newPath))
+                newPath += "1";
+           
+            File.Move(Path.Combine(myFileInfo.DirectoryName, myFileInfo.FileName), newPath);
+            
+        
+                
+        }
         private void button1_Click(object sender, EventArgs e)
         {
 

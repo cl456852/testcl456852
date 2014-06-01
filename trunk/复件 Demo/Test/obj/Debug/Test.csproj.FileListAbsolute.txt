@@ -76,3 +76,16 @@ D:\我的资料库\Documents\pagenew\复件 Demo\Test\bin\Debug\MODEL.pdb
 D:\我的资料库\Documents\pagenew\复件 Demo\Test\obj\Debug\ResolveAssemblyReference.cache
 D:\我的资料库\Documents\pagenew\复件 Demo\Test\obj\Debug\Test.exe
 D:\我的资料库\Documents\pagenew\复件 Demo\Test\obj\Debug\Test.pdb
+D:\document\new\work\复件 Demo\Test\bin\Debug\Test.exe
+D:\document\new\work\复件 Demo\Test\bin\Debug\Test.pdb
+D:\document\new\work\复件 Demo\Test\bin\Debug\BLL.dll
+D:\document\new\work\复件 Demo\Test\bin\Debug\DAL.dll
+D:\document\new\work\复件 Demo\Test\bin\Debug\DB.dll
+D:\document\new\work\复件 Demo\Test\bin\Debug\MODEL.dll
+D:\document\new\work\复件 Demo\Test\bin\Debug\BLL.pdb
+D:\document\new\work\复件 Demo\Test\bin\Debug\DAL.pdb
+D:\document\new\work\复件 Demo\Test\bin\Debug\DB.pdb
+D:\document\new\work\复件 Demo\Test\bin\Debug\MODEL.pdb
+D:\document\new\work\复件 Demo\Test\obj\Debug\ResolveAssemblyReference.cache
+D:\document\new\work\复件 Demo\Test\obj\Debug\Test.exe
+D:\document\new\work\复件 Demo\Test\obj\Debug\Test.pdb

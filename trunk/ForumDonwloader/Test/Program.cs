@@ -19,7 +19,7 @@ namespace RarbgDownloader
         void test()
         {
             DlTool dt = new DlTool();
-            dt.downLoadFile("http://rarbg.com/download.php?id=sgxzclp&f=Layered-Nylons.13.05.06.Gracie.XXX.720p.WMV-GAGViD-[rarbg.com].torrent","d:\\a.torrent");
+           // dt.downLoadFile("http://rarbg.com/download.php?id=sgxzclp&f=Layered-Nylons.13.05.06.Gracie.XXX.720p.WMV-GAGViD-[rarbg.com].torrent","d:\\a.torrent",);
         }
 
         void configTest()

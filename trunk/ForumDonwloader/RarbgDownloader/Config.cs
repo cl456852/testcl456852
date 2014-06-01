@@ -12,5 +12,7 @@ namespace RarbgDownloader
         public static IDictionary demo4 = ConfigurationManager.GetSection("genres") as IDictionary;
 
         public static List<string> storage = new List<string>();
+
+        public static bool useProxy=false;
     }
 }

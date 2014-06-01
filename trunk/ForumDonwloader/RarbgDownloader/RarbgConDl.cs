@@ -22,7 +22,7 @@ namespace RarbgDownloader
                 genresMatches = genresRegex1.Matches(genres.Value);
 
             string url ="http://rarbg.com/"+ regex.Match(content).Value;
-            dt.downLoadFile(url,Path.Combine(path, url.Substring(url.LastIndexOf('=')+1)));
+            dt.downLoadFile(url,Path.Combine(path, url.Substring(url.LastIndexOf('=')+1)),DlConfig.useProxy);
         }
     }
 }

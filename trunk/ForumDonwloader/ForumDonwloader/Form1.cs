@@ -26,6 +26,9 @@ namespace ForumDonwloader
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+            System.Net.ServicePointManager.DefaultConnectionLimit = 200;
+
             DlConfig.storage.Clear();
             DirectoryInfo dinfo = new DirectoryInfo(textBox4.Text);
             FileInfo[] finfo= dinfo.GetFiles();
@@ -42,8 +45,9 @@ namespace ForumDonwloader
             IListPageDownloader lstDl = Config.Factory.createlstDl();
             WaitCallback callBack;
             callBack = new WaitCallback(lstDl.Download);
-            bool b= ThreadPool.SetMaxThreads(40, 40);
-          
+            Console.WriteLine("SETMAXTHREADS "+ ThreadPool.SetMaxThreads(17,17));
+
+           
             for (int i = start; i <= end; i++)
             {
                 ThreadPool.QueueUserWorkItem(lpd.Download,new AsynObj(path,string.Format( url,i)));
@@ -52,8 +56,10 @@ namespace ForumDonwloader
 
         private void button2_Click(object sender, EventArgs e)
         {
-            IDictionary demo4 = ConfigurationManager.GetSection("genres") as IDictionary;
-            Console.WriteLine(demo4["Lesbian"]);
+            if (RarbgDownloader.DlConfig.useProxy)
+                RarbgDownloader.DlConfig.useProxy = false;
+            else
+                RarbgDownloader.DlConfig.useProxy =true;
         }
 
       

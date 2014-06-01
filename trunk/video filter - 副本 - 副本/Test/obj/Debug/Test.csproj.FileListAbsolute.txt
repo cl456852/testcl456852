@@ -144,3 +144,16 @@ D:\我的资料库\Documents\pagenew\software\video filter - 副本 - 副本\Tes
 D:\我的资料库\Documents\pagenew\software\video filter - 副本 - 副本\Test\obj\Debug\Test.pdb
 C:\testcl456852\video filter - 副本 - 副本\Test\obj\Debug\ResolveAssemblyReference.cache
 C:\testcl456852\video filter - 副本 - 副本\Test\obj\Debug\Test.pdb
+D:\document\new\work\video filter - 副本 - 副本\Test\bin\Debug\Test.exe
+D:\document\new\work\video filter - 副本 - 副本\Test\bin\Debug\Test.pdb
+D:\document\new\work\video filter - 副本 - 副本\Test\bin\Debug\BLL.dll
+D:\document\new\work\video filter - 副本 - 副本\Test\bin\Debug\DAL.dll
+D:\document\new\work\video filter - 副本 - 副本\Test\bin\Debug\DB.dll
+D:\document\new\work\video filter - 副本 - 副本\Test\bin\Debug\MODEL.dll
+D:\document\new\work\video filter - 副本 - 副本\Test\bin\Debug\BLL.pdb
+D:\document\new\work\video filter - 副本 - 副本\Test\bin\Debug\DAL.pdb
+D:\document\new\work\video filter - 副本 - 副本\Test\bin\Debug\DB.pdb
+D:\document\new\work\video filter - 副本 - 副本\Test\bin\Debug\MODEL.pdb
+D:\document\new\work\video filter - 副本 - 副本\Test\obj\Debug\ResolveAssemblyReference.cache
+D:\document\new\work\video filter - 副本 - 副本\Test\obj\Debug\Test.exe
+D:\document\new\work\video filter - 副本 - 副本\Test\obj\Debug\Test.pdb

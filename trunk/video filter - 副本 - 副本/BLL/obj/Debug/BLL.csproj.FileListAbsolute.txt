@@ -121,3 +121,14 @@ D:\我的资料库\Documents\pagenew\software\video filter - 副本 - 副本\BLL
 D:\我的资料库\Documents\pagenew\software\video filter - 副本 - 副本\BLL\obj\Debug\BLL.dll
 D:\我的资料库\Documents\pagenew\software\video filter - 副本 - 副本\BLL\obj\Debug\BLL.pdb
 C:\testcl456852\video filter - 副本 - 副本\BLL\obj\Debug\ResolveAssemblyReference.cache
+D:\document\new\work\video filter - 副本 - 副本\BLL\bin\Debug\BLL.dll
+D:\document\new\work\video filter - 副本 - 副本\BLL\bin\Debug\BLL.pdb
+D:\document\new\work\video filter - 副本 - 副本\BLL\bin\Debug\DAL.dll
+D:\document\new\work\video filter - 副本 - 副本\BLL\bin\Debug\DB.dll
+D:\document\new\work\video filter - 副本 - 副本\BLL\bin\Debug\MODEL.dll
+D:\document\new\work\video filter - 副本 - 副本\BLL\bin\Debug\DAL.pdb
+D:\document\new\work\video filter - 副本 - 副本\BLL\bin\Debug\DB.pdb
+D:\document\new\work\video filter - 副本 - 副本\BLL\bin\Debug\MODEL.pdb
+D:\document\new\work\video filter - 副本 - 副本\BLL\obj\Debug\ResolveAssemblyReference.cache
+D:\document\new\work\video filter - 副本 - 副本\BLL\obj\Debug\BLL.dll
+D:\document\new\work\video filter - 副本 - 副本\BLL\obj\Debug\BLL.pdb
