@@ -19,7 +19,7 @@ namespace MailConsole
             while (true)
             {
                 p.sendMail();
-                Thread.Sleep(10 * 60 * 1000);
+                Thread.Sleep(4 * 60 * 1000);
             }
             Console.Read();
         }

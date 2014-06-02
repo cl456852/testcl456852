@@ -27,6 +27,9 @@ namespace ForumDonwloader
         private void button1_Click(object sender, EventArgs e)
         {
 
+            string path = textBox4.Text;
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
             System.Net.ServicePointManager.DefaultConnectionLimit = 200;
 
             DlConfig.storage.Clear();
@@ -41,7 +44,7 @@ namespace ForumDonwloader
             string url = textBox1.Text;
             int start =Convert.ToInt32( textBox2.Text);
             int end = Convert.ToInt32(textBox3.Text);
-            string path = textBox4.Text;
+            
             IListPageDownloader lstDl = Config.Factory.createlstDl();
             WaitCallback callBack;
             callBack = new WaitCallback(lstDl.Download);
