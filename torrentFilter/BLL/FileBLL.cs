@@ -217,10 +217,10 @@ namespace BLL
         void getList()
         {
             dic = DBHelper.getList(filterString);
-            foreach (string s in dic.Keys)
-            {
-                Console.WriteLine(s);
-            }
+            //foreach (string s in dic.Keys)
+            //{
+            //    Console.WriteLine(s);
+            //}
         }
 
         string filterName(string fileName)
