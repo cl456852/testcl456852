@@ -11,6 +11,7 @@ using MODEL;
 using BLL;
 using DAL;
 using DB;
+using System.IO;
 namespace UI1
 {
     public partial class Form1 : Form
@@ -150,7 +151,31 @@ namespace UI1
             DBHelper.connstr = this.textBox3.Text;
             refresh();
         }
-        
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            DirectoryInfo theFolder = new DirectoryInfo(textBox1.Text);
+            foreach (FileInfo file in theFolder.GetFiles())
+            {
+                string s = "[InternetShortcut]\nURL=http://rarbg.com/torrents.php?search=" + file.Name.ToLower().Replace(".torrent", "").Replace("[rarbg.com]", "") + "&category%5B%5D=4";
+                SaveFile(s, file.FullName .Replace(".torrent", ".url"));
+            }
+        }
+
+        public void SaveFile(string content, string fileName)
+        {
+            //实例化一个文件流--->与写入文件相关联
+            FileStream fs = new FileStream(fileName, FileMode.Create);
+            //实例化一个StreamWriter-->与fs相关联
+            StreamWriter sw = new StreamWriter(fs);
+            //开始写入
+            sw.Write(content);
+            //清空缓冲区
+            sw.Flush();
+            //关闭流
+            sw.Close();
+            fs.Close();
+        }
         
 
         //private void SortRows(DataGridViewColumn sortColumn, bool orderToggle)
