@@ -173,7 +173,7 @@ namespace Framework.tool
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message + "  " + url);
-                    if (ex.Message.Contains("接收时发生错误") && !Config1.checkTime() || ex.Message.Contains("不支持给定路径的格式"))
+                    if (ex.Message.Contains("接收时发生错误") && !Config1.checkTime() || ex.Message.Contains("不支持给定路径的格式") || ex.Message.Contains("指定的路径或文件名太长"))
                     {
                         Config1.appendFile(url, "d:\\test\\failList.txt");
                         success = true;
