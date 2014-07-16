@@ -16,12 +16,14 @@ namespace MailConsole
            // DoGetHostAddresses("PC-201210302211");
             //GetIP();
             Program p = new Program();
+            ProcessMoitor processMonitor = new ProcessMoitor();
+            Thread thread = new Thread(processMonitor.start);
+            thread.Start();
             while (true)
             {
                 p.sendMail();
                 Thread.Sleep(4 * 60 * 1000);
             }
-            Console.Read();
         }
 
         void sendMail()
