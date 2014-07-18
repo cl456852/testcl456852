@@ -9,6 +9,7 @@ namespace MailConsole
 {
     class ProcessMoitor
     {
+        const string path = @"C:\Users\Administrator\AppData\Roaming\uTorrent\uTorrent.exe";
         Process process;
         public void start()
         {
@@ -28,14 +29,14 @@ namespace MailConsole
             //Grab some basic information for each process.
             foreach (Process p in processes)
             {
-                if (p.ProcessName == "UI1")
+                if (p.ProcessName == "uTorrent")
                 {
                     process = p;
                     break;
                 }
             }
             if(process==null)
-                process = Process.Start(@"D:\svn\复件 Demo\UI1\bin\Debug\UI1.exe");
+                process = Process.Start(path);
         }
 
         void checkResponse()
@@ -44,11 +45,18 @@ namespace MailConsole
             {
                 if (!process.Responding)
                     break;
-                Thread.Sleep(60000);
+                Thread.Sleep(10*60*1000);
             }
             Console.WriteLine(DateTime.Now + "   NO RESPONSE RESTART");
-            process.Kill();
-            Process myProcess = Process.Start(@"D:\svn\复件 Demo\UI1\bin\Debug\UI1.exe");
+            try
+            {
+                process.Kill();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            Process myProcess = Process.Start(path);
         }
     }
 }
