@@ -55,7 +55,7 @@ namespace MailConsole
             string tempip = "";
             try
             {
-                WebRequest wr = WebRequest.Create("http://iframe.ip138.com/ic.asp");
+                WebRequest wr = WebRequest.Create("http://20140507.ip138.com/ic.asp");
                 Stream s = wr.GetResponse().GetResponseStream();
                 StreamReader sr = new StreamReader(s, Encoding.Default);
                 string all = sr.ReadToEnd(); //读取网站的数据
