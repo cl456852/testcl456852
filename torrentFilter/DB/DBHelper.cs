@@ -206,7 +206,7 @@ namespace DB
             }
             Dictionary<string, HisTorrent> dic = new Dictionary<string, HisTorrent>();
 
-            string sql = "select " + filterStr1 + " as [file] ,createtime,[path],[size],ext from his where size>100*1024*1024 order by createtime";
+            string sql = "select " + filterStr1 + " as [file] ,createtime,[path],[size],ext from his where size>100*1024*1024 and DATEDIFF(M,createtime,GETDATE())<6 order by createtime";
             using (SqlConnection conn = new SqlConnection(connstr))
             {
                 conn.Open();
