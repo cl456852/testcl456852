@@ -29,13 +29,14 @@ namespace Framework.tool
                 {
                     Config1.mre.WaitOne();
                     CookieContainer cookieContainer = new CookieContainer();
-
+                    Cookie _7fAY799j = new Cookie("7fAY799j", "VtdTzG69", "/", "rarbg.com");
                     Cookie lastVisit= new Cookie("LastVisit",Config1.getLastVisit(),"/","rarbg.com");
                     Cookie __utma = new Cookie("__utma", "211336342.1333136546.1369105449.1369109171.1369112684.3", "/", "rarbg.com");
                     Cookie __utmb = new Cookie("__utmb", "211336342.5.10.1369112684", "/", "rarbg.com");
                     Cookie __utmc = new Cookie("__utmc", "211336342", "/", "rarbg.com");
                     Cookie __utmz = new Cookie("__utmz", "211336342.1369105449.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)", "/", "rarbg.com");
                     Cookie bSbTZF2j = new Cookie("bSbTZF2j", "6BdPQ9qs", "/", "rarbg.com");
+                    cookieContainer.Add(_7fAY799j);
                     cookieContainer.Add(lastVisit);
                     cookieContainer.Add(bSbTZF2j);
                     cookieContainer.Add(__utma);
@@ -53,7 +54,7 @@ namespace Framework.tool
                     if (useProxy)
                     {
 
-                        WebProxy proxy = new WebProxy("127.0.0.1", 8087);
+                        WebProxy proxy = new WebProxy("10.10.8.1", 3128);
                         request.Proxy = proxy;
                     }
                     response = (HttpWebResponse)request.GetResponse();
@@ -132,12 +133,14 @@ namespace Framework.tool
                     Config1.mre.WaitOne();
                     CookieContainer cookieContainer = new CookieContainer();
 
+                    Cookie _7fAY799j = new Cookie("7fAY799j", "VtdTzG69", "/", "rarbg.com");
                     Cookie lastVisit = new Cookie("LastVisit", Config1.getLastVisit(), "/", "rarbg.com");
                     Cookie __utma = new Cookie("__utma", "211336342.667375280.1401465651.1401590512.1401621110.14", "/", "rarbg.com");
                     Cookie __utmb = new Cookie("__utmb", "211336342.42.10.1401621110", "/", "rarbg.com");
                     Cookie __utmc = new Cookie("__utmc", "211336342", "/", "rarbg.com");
                     Cookie __utmz = new Cookie("__utmz", "211336342.1401465651.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)", "/", "rarbg.com");
                     Cookie bSbTZF2j = new Cookie("bSbTZF2j", "6BdPQ9qs", "/", "rarbg.com");
+                    cookieContainer.Add(_7fAY799j);
                     cookieContainer.Add(lastVisit);
                     cookieContainer.Add(bSbTZF2j);
                     cookieContainer.Add(__utma);
@@ -153,7 +156,7 @@ namespace Framework.tool
                     request.Referer = "http://rarbg.com/torrent/j1kx3ny";
                     if (useProxy)
                     {
-                        WebProxy proxy = new WebProxy("127.0.0.1", 8087);
+                        WebProxy proxy = new WebProxy("10.10.8.1", 3128);
                         request.Proxy = proxy;
                     }
                     response = (HttpWebResponse)request.GetResponse();
