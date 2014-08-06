@@ -16,7 +16,7 @@ namespace BLL
     public class FileBLL
     {
 
-        static string filterString = "_avc_hd,_avc,_hd,720p,1080p,480p,_,480,720,1080,[,],.,2000,4000,8000,12000,6000,1500, ,540,qhd,fullhd,-,high";
+        static string filterString = "_avc_hd,_avc,_hd,480p,720p,1080p,2160p,_,480,720,1080,[,],.,2000,4000,8000,12000,6000,1500, ,540,qhd,fullhd,-,high";
         Dictionary<string, HisTorrent> dic;
 
         DateTime startTime;
