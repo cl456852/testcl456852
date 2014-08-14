@@ -136,7 +136,7 @@ namespace DB
         public static int checkFiles(HisTorrent his)
         {
             int res = 0;
-            string sql = string.Format(checkFilesSql, his.File.Replace("'", "''"), his.Size, his.Path.Replace("'", "''") + his.Ext);
+            string sql = string.Format(checkFilesSql, his.File.Replace("'", "''")+ his.Ext);
             using (SqlConnection conn = new SqlConnection(connstr))
             {
                 conn.Open();
