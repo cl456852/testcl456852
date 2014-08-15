@@ -122,6 +122,7 @@ namespace Framework.tool
 
         public void downLoadFile(string url,string name,bool useProxy)
         {
+            name = name.Replace("%20", " ").Replace("%2C", " ");
             bool success = false;
             while (!success)
             {
