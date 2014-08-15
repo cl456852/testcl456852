@@ -98,6 +98,8 @@ namespace Framework.tool
 
         public void SaveFile(string content, string fileName)
         {
+            if (fileName.Length > 220)
+                fileName = fileName.Substring(0, 220) + ".torrent";
             //实例化一个文件流--->与写入文件相关联
             FileStream fs = new FileStream(fileName, FileMode.Create);
             //实例化一个StreamWriter-->与fs相关联
