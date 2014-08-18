@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Collections;
 using System.IO;
+using BencodeLibrary;
 
 namespace MoveFile
 {
@@ -20,15 +21,15 @@ namespace MoveFile
 
         ArrayList list;
         ArrayList moveList;
+        ArrayList moveList1;
         
         private void Insert_Click(object sender, EventArgs e)
         {
+            moveList1 = new ArrayList();
             moveList = new ArrayList();
            list = new ArrayList();
             totalLength = 0;
-            list.Add("D:\\Downloads");
-            list.Add("D:\\我的资料库\\Downloads");
-            list.Add("F:\\Downloads");
+            list.Add("D:\\迅雷下载");
             process();
             moveFile();
             //test();
@@ -60,6 +61,7 @@ namespace MoveFile
             DirectoryInfo TheFolder = new DirectoryInfo(folderPath);
             foreach (DirectoryInfo NextFolder in TheFolder.GetDirectories("*",SearchOption.TopDirectoryOnly))
             {
+                int torrentNumber = 0;
                 bool hasIncomplete=false;
                 bool hasBigFile=false;
                 FileInfo[] fileInfos = NextFolder.GetFiles("*", SearchOption.AllDirectories);
@@ -67,22 +69,33 @@ namespace MoveFile
                 foreach(FileInfo f in fileInfos)
                 {
 
-                    if (f.Length / 1024 / 1024 > 70 && (f.Extension == ".bt!" || f.Extension == ".!ut" || f.Extension == ".bc!"||f.Extension==".az!"))
+                    if (f.Length / 1024 / 1024 > 60 && (f.Extension == ".bt!" || f.Extension == ".!ut" || f.Extension == ".bc!"||f.Extension==".az!"||f.Extension==".td"))
                     {
                         hasIncomplete = true;
                         continue;
                     }
-                    else if (f.Length / 1024 / 1024 > 70)
+                    else if (f.Length / 1024 / 1024 > 60)
                     {
                         hasBigFile = true;
+                    }
+                    if (f.Extension.ToLower() == ".torrent")
+                    {
+                        torrentNumber++;
                     }
                     folderLength += f.Length/1024/1024;
                 }
                 if (!hasIncomplete && hasBigFile)
                 {
-                    moveList.Add(new MyFileInfo ( NextFolder.FullName));
+                    if (torrentNumber > 1)
+                    {
+                        moveList1.Add(new MyFileInfo(NextFolder.FullName));
+                    }
+                    else
+                        moveList.Add(new MyFileInfo ( NextFolder.FullName));
                     totalLength += folderLength;
+
                 }
+              
 
 
             }
@@ -94,8 +107,23 @@ namespace MoveFile
         {
             foreach (MyFileInfo myfileInfo in moveList)
             {
+                string newDir="";
+                bool hasTorrent=false;
+                string torrentName="";
                 string folder = myfileInfo.Path;
-                string newDir = folder[0] + ":\\abcd\\"+new DirectoryInfo(folder).Name;
+                DirectoryInfo TheFolder = new DirectoryInfo(folder);
+                foreach (FileInfo file in TheFolder.GetFiles())
+                {
+                    if (file.Extension == ".torrent")
+                    {
+                        hasTorrent = true;
+                        torrentName = getName(file.FullName);
+                    }
+                }
+                if(hasTorrent)
+                    newDir = folder[0] + ":\\abcd\\finish\\" + torrentName;
+                else
+                    newDir = folder[0] + ":\\abcd\\finish\\" + new DirectoryInfo(folder).Name;
                 try
                 {
                
@@ -108,6 +136,29 @@ namespace MoveFile
                 }
 
             }
+            foreach (MyFileInfo myfileInfo in moveList1)
+            {
+                string folder = myfileInfo.Path;
+                string newDir = folder[0] + ":\\abcd\\muti-torrents\\" + new DirectoryInfo(folder).Name;
+                try
+                {
+
+                    Directory.Move(folder, newDir);
+                }
+                catch (Exception e)
+                {
+
+                    MessageBox.Show("old:" + folder + "       new:" + newDir + "     " + e.Message);
+                }
+
+            }
+        }
+
+        private string getName(string torrentPath)
+        {
+            BDict torrentFile = BencodingUtils.DecodeFile(torrentPath) as BDict;
+
+            return ((BString)((torrentFile["info"] as BDict)["name"])).Value;
         }
     }
 
