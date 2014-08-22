@@ -14,7 +14,7 @@ namespace DB
         static string checkTorrentSql = "select count(*) from his where LOWER([file])='{0}' and size> 104857600";
         static string insertTorrentSql = "insert into his values('{0}',{1},'{2}',getdate(),'{3}')";
         public static string connstr = @"server=localhost\SQLEXPRESS;uid=sa;pwd=a;database=cd";
-        static string checkFilesSql = "select count(*) from files where filename='{0}' and length>100";
+        static string checkFilesSql = "select count(*) from files where filename='{0}' and length>60";
 
         static string checkUnknownTorrentsSql = "select count(*) from files where directory like '{0}%'";
         //static string connstr = "server=MICROSOF-8335F8\\SQLEXPRESS;uid=sa;pwd=a;database=cd";
