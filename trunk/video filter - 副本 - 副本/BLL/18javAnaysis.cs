@@ -79,7 +79,7 @@ namespace BLL
         {
             string imgUrl =imageRex.Match( his.OriginalHtml).Value;
             string torrentUrl = torrentRex.Match(his.OriginalHtml).Value;
-            his.Html="<a href=\""+torrentUrl+"><img src=\""+imgUrl+"\"/></a><br>"+his.Vid+"<br>"+size+"<br>"+"<br>"+his.Actress+"<br>";
+            his.Html = "<a href=\"" + torrentUrl + "><img src=\"" + imgUrl + "\"/></a><br><a href=\"https://www.google.com.tw/search?um=1&newwindow=1&safe=off&hl=zh-CN&biw=1362&bih=839&dpr=1&ie=UTF-8&tbm=isch&source=og&sa=N&tab=wi&ei=QKr6U8KMKtOWaqbigogK&q=" + his.Vid + "><br>" + size + "<br>" + "<br>" + his.Actress + "<br>";
             
         }
 
