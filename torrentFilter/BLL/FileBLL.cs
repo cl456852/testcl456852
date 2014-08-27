@@ -122,7 +122,7 @@ namespace BLL
                         {
                             foreach (HisTorrent his in listTorrent)
                             {
-                                if (his.Size > 100 * 1024 * 1024)
+                                if (his.Size > 60 * 1024 * 1024)
                                 {
                                     DBHelper.insertTorrent(his);
                                     try
@@ -153,7 +153,7 @@ namespace BLL
         bool check(HisTorrent trt)
         {
             bool flag = true;
-            if (trt.Size > 100 * 1024 * 1024)
+            if (trt.Size > 60 * 1024 * 1024)
             {
                 if (DBHelper.checkFiles(trt) > 0)
                 {
