@@ -60,13 +60,13 @@ namespace pageDownLoader
         private void button2_Click(object sender, EventArgs e)
         {
             Downloader downloader = new Downloader();
-            for (int i = 1; i <= 13; i++)
+            for (int i = 1830; i <= 2155; i++)
             {
-                //string url = "http://www.18-jav.com/?paged=" + i;
-                string url = "http://www.18-jav.com/?s=xxx-av&paged=" + i;
+                string url = "http://www.18-jav.com/?paged=" + i;
+                //string url = "http://www.18-jav.com/?s=xxx-av&paged=" + i;
                 string html = downloader.GetHtml(url);
                 string name = url.Replace('/', '_').Replace(":", "^").Replace("?","wenhao");
-                downloader.SaveFile(html, @"E:\document\Documents\pagenew\page\18Javxxx-av" + "\\" + name + ".htm");
+                downloader.SaveFile(html, @"d:\document\Documents\pagenew\page\18Javxxx-av" + "\\" + name + ".htm");
             }
         }
 
@@ -76,7 +76,7 @@ namespace pageDownLoader
         {
             Regex r;
             Downloader downloader = new Downloader();
-            for (int month = 8; month <= 8; month++)
+            for (int month = 11; month <= 11; month++)
             {
                 for (int i = 1; i <= DateTime.DaysInMonth(year, month); i++)
                 {
@@ -101,7 +101,7 @@ namespace pageDownLoader
                     }
                     foreach (Html ht in htmls)
                     {
-                        downloader.SaveFile(ht.Content, "e:\\helloJav\\"+ht.Name + ".htm");
+                        downloader.SaveFile(ht.Content, "d:\\helloJav\\"+ht.Name + ".htm");
                     }
                 }
             }

@@ -17,28 +17,28 @@ namespace pageDownLoader
             string str = string.Empty;
             try
             {
+                //d6f378f8186966bdafb043a16dad43edb1401883196292
+                //GA1.2.893403694.1401883248
+                //a056e8cef0f53a4c1da34ce4ce69383e9692659c-1402136201-1800
                 CookieContainer cookieContainer = new CookieContainer();
-                Cookie __cfduid = new Cookie("__cfduid", "dfa69ebb1c444a317361c9382e5a12c011370179159", "/", ".hellojav.com");
-                Cookie __utma = new Cookie("__utma", "80647694.251620245.1370179180.1371975355.1372072541.8", "/", ".hellojav.com");
-                Cookie __utmb = new Cookie("__utmb", "80647694.17.10.1372072541", "/", ".hellojav.com");
-                Cookie __utmc = new Cookie("__cfduid", "80647694", "/", ".hellojav.com");
-                Cookie __utmz = new Cookie("__utmz", "80647694.1370179180.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)", "/", ".hellojav.com");
-                Cookie splash505833 = new Cookie("splash-505833", "dfa69ebb1c444a317361c9382e5a12c011370179159", "/", ".hellojav.com");
+                Cookie __cfduid = new Cookie("__cfduid", "d6f378f8186966bdafb043a16dad43edb1401883196292", "/", ".hellojav.com");
+                Cookie __utma = new Cookie("_ga", "GA1.2.893403694.1401883248", "/", ".hellojav.com");
+                Cookie __utmb = new Cookie("cf_clearance", "d7bff3f36aedc2fabd63e4beeaaeccdd15b147c0-1402134125-1800", "/", ".hellojav.com");
+              
+
                 Cookie auth = new Cookie("auth", "true", "/", "www.hellojav.com");
                 cookieContainer.Add(__cfduid);
                 cookieContainer.Add(__utma);
                 cookieContainer.Add(__utmb);
-                cookieContainer.Add(__utmc);
-                cookieContainer.Add(__utmz);
-                cookieContainer.Add(splash505833);
                 cookieContainer.Add(auth);
                 WebProxy proxy = new WebProxy("http://127.0.0.1:8087/", true);
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
                 request.CookieContainer = cookieContainer;
                 request.Referer = "http://www.hellojav.com/include/file_downpage.php?idx=";
-                //request.Proxy = proxy;
+                request.Host = "www.hellojav.com";
+               // request.Proxy = proxy;
                 request.Headers.Set("Pragma", "no-cache");
-                request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36";
+                request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36";
                 WebResponse response = request.GetResponse();
                 Stream streamReceive = response.GetResponseStream();
                 Encoding encoding = Encoding.GetEncoding("GB2312");
