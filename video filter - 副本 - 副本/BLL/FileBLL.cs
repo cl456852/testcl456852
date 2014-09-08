@@ -35,6 +35,8 @@ namespace BLL
 
         public void process(string directoryStr)
         {
+            string invalidHTML="<html><body>";
+            ArrayList htmlList = new ArrayList();
             string resultHTML = "<html><body>";
             String[] path = Directory.GetFiles(directoryStr, "*", SearchOption.TopDirectoryOnly);
             foreach (String p in path)
@@ -50,12 +52,20 @@ namespace BLL
                 {
                     if (filter.checkValid(his))
                     {
-                        resultHTML += his.Html+"<br/>\r\n";
+                        htmlList.Add(his.Html + "<br/>\r\n");
                     }
+                    else
+                        invalidHTML += his.Html;
                 }
 
             }
+            htmlList.Sort();
+            foreach (string html in htmlList)
+            {
+                resultHTML += html;
+            }
             resultHTML += "</body></html>";
+            invalidHTML += "</body></html>";
             FileStream fs = new FileStream(Path.Combine(directoryStr, "result.htm"), FileMode.Create);
             //实例化一个StreamWriter-->与fs相关联  
             StreamWriter sw = new StreamWriter(fs);
@@ -66,6 +76,17 @@ namespace BLL
             //关闭流  
             sw.Close();
             fs.Close();
+
+            FileStream fs1 = new FileStream(Path.Combine(directoryStr, "invalid.htm"), FileMode.Create);
+            //实例化一个StreamWriter-->与fs相关联  
+            StreamWriter sw1 = new StreamWriter(fs1);
+            //开始写入  
+            sw1.Write(invalidHTML);
+            //清空缓冲区  
+            sw1.Flush();
+            //关闭流  
+            sw1.Close();
+            fs1.Close();
 
 
         }
