@@ -15,10 +15,13 @@ namespace MailConsole
         {
            // DoGetHostAddresses("PC-201210302211");
             //GetIP();
+            ThunderMonitor tm=new ThunderMonitor();
             Program p = new Program();
             ProcessMoitor processMonitor = new ProcessMoitor();
             Thread thread = new Thread(processMonitor.start);
             thread.Start();
+            Thread thread1 = new Thread(tm.start);
+            thread1.Start();
             while (true)
             {
                 p.sendMail();
@@ -55,7 +58,7 @@ namespace MailConsole
             string tempip = "";
             try
             {
-                WebRequest wr = WebRequest.Create("http://20140507.ip138.com/ic.asp");
+                WebRequest wr = WebRequest.Create("http://1111.ip138.com/ic.asp");
                 Stream s = wr.GetResponse().GetResponseStream();
                 StreamReader sr = new StreamReader(s, Encoding.Default);
                 string all = sr.ReadToEnd(); //读取网站的数据
