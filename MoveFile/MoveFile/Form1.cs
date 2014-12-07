@@ -30,6 +30,9 @@ namespace MoveFile
            list = new ArrayList();
             totalLength = 0;
             list.Add("D:\\迅雷下载");
+            list.Add("D:\\newThunder");
+            //list.Add("D:\\VuzeDownloads1");
+            //list.Add("D:\\新建文件夹");
             process();
             moveFile();
             //test();
