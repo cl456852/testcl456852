@@ -8,7 +8,7 @@ namespace DB
 {
     public class DBHelper
     {
-        public static string connstr = "server=china-f8661e31d\\SQLEXPRESS;uid=sa;pwd=a;database=cd";
+        public static string connstr = "server=A-PC\\SQLEXPRESS;uid=sa;pwd=a;database=cd";
         //static string connstr = "server=MICROSOF-8335F8\\SQLEXPRESS;uid=sa;pwd=a;database=cd";
         public static SqlConnection conn = new SqlConnection(connstr);
         //static string connstr = "server=.;uid=sa;pwd=a;database=cd";

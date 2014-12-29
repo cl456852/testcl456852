@@ -60,7 +60,7 @@ namespace pageDownLoader
         private void button2_Click(object sender, EventArgs e)
         {
             Downloader downloader = new Downloader();
-            for (int i = 1830; i <= 2155; i++)
+            for (int i = 1; i <= 162; i++)
             {
                 string url = "http://www.18-jav.com/?paged=" + i;
                 //string url = "http://www.18-jav.com/?s=xxx-av&paged=" + i;

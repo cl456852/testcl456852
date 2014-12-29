@@ -97,6 +97,7 @@ namespace DB
             {
                 conn.Open();
                 SqlCommand sc = new SqlCommand(sql, conn);
+                sc.CommandTimeout = 120000;
                 sc.ExecuteNonQuery();
             }
 
