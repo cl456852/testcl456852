@@ -57,7 +57,7 @@ namespace Framework.tool
                     if (useProxy)
                     {
 
-                        WebProxy proxy = new WebProxy("10.10.8.1", 3128);
+                        WebProxy proxy = new WebProxy("10.10.3.6", 3128);
                         request.Proxy = proxy;
                     }
                     response = (HttpWebResponse)request.GetResponse();
@@ -161,7 +161,7 @@ namespace Framework.tool
                     request.Referer = "http://rarbg.com/torrent/j1kx3ny";
                     if (useProxy)
                     {
-                        WebProxy proxy = new WebProxy("10.10.8.1", 3128);
+                        WebProxy proxy = new WebProxy("10.10.3.6", 3128);
                         request.Proxy = proxy;
                     }
                     response = (HttpWebResponse)request.GetResponse();
