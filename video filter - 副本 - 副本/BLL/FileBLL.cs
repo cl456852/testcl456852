@@ -15,7 +15,7 @@ namespace BLL
     {
 
     //    Analysis ana;
-        _18javAnaysis ana;
+        BtdiggAnalysis ana;
         //HelloJavAnalysis ana;
        // _141javAnalysisNew ana;
         Filter filter;
@@ -25,7 +25,7 @@ namespace BLL
             filter = new Filter();
            // ana = new Analysis();
            // ana = new _141javAnalysis();
-            ana = new _18javAnaysis();
+            ana = new BtdiggAnalysis();
         }
 
         public List<MyFileInfo> getFileList()
@@ -37,6 +37,7 @@ namespace BLL
         {
             string invalidHTML="<html><body>";
             ArrayList htmlList = new ArrayList();
+            ArrayList hisList = new ArrayList();
             string resultHTML = "<html><body>";
             String[] path = Directory.GetFiles(directoryStr, "*", SearchOption.TopDirectoryOnly);
             foreach (String p in path)
@@ -52,17 +53,17 @@ namespace BLL
                 {
                     if (filter.checkValid(his))
                     {
-                        htmlList.Add(his.Html + "<br/>\r\n");
+                        hisList.Add(his);
                     }
                     else
                         invalidHTML += his.Html;
                 }
 
             }
-            htmlList.Sort();
-            foreach (string html in htmlList)
+            hisList.Sort();
+            foreach (His his in hisList)
             {
-                resultHTML += html;
+                resultHTML += his.Html+"/r/n";
             }
             resultHTML += "</body></html>";
             invalidHTML += "</body></html>";

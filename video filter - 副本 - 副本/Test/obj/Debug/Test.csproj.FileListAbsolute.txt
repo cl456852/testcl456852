@@ -157,3 +157,16 @@ D:\document\new\work\video filter - 副本 - 副本\Test\bin\Debug\MODEL.pdb
 D:\document\new\work\video filter - 副本 - 副本\Test\obj\Debug\ResolveAssemblyReference.cache
 D:\document\new\work\video filter - 副本 - 副本\Test\obj\Debug\Test.exe
 D:\document\new\work\video filter - 副本 - 副本\Test\obj\Debug\Test.pdb
+C:\work\video filter - 副本 - 副本\Test\bin\Debug\Test.exe
+C:\work\video filter - 副本 - 副本\Test\bin\Debug\Test.pdb
+C:\work\video filter - 副本 - 副本\Test\bin\Debug\BLL.dll
+C:\work\video filter - 副本 - 副本\Test\bin\Debug\DAL.dll
+C:\work\video filter - 副本 - 副本\Test\bin\Debug\DB.dll
+C:\work\video filter - 副本 - 副本\Test\bin\Debug\MODEL.dll
+C:\work\video filter - 副本 - 副本\Test\bin\Debug\BLL.pdb
+C:\work\video filter - 副本 - 副本\Test\bin\Debug\DAL.pdb
+C:\work\video filter - 副本 - 副本\Test\bin\Debug\DB.pdb
+C:\work\video filter - 副本 - 副本\Test\bin\Debug\MODEL.pdb
+C:\work\video filter - 副本 - 副本\Test\obj\Debug\Test.csprojResolveAssemblyReference.cache
+C:\work\video filter - 副本 - 副本\Test\obj\Debug\Test.exe
+C:\work\video filter - 副本 - 副本\Test\obj\Debug\Test.pdb

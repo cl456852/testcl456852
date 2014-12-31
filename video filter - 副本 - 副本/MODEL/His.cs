@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BLL
 {
-    public class His
+    public class His:IComparable
     {
         string id="";
 
@@ -72,6 +72,11 @@ namespace BLL
         {
             get { return info; }
             set { info = value; }
+        }
+
+        public int CompareTo(object obj)
+        {
+            return this.vid.CompareTo(((His)obj).vid);
         }
     }
 }
