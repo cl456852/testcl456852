@@ -132,3 +132,14 @@ D:\document\new\work\video filter - 副本 - 副本\BLL\bin\Debug\MODEL.pdb
 D:\document\new\work\video filter - 副本 - 副本\BLL\obj\Debug\ResolveAssemblyReference.cache
 D:\document\new\work\video filter - 副本 - 副本\BLL\obj\Debug\BLL.dll
 D:\document\new\work\video filter - 副本 - 副本\BLL\obj\Debug\BLL.pdb
+C:\work\video filter - 副本 - 副本\BLL\bin\Debug\BLL.dll
+C:\work\video filter - 副本 - 副本\BLL\bin\Debug\BLL.pdb
+C:\work\video filter - 副本 - 副本\BLL\bin\Debug\DAL.dll
+C:\work\video filter - 副本 - 副本\BLL\bin\Debug\DB.dll
+C:\work\video filter - 副本 - 副本\BLL\bin\Debug\MODEL.dll
+C:\work\video filter - 副本 - 副本\BLL\bin\Debug\DAL.pdb
+C:\work\video filter - 副本 - 副本\BLL\bin\Debug\DB.pdb
+C:\work\video filter - 副本 - 副本\BLL\bin\Debug\MODEL.pdb
+C:\work\video filter - 副本 - 副本\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+C:\work\video filter - 副本 - 副本\BLL\obj\Debug\BLL.dll
+C:\work\video filter - 副本 - 副本\BLL\obj\Debug\BLL.pdb
