@@ -15,7 +15,7 @@ namespace BLL
     {
 
     //    Analysis ana;
-        BtdiggAnalysis ana;
+        _18javAnaysis ana;
         //HelloJavAnalysis ana;
        // _141javAnalysisNew ana;
         Filter filter;
@@ -25,7 +25,7 @@ namespace BLL
             filter = new Filter();
            // ana = new Analysis();
            // ana = new _141javAnalysis();
-            ana = new BtdiggAnalysis();
+            ana = new _18javAnaysis();
         }
 
         public List<MyFileInfo> getFileList()
@@ -63,7 +63,7 @@ namespace BLL
             hisList.Sort();
             foreach (His his in hisList)
             {
-                resultHTML += his.Html+"/r/n";
+                resultHTML += his.Html;
             }
             resultHTML += "</body></html>";
             invalidHTML += "</body></html>";
