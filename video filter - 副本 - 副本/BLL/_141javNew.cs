@@ -18,18 +18,19 @@ namespace BLL
         Regex imageRex = new Regex("movies/.*.jpg");
 
         //http://www.141jav.com/movies/MILD833.jpg
-        public ArrayList alys(string content, string path)
+        public ArrayList alys(string content, string path, string _141javVid)
         {
             ArrayList resList = new ArrayList();
-            string s = content;
-     
+            
+            string[] htmls = content.Split(new string[] { "<h3><p>" }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (string s in htmls)
+            {
                 His his = new His();
+
                 his.OriginalHtml = s;
                 his.Vid = r.Match(s).Value.Replace("<br />VID:", "").Trim();
-                //if (his.Vid.Split('-').Length > 2)
-                //{
-                //    his.Vid = his.Vid.Substring(0, his.Vid.LastIndexOf('-'));
-                //}
+                if (_141javVid.ToLower() != his.Vid.ToLower())
+                    continue;
                 his.Vid = his.Vid.Replace("-", "");
                 string size = sizeRegex.Match(s).Value.Replace("<br />Size:", "").Trim();
                 string sizeDigit = size.Replace("Size:", "").Replace(".<br />", "").Replace("<br />", "");
@@ -52,6 +53,7 @@ namespace BLL
                 his.Actress = actressRegex.Match(s).Value.Replace("<br />Actress: ", "").Replace("</p>", "");
                 getHtml(his, size);
                 resList.Add(his);
+            }
             
             return resList;
         }
@@ -60,14 +62,41 @@ namespace BLL
         {
             string imgUrl = "http://www.141jav.com/movies/" + imageRex.Match(his.OriginalHtml).Value.Replace("movies/", "");
             
-            his.Html = "<img src=\"" + imgUrl + "\"/><br>" + "<a href=\"https://www.google.com.tw/search?um=1&newwindow=1&safe=off&hl=zh-CN&biw=1362&bih=839&dpr=1&ie=UTF-8&tbm=isch&source=og&sa=N&tab=wi&ei=QKr6U8KMKtOWaqbigogK&q=" + his.Vid + "\"/>"+his.Vid+"</a>" + "<br>" + size + "<br>" + "<br>" + his.Actress + "<br>";
+            his.Html = "<img src=\"" + imgUrl + "\"/><br>" + "<a href=\"https://www.google.com.tw/search?um=1&newwindow=1&safe=off&hl=zh-CN&biw=1362&bih=839&dpr=1&ie=UTF-8&tbm=isch&source=og&sa=N&tab=wi&ei=QKr6U8KMKtOWaqbigogK&q=" + his.Vid + "\"/>"+his.Vid+"</a>" + "<br>" + size + "<br>" + "<br>" + his.Actress + "<br>\r\n";
+            string[] searchStr = getId(his.Id);
+            his.Html += "<a href=\"http://btdigg.org/search?info_hash=&q=" + searchStr[0]+"+"+searchStr[1] + "\"/>" + his.Vid + "</a>" + "<br>" + size + "<br>" + "<br>" + his.Actress + "<br>\r\n";
             MatchCollection mc = rLink.Matches(his.OriginalHtml);
             foreach (Match m in mc)
             {
-                his.Html += "<a href=\"http://www.141jav.com/" + m.Value + ">torrage</a><br>";
+                his.Html += "<a href=\"http://www.141jav.com/" + m.Value + ">torrage</a><br>\r\n";
             }
             his.Html += "<a href=\"" + megRegex.Match(his.OriginalHtml).Value + ">Open</a><br>\r\n";
 
+        }
+
+
+        private string[] getId(string id)
+        {
+            Regex reg1 = new Regex("[a-z]");
+            string letter = "";
+            string number = "";
+            bool isEndofLetter = false;
+            for (int i = 0; i < id.Length; i++)                        //修改   对于出现KIDM235A  KIDM235B
+                if (reg1.IsMatch(id[i].ToString()))
+                {
+                    if (isEndofLetter)
+                        break;
+                    else
+                        letter += id[i];
+                }
+                else
+                {
+                    number += id[i];
+                    isEndofLetter = true;
+                }
+
+            string[] searchStr = { letter, number };
+            return searchStr;
         }
     }
 }
