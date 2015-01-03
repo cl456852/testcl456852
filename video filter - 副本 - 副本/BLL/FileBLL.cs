@@ -15,17 +15,17 @@ namespace BLL
     {
 
     //    Analysis ana;
-        _18javAnaysis ana;
+        //_18javAnaysis ana;
         //HelloJavAnalysis ana;
-       // _141javAnalysisNew ana;
+        _141javAnalysisNew ana;
         Filter filter;
 
         public FileBLL()
         {
             filter = new Filter();
            // ana = new Analysis();
-           // ana = new _141javAnalysis();
-            ana = new _18javAnaysis();
+            ana = new _141javAnalysisNew();
+          //  ana = new _18javAnaysis();
         }
 
         public List<MyFileInfo> getFileList()

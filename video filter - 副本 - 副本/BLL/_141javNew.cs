@@ -60,13 +60,13 @@ namespace BLL
         {
             string imgUrl = "http://www.141jav.com/movies/" + imageRex.Match(his.OriginalHtml).Value.Replace("movies/", "");
             
-            his.Html = "<img src=\"" + imgUrl + "\"/><br>" + his.Vid + "<br>" + size + "<br>" + "<br>" + his.Actress + "<br>";
+            his.Html = "<img src=\"" + imgUrl + "\"/><br>" + "<a href=\"https://www.google.com.tw/search?um=1&newwindow=1&safe=off&hl=zh-CN&biw=1362&bih=839&dpr=1&ie=UTF-8&tbm=isch&source=og&sa=N&tab=wi&ei=QKr6U8KMKtOWaqbigogK&q=" + his.Vid + "\"/>"+his.Vid+"</a>" + "<br>" + size + "<br>" + "<br>" + his.Actress + "<br>";
             MatchCollection mc = rLink.Matches(his.OriginalHtml);
             foreach (Match m in mc)
             {
                 his.Html += "<a href=\"http://www.141jav.com/" + m.Value + ">torrage</a><br>";
             }
-            his.Html += "<a href=\"" + megRegex.Match(his.OriginalHtml).Value + ">Open</a>";
+            his.Html += "<a href=\"" + megRegex.Match(his.OriginalHtml).Value + ">Open</a><br>\r\n";
 
         }
     }
