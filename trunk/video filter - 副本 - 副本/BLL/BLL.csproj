@@ -66,7 +66,6 @@
     <Compile Include="141javAnalysis.cs" />
     <Compile Include="18javAnaysis.cs" />
     <Compile Include="Analysis.cs" />
-    <Compile Include="BtdiggAnalysis.cs" />
     <Compile Include="FileBLL.cs" />
     <Compile Include="Filter.cs" />
     <Compile Include="HelloJavAnalysis.cs" />
