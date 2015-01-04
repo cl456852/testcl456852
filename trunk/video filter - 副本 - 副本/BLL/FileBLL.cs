@@ -50,7 +50,7 @@ namespace BLL
                 string[] strs = Path.GetFileNameWithoutExtension(p).Split('_');
                 string vid="";
                 if (strs.Length >= 1)
-                    vid = strs[1];
+                    vid = strs[4];
                 ArrayList list= ana.alys(content,Path.Combine(directoryStr,"nIn1.htm"),vid);
                 foreach (His his in list)
                 {
