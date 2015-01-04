@@ -74,6 +74,14 @@ namespace BLL
             set { info = value; }
         }
 
+        int hisTimeSpan=6;
+
+        public int HisTimeSpan
+        {
+            get { return hisTimeSpan; }
+            set { hisTimeSpan = value; }
+        }
+
         public int CompareTo(object obj)
         {
             return this.vid.CompareTo(((His)obj).vid);

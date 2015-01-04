@@ -26,7 +26,7 @@ namespace BLL
             foreach (string s in htmls)
             {
                 His his = new His();
-
+                his.HisTimeSpan = 12;
                 his.OriginalHtml = s;
                 his.Vid = r.Match(s).Value.Replace("<br />VID:", "").Trim();
                 if (_141javVid.ToLower() != his.Vid.ToLower())
