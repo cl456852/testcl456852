@@ -63,8 +63,8 @@ namespace BLL
             string imgUrl = "http://www.141jav.com/movies/" + imageRex.Match(his.OriginalHtml).Value.Replace("movies/", "");
             
             his.Html = "<img src=\"" + imgUrl + "\"/><br>" + "<a href=\"https://www.google.com.tw/search?um=1&newwindow=1&safe=off&hl=zh-CN&biw=1362&bih=839&dpr=1&ie=UTF-8&tbm=isch&source=og&sa=N&tab=wi&ei=QKr6U8KMKtOWaqbigogK&q=" + his.Vid + "\"/>"+his.Vid+"</a>" + "<br>" + size + "<br>" + "<br>" + his.Actress + "<br>\r\n";
-            string[] searchStr = getId(his.Vid.ToLower());
-            his.Html += "<a href=\"http://btdigg.org/search?info_hash=&q=" + searchStr[0]+"+"+searchStr[1] + "\"/>" + his.Vid + "</a>\r\n";
+            string[] searchStr = Tool.getId(his.Vid.ToLower());
+            his.Html += "<a href=\"http://btdigg.org/search?info_hash=&q=" + searchStr[0]+"+"+searchStr[1] + "\"/>" + his.Vid + "</a><br>\r\n";
             MatchCollection mc = rLink.Matches(his.OriginalHtml);
             foreach (Match m in mc)
             {
@@ -74,29 +74,5 @@ namespace BLL
 
         }
 
-
-        private string[] getId(string id)
-        {
-            Regex reg1 = new Regex("[a-z]");
-            string letter = "";
-            string number = "";
-            bool isEndofLetter = false;
-            for (int i = 0; i < id.Length; i++)                        //修改   对于出现KIDM235A  KIDM235B
-                if (reg1.IsMatch(id[i].ToString()))
-                {
-                    if (isEndofLetter)
-                        break;
-                    else
-                        letter += id[i];
-                }
-                else
-                {
-                    number += id[i];
-                    isEndofLetter = true;
-                }
-
-            string[] searchStr = { letter, number };
-            return searchStr;
-        }
     }
 }

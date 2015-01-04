@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace BLL
 {
@@ -30,6 +31,30 @@ namespace BLL
             //关闭流  
             sw1.Close();
             fs1.Close();
+        }
+
+        public static string[] getId(string id)
+        {
+            Regex reg1 = new Regex("[a-z]");
+            string letter = "";
+            string number = "";
+            bool isEndofLetter = false;
+            for (int i = 0; i < id.Length; i++)                        //修改   对于出现KIDM235A  KIDM235B
+                if (reg1.IsMatch(id[i].ToString()))
+                {
+                    if (isEndofLetter)
+                        break;
+                    else
+                        letter += id[i];
+                }
+                else
+                {
+                    number += id[i];
+                    isEndofLetter = true;
+                }
+
+            string[] searchStr = { letter, number };
+            return searchStr;
         }
     }
 
