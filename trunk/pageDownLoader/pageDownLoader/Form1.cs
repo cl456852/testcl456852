@@ -60,7 +60,7 @@ namespace pageDownLoader
         private void button2_Click(object sender, EventArgs e)
         {
             Downloader downloader = new Downloader();
-            for (int i = 1; i <= 162; i++)
+            for (int i = 1; i <= 118; i++)
             {
                 string url = "http://www.18-jav.com/?paged=" + i;
                 //string url = "http://www.18-jav.com/?s=xxx-av&paged=" + i;
@@ -107,7 +107,7 @@ namespace pageDownLoader
             }
         }
 
-        string _141javUrl = "http://www.141jav.com/month/2013-08/";
+        string _141javUrl = "http://www.141jav.com/month/2014-10/";
       
         private void button4_Click(object sender, EventArgs e)
         {
@@ -115,7 +115,7 @@ namespace pageDownLoader
             callBack = new WaitCallback(downLoad);
 
             bool flag = ThreadPool.SetMaxThreads(1, 1);
-            for (int month = 1; month <= 100; month++)
+            for (int month = 1; month <= 65; month++)
             {
                
                     ThreadPool.QueueUserWorkItem(callBack, _141javUrl + month);
@@ -138,7 +138,7 @@ namespace pageDownLoader
             {
                 ThreadPool.QueueUserWorkItem(callBack, "http://www.141jav.com/"+m.Value.Replace("\"",""));
             }
-            downloader.SaveFile(html, "E:\\document\\Documents\\pagenew\\page\\141Jav201308\\" + url.Replace('/', '_').Replace(":", "^").Replace("?", "wenhao") + ".htm");
+            downloader.SaveFile(html, "d:\\document\\Documents\\pagenew\\page\\141Jav\\" + url.Replace('/', '_').Replace(":", "^").Replace("?", "wenhao") + ".htm");
             //string next = _141JavReg.Match(html).Value.Replace("<a href=\"", "").Replace("\">禄</a></div>", "");
             //string nextUrl = url.Substring(0, url.LastIndexOf('/')+1)+next;
             //if (next != "")
@@ -151,7 +151,19 @@ namespace pageDownLoader
             string urlString = (string)url;
             Downloader downloader = new Downloader();
             string html = downloader.GetHtml((string)url);
-            downloader.SaveFile(html, "E:\\document\\Documents\\pagenew\\page\\141Jav201308\\" + urlString.Replace('/', '_').Replace(":", "^").Replace("?", "wenhao") + ".htm");
+            downloader.SaveFile(html, "d:\\document\\Documents\\pagenew\\page\\141Jav\\" + urlString.Replace('/', '_').Replace(":", "^").Replace("?", "wenhao") + ".htm");
+        }
+        //http://btdigg.org/search?q=fangyuanli&p=2
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Downloader downloader = new Downloader();
+            for (int i = 0; i < 34; i++)
+            {
+                string url = "http://btdigg.org/search?q=fangyuanli&p=" + i;
+                string html = downloader.GetHtml(url);
+                string name = url.Replace('/', '_').Replace(":", "^").Replace("?", "wenhao");
+                downloader.SaveFile(html, @"D:\document\new\page\btdigg" + "\\" + name + ".htm");
+            }
         }
 
 
