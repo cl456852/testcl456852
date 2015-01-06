@@ -18,8 +18,8 @@ namespace MailConsole
             ThunderMonitor tm=new ThunderMonitor();
             Program p = new Program();
             ProcessMoitor processMonitor = new ProcessMoitor();
-            Thread thread = new Thread(processMonitor.start);
-            thread.Start();
+           // Thread thread = new Thread(processMonitor.start);
+           // thread.Start();
             Thread thread1 = new Thread(tm.start);
             thread1.Start();
             while (true)
