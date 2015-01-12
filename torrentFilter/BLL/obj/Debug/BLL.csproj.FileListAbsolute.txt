@@ -1,0 +1,13 @@
+D:\document\new\work\torrentFilter\BLL\bin\Debug\BLL.dll
+D:\document\new\work\torrentFilter\BLL\bin\Debug\BLL.pdb
+D:\document\new\work\torrentFilter\BLL\bin\Debug\BencodeLibrary.dll
+D:\document\new\work\torrentFilter\BLL\bin\Debug\DAL.dll
+D:\document\new\work\torrentFilter\BLL\bin\Debug\DB.dll
+D:\document\new\work\torrentFilter\BLL\bin\Debug\MODEL.dll
+D:\document\new\work\torrentFilter\BLL\bin\Debug\BencodeLibrary.pdb
+D:\document\new\work\torrentFilter\BLL\bin\Debug\DAL.pdb
+D:\document\new\work\torrentFilter\BLL\bin\Debug\DB.pdb
+D:\document\new\work\torrentFilter\BLL\bin\Debug\MODEL.pdb
+D:\document\new\work\torrentFilter\BLL\obj\Debug\BLL.dll
+D:\document\new\work\torrentFilter\BLL\obj\Debug\BLL.pdb
+D:\document\new\work\torrentFilter\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache

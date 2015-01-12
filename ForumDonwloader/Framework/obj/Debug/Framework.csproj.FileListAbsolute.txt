@@ -8,6 +8,6 @@ D:\work\ForumDonwloader\Framework\obj\Debug\Framework.dll
 D:\work\ForumDonwloader\Framework\obj\Debug\Framework.pdb
 D:\document\new\work\ForumDonwloader\Framework\bin\Debug\Framework.dll
 D:\document\new\work\ForumDonwloader\Framework\bin\Debug\Framework.pdb
-D:\document\new\work\ForumDonwloader\Framework\obj\Debug\ResolveAssemblyReference.cache
 D:\document\new\work\ForumDonwloader\Framework\obj\Debug\Framework.dll
 D:\document\new\work\ForumDonwloader\Framework\obj\Debug\Framework.pdb
+D:\document\new\work\ForumDonwloader\Framework\obj\Debug\Framework.csprojResolveAssemblyReference.cache

@@ -1,0 +1,7 @@
+D:\document\new\work\torrentFilter\DB\bin\Debug\DB.dll
+D:\document\new\work\torrentFilter\DB\bin\Debug\DB.pdb
+D:\document\new\work\torrentFilter\DB\bin\Debug\MODEL.dll
+D:\document\new\work\torrentFilter\DB\bin\Debug\MODEL.pdb
+D:\document\new\work\torrentFilter\DB\obj\Debug\DB.dll
+D:\document\new\work\torrentFilter\DB\obj\Debug\DB.pdb
+D:\document\new\work\torrentFilter\DB\obj\Debug\DB.csprojResolveAssemblyReference.cache

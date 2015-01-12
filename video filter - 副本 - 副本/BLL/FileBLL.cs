@@ -14,18 +14,20 @@ namespace BLL
     public class FileBLL
     {
 
-    //    Analysis ana;
+      //  Analysis ana;
         //_18javAnaysis ana;
         //HelloJavAnalysis ana;
-        _141javAnalysisNew ana;
+        //_141javAnalysisNew ana;
+        BtdiggAnalysis ana;
         Filter filter;
 
         public FileBLL()
         {
             filter = new Filter();
            // ana = new Analysis();
-            ana = new _141javAnalysisNew();
+        //    ana = new _141javAnalysisNew();
           //  ana = new _18javAnaysis();
+            ana = new BtdiggAnalysis();
         }
 
         public List<MyFileInfo> getFileList()
@@ -49,7 +51,7 @@ namespace BLL
                 sr.Close();
                 string[] strs = Path.GetFileNameWithoutExtension(p).Split('_');
                 string vid="";
-                if (strs.Length >= 1)
+                if (strs.Length > 4)
                     vid = strs[4];
                 ArrayList list= ana.alys(content,Path.Combine(directoryStr,"nIn1.htm"),vid);
                 foreach (His his in list)

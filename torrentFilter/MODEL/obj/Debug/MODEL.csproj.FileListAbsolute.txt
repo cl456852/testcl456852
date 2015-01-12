@@ -1,0 +1,5 @@
+D:\document\new\work\torrentFilter\MODEL\bin\Debug\MODEL.dll
+D:\document\new\work\torrentFilter\MODEL\bin\Debug\MODEL.pdb
+D:\document\new\work\torrentFilter\MODEL\obj\Debug\ResolveAssemblyReference.cache
+D:\document\new\work\torrentFilter\MODEL\obj\Debug\MODEL.dll
+D:\document\new\work\torrentFilter\MODEL\obj\Debug\MODEL.pdb

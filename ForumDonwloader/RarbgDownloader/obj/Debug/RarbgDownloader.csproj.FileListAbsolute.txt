@@ -16,6 +16,6 @@ D:\document\new\work\ForumDonwloader\RarbgDownloader\bin\Debug\RarbgDownloader.d
 D:\document\new\work\ForumDonwloader\RarbgDownloader\bin\Debug\RarbgDownloader.pdb
 D:\document\new\work\ForumDonwloader\RarbgDownloader\bin\Debug\Framework.dll
 D:\document\new\work\ForumDonwloader\RarbgDownloader\bin\Debug\Framework.pdb
-D:\document\new\work\ForumDonwloader\RarbgDownloader\obj\Debug\ResolveAssemblyReference.cache
 D:\document\new\work\ForumDonwloader\RarbgDownloader\obj\Debug\RarbgDownloader.dll
 D:\document\new\work\ForumDonwloader\RarbgDownloader\obj\Debug\RarbgDownloader.pdb
+D:\document\new\work\ForumDonwloader\RarbgDownloader\obj\Debug\RarbgDownloader.csprojResolveAssemblyReference.cache

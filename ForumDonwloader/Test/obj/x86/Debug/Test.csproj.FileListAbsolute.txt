@@ -18,6 +18,6 @@ D:\document\new\work\ForumDonwloader\Test\bin\Debug\Test.exe
 D:\document\new\work\ForumDonwloader\Test\bin\Debug\Test.pdb
 D:\document\new\work\ForumDonwloader\Test\bin\Debug\Framework.dll
 D:\document\new\work\ForumDonwloader\Test\bin\Debug\Framework.pdb
-D:\document\new\work\ForumDonwloader\Test\obj\x86\Debug\ResolveAssemblyReference.cache
 D:\document\new\work\ForumDonwloader\Test\obj\x86\Debug\Test.exe
 D:\document\new\work\ForumDonwloader\Test\obj\x86\Debug\Test.pdb
+D:\document\new\work\ForumDonwloader\Test\obj\x86\Debug\Test.csprojResolveAssemblyReference.cache

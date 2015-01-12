@@ -230,7 +230,7 @@ namespace DB
                         dic.Add(t.File, t);
                     }
                 }
-                return dic;
+                return new Dictionary<string,HisTorrent>();
 
             }
         }
