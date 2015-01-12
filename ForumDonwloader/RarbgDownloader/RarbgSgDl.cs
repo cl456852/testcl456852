@@ -63,7 +63,7 @@ namespace RarbgDownloader
             }
             if (genres != null && genres.Value != "")
             {
-                if( check(genreStr.Substring(0, genreStr.Length - 1)))
+                if( check(genreStr.Substring(0, genreStr.Length - 1).Replace("%22","")))
                     dt.downLoadFile(url, Path.Combine(o.Path,genreStr+"$$"+ url.Substring(url.LastIndexOf('=') + 1)),DlConfig.useProxy);
                 else
                     dt.downLoadFile(url, Path.Combine(o.Path, "notok", genreStr + "$$" + url.Substring(url.LastIndexOf('=') + 1)),DlConfig.useProxy);

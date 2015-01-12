@@ -40,5 +40,21 @@ namespace RarbgDownloader
             get { return content; }
             set { content = value; }
         }
+
+        string htmlName;
+
+        public string HtmlName
+        {
+            get { return htmlName; }
+            set { htmlName = value; }
+        }
+
+        string singleContent;
+
+        public string SingleContent
+        {
+            get { return singleContent; }
+            set { singleContent = value; }
+        }
     }
 }
