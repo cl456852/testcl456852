@@ -33,10 +33,9 @@ D:\document\new\work\MoveFile\MoveFile\obj\x86\Debug\MoveFile.exe
 D:\document\new\work\MoveFile\MoveFile\obj\x86\Debug\MoveFile.pdb
 D:\document\new\work\MoveFile\MoveFile\bin\Debug\MoveFile.exe
 D:\document\new\work\MoveFile\MoveFile\bin\Debug\MoveFile.pdb
-D:\document\new\work\MoveFile\MoveFile\obj\x86\Debug\ResolveAssemblyReference.cache
 D:\document\new\work\MoveFile\MoveFile\obj\x86\Debug\MoveFile.Form1.resources
 D:\document\new\work\MoveFile\MoveFile\obj\x86\Debug\MoveFile.Properties.Resources.resources
-D:\document\new\work\MoveFile\MoveFile\obj\x86\Debug\ResGen.read.1.tlog
-D:\document\new\work\MoveFile\MoveFile\obj\x86\Debug\ResGen.write.1.tlog
 D:\document\new\work\MoveFile\MoveFile\bin\Debug\BencodeLibrary.dll
 D:\document\new\work\MoveFile\MoveFile\bin\Debug\BencodeLibrary.pdb
+D:\document\new\work\MoveFile\MoveFile\obj\x86\Debug\MoveFile.csprojResolveAssemblyReference.cache
+D:\document\new\work\MoveFile\MoveFile\obj\x86\Debug\MoveFile.csproj.GenerateResource.Cache

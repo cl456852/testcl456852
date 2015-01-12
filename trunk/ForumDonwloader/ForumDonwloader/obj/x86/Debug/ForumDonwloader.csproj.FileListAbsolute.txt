@@ -24,8 +24,7 @@ D:\document\new\work\ForumDonwloader\ForumDonwloader\bin\Debug\Framework.dll
 D:\document\new\work\ForumDonwloader\ForumDonwloader\bin\Debug\RarbgDownloader.dll
 D:\document\new\work\ForumDonwloader\ForumDonwloader\bin\Debug\Framework.pdb
 D:\document\new\work\ForumDonwloader\ForumDonwloader\bin\Debug\RarbgDownloader.pdb
-D:\document\new\work\ForumDonwloader\ForumDonwloader\obj\x86\Debug\ResolveAssemblyReference.cache
 D:\document\new\work\ForumDonwloader\ForumDonwloader\obj\x86\Debug\ForumDonwloader.Form1.resources
 D:\document\new\work\ForumDonwloader\ForumDonwloader\obj\x86\Debug\ForumDonwloader.Properties.Resources.resources
-D:\document\new\work\ForumDonwloader\ForumDonwloader\obj\x86\Debug\GenerateResource.read.1.tlog
-D:\document\new\work\ForumDonwloader\ForumDonwloader\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\document\new\work\ForumDonwloader\ForumDonwloader\obj\x86\Debug\ForumDonwloader.csprojResolveAssemblyReference.cache
+D:\document\new\work\ForumDonwloader\ForumDonwloader\obj\x86\Debug\ForumDonwloader.csproj.GenerateResource.Cache

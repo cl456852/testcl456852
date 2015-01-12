@@ -18,7 +18,7 @@ namespace BLL
         Regex imageRex = new Regex("http://www.18-jav.com/wp-content/.*?jpg");
         Regex torrentRex = new Regex("http://www.18-jav.com/./\\?download=.*?\"");
         string invalid;
-        public ArrayList alys(string content, string path)
+        public ArrayList alys(string content, string path,string vid)
         {
             ArrayList resList = new ArrayList();
             content = content.Replace("<b>", "").Replace("</b>", "");
@@ -27,7 +27,7 @@ namespace BLL
             {
                 His his = new His();
                 his.OriginalHtml = s;
-                if (s.Contains("DOCTYPE html PUBLIC"))
+                if (s.Contains("DOCTYPE HTML PUBLIC"))
                     continue;
                 his.Vid = s.Split(new string[] { "\">", "</a></td></tr></tbody></table><table class=" }, StringSplitOptions.RemoveEmptyEntries)[3];
 
@@ -47,7 +47,7 @@ namespace BLL
                 if (sizeMatch.Count == 0)
                 {
                     sizeMatch = sizeRegexMB.Matches(his.OriginalHtml);
-                    his.Size = Convert.ToDouble(sizeMatch[0].Value.Replace("&nbsp;MB</span>", "").Replace("大小:</span><span class=\"attr_val\">", "")) * 1024;
+                    his.Size = Convert.ToDouble(sizeMatch[0].Value.Replace("&nbsp;MB</span>", "").Replace("大小:</span><span class=\"attr_val\">", ""));
                 }
                 getHtml(his, his.Size.ToString());
                 resList.Add(his);
