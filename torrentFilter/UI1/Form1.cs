@@ -176,6 +176,12 @@ namespace UI1
             sw.Close();
             fs.Close();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            UnknowHtmlGernerator unknowHtmlGernerator = new UnknowHtmlGernerator();
+            unknowHtmlGernerator.process(textBox1.Text);
+        }
         
 
         //private void SortRows(DataGridViewColumn sortColumn, bool orderToggle)
