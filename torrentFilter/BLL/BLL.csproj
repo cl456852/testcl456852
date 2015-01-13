@@ -73,6 +73,7 @@
     <Compile Include="Filter.cs" />
     <Compile Include="HelloJavAnalysis.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnknowHtmlGernerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\bt\BencodeLibrary\BencodeLibrary.csproj">
