@@ -15,6 +15,7 @@ namespace RarbgDownloader
         Regex torrentRegex = new Regex(@"download.php\?id=.*?\.torrent");
         Regex genresRegex = new Regex(@"Genres.*</a>");
         Regex genresRegex1 = new Regex("search=.*?\"");
+        Regex releaseDateRegex=new Regex("\"releaseDate\">.*</td></tr>");
         //http://rarbg.com/torrent/u1xt7vg
         public override void Download(object obj)
         {
@@ -41,9 +42,10 @@ namespace RarbgDownloader
             MatchCollection genresMatches;
             AsynObj o = (AsynObj)obj;
             string content = dt.GetHtml(o.Url,DlConfig.useProxy);
+            o.SingleContent = content;
+            string dateString=releaseDateRegex.Match(content).Value.Replace("\"releaseDate\">","").Replace("</td></tr>","");
+            DateTime releaseDate=Convert.ToDateTime(dateString);
             string url = "http://rarbg.com/" + torrentRegex.Match(content).Value;
-            if (obj != null)
-                dt.SaveFile(content, Path.Combine(o.Path, o.Url.Replace('/', '_').Replace(":", "^").Replace("?", "wenhao"))+".htm");
             Match genres = genresRegex.Match(content);
             if (genres!=null&& genres.Value != "")
             {
@@ -53,24 +55,49 @@ namespace RarbgDownloader
             }
             if (check1( url.Substring(url.LastIndexOf('=') + 1).ToLower()))
             {
-                dt.downLoadFile(url, Path.Combine(o.Path, genreStr + "$$" + url.Substring(url.LastIndexOf('=') + 1)),DlConfig.useProxy);
+                string path = Path.Combine(o.Path, genreStr + "$$" + url.Substring(url.LastIndexOf('=') + 1));
+                dt.downLoadFile(url, path, DlConfig.useProxy);
+                dt.SaveFile(o.SingleContent,path+".htm");
                 return;
             }
             if (!check2(url.Substring(url.LastIndexOf('=') + 1).ToLower()))
             {
-                dt.downLoadFile(url, Path.Combine(o.Path, "notok", genreStr + "$$" + url.Substring(url.LastIndexOf('=') + 1)),DlConfig.useProxy);
+                string path = Path.Combine(o.Path, "notok", genreStr + "$$" + url.Substring(url.LastIndexOf('=') + 1));
+                dt.downLoadFile(url, path,DlConfig.useProxy);
+                dt.SaveFile(o.SingleContent, path + ".htm");
                 return;
             }
-            if (genres != null && genres.Value != "")
+            if (releaseDate.CompareTo(new DateTime(2014, 8, 1)) < 0)
             {
-                if( check(genreStr.Substring(0, genreStr.Length - 1).Replace("%22","")))
-                    dt.downLoadFile(url, Path.Combine(o.Path,genreStr+"$$"+ url.Substring(url.LastIndexOf('=') + 1)),DlConfig.useProxy);
+                if (genres != null && genres.Value != "")
+                {
+                    if (check(genreStr.Substring(0, genreStr.Length - 1).Replace("%22", "")))
+                    {
+                        string path = Path.Combine(o.Path, genreStr + "$$" + url.Substring(url.LastIndexOf('=') + 1));
+                        dt.downLoadFile(url, path, DlConfig.useProxy);
+                        dt.SaveFile(o.SingleContent, path + ".htm");
+                    }
+                    else
+                    {
+                        string path = Path.Combine(o.Path, "notok", genreStr + "$$" + url.Substring(url.LastIndexOf('=') + 1));
+                        dt.downLoadFile(url, path, DlConfig.useProxy);
+                        dt.SaveFile(o.SingleContent, path + ".htm");
+                    }
+                }
+                //加入genres name 组合判断
                 else
-                    dt.downLoadFile(url, Path.Combine(o.Path, "notok", genreStr + "$$" + url.Substring(url.LastIndexOf('=') + 1)),DlConfig.useProxy);
+                {
+                    string path = Path.Combine(o.Path, "unknown", url.Substring(url.LastIndexOf('=') + 1));
+                    dt.downLoadFile(url, path, DlConfig.useProxy);
+                    dt.SaveFile(o.SingleContent, path + ".htm");
+                }
             }
-            //加入genres name 组合判断
             else
-                dt.downLoadFile(url, Path.Combine(o.Path,"unknown", url.Substring(url.LastIndexOf('=') + 1)),DlConfig.useProxy);
+            {
+                string path = Path.Combine(o.Path, "unknown", url.Substring(url.LastIndexOf('=') + 1));
+                dt.downLoadFile(url, path, DlConfig.useProxy);
+                dt.SaveFile(o.SingleContent, path + ".htm");
+            }
         }
 
         private bool check2(string name)
