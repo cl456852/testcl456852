@@ -12,8 +12,6 @@ namespace Framework.tool
     public class DlTool
     {
 
-      
-
         public string GetHtml(string url,bool useProxy)
         {
             string str = string.Empty;
@@ -101,7 +99,7 @@ namespace Framework.tool
 
         public void SaveFile(string content, string fileName)
         {
-            fileName = fileName.Replace("%20", " ").Replace("%2C", " ");
+            fileName = fileName.Replace("%20", "").Replace("%2C", "").Replace("%22","");
             //实例化一个文件流--->与写入文件相关联
             FileStream fs = new FileStream(fileName, FileMode.Create);
             //实例化一个StreamWriter-->与fs相关联
@@ -123,9 +121,9 @@ namespace Framework.tool
             sw.Close();   
         }
 
-        public void downLoadFile(string url,string name,bool useProxy)
+        public void downLoadFile(string url,string name,bool useProxy,string content)
         {
-            name = name.Replace("%20", " ").Replace("%2C", " ");
+
             bool success = false;
             while (!success)
             {
@@ -178,7 +176,7 @@ namespace Framework.tool
                     }
                     fstream = new FileStream(name, FileMode.Create);
                     streamReceive.CopyTo(fstream);
-
+                    SaveFile(content, name+".htm");
                     success = true;
 
                 }

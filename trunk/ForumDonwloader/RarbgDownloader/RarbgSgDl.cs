@@ -20,14 +20,13 @@ namespace RarbgDownloader
         public override void Download(object obj)
         {
             AsynObj o = (AsynObj)obj;
-
                 MatchCollection mc = regex.Matches(o.Content);
                 foreach (Match m in mc)
                 {
                     //href="/torrent/yirda45"
                     if (!m.Value.Contains("#comments") && !DlConfig.storage.Contains(m.Value.Replace("href=\"/torrent/", "").Replace("\"","")))
                     {
-                        ThreadPool.QueueUserWorkItem(work, new AsynObj(o.Path, "http://rarbg.com" + m.Value.Replace("href=", "").Replace("\"", "")));
+                        ThreadPool.QueueUserWorkItem(new RarbgSgDl().work, new AsynObj(o.Path, "http://rarbg.com" + m.Value.Replace("href=", "").Replace("\"", "")));
                     }
                     else
                         Console.WriteLine(m.Value);
@@ -47,6 +46,7 @@ namespace RarbgDownloader
             DateTime releaseDate=Convert.ToDateTime(dateString);
             string url = "http://rarbg.com/" + torrentRegex.Match(content).Value;
             Match genres = genresRegex.Match(content);
+            string path = "";
             if (genres!=null&& genres.Value != "")
             {
                 genresMatches = genresRegex1.Matches(genres.Value);
@@ -55,49 +55,44 @@ namespace RarbgDownloader
             }
             if (check1( url.Substring(url.LastIndexOf('=') + 1).ToLower()))
             {
-                string path = Path.Combine(o.Path, genreStr + "$$" + url.Substring(url.LastIndexOf('=') + 1));
-                dt.downLoadFile(url, path, DlConfig.useProxy);
-                dt.SaveFile(o.SingleContent,path+".htm");
-                return;
+                path = Path.Combine(o.Path, genreStr + "$$" + url.Substring(url.LastIndexOf('=') + 1)).Replace("%22", "");
+                
             }
-            if (!check2(url.Substring(url.LastIndexOf('=') + 1).ToLower()))
+            else if (!check2(url.Substring(url.LastIndexOf('=') + 1).ToLower()))
             {
-                string path = Path.Combine(o.Path, "notok", genreStr + "$$" + url.Substring(url.LastIndexOf('=') + 1));
-                dt.downLoadFile(url, path,DlConfig.useProxy);
-                dt.SaveFile(o.SingleContent, path + ".htm");
-                return;
+                path = Path.Combine(o.Path, "notok", genreStr + "$$" + url.Substring(url.LastIndexOf('=') + 1)).Replace("%22", "");
+                
             }
-            if (releaseDate.CompareTo(new DateTime(2014, 8, 1)) < 0)
+            else if (releaseDate.CompareTo(new DateTime(2014, 8, 1)) < 0)
             {
                 if (genres != null && genres.Value != "")
                 {
-                    if (check(genreStr.Substring(0, genreStr.Length - 1).Replace("%22", "")))
+                    int res=check(genreStr.Substring(0, genreStr.Length - 1).Replace("%22", ""));
+                    if (res==1)
                     {
-                        string path = Path.Combine(o.Path, genreStr + "$$" + url.Substring(url.LastIndexOf('=') + 1));
-                        dt.downLoadFile(url, path, DlConfig.useProxy);
-                        dt.SaveFile(o.SingleContent, path + ".htm");
+                        path = Path.Combine(o.Path, genreStr + "$$" + url.Substring(url.LastIndexOf('=') + 1)).Replace("%22","");
+                    }
+                    else if (res == -1)
+                    {
+                        path = Path.Combine(o.Path, "notok", genreStr + "$$" + url.Substring(url.LastIndexOf('=') + 1)).Replace("%22", "");
                     }
                     else
                     {
-                        string path = Path.Combine(o.Path, "notok", genreStr + "$$" + url.Substring(url.LastIndexOf('=') + 1));
-                        dt.downLoadFile(url, path, DlConfig.useProxy);
-                        dt.SaveFile(o.SingleContent, path + ".htm");
+                        path = Path.Combine(o.Path, "unknown", genreStr + "$$" + url.Substring(url.LastIndexOf('=') + 1)).Replace("%22", "");
                     }
                 }
-                //加入genres name 组合判断
                 else
                 {
-                    string path = Path.Combine(o.Path, "unknown", url.Substring(url.LastIndexOf('=') + 1));
-                    dt.downLoadFile(url, path, DlConfig.useProxy);
-                    dt.SaveFile(o.SingleContent, path + ".htm");
+                    path = Path.Combine(o.Path, "unknown", url.Substring(url.LastIndexOf('=') + 1)).Replace("%22", "");
                 }
             }
             else
             {
-                string path = Path.Combine(o.Path, "unknown", url.Substring(url.LastIndexOf('=') + 1));
-                dt.downLoadFile(url, path, DlConfig.useProxy);
-                dt.SaveFile(o.SingleContent, path + ".htm");
+                path = Path.Combine(o.Path, "unknown", url.Substring(url.LastIndexOf('=') + 1)).Replace("%22", "");
+
             }
+            path = path.Replace("%20", " ").Replace("%2C", " ");
+            dt.downLoadFile(url, path, DlConfig.useProxy,content);
         }
 
         private bool check2(string name)
@@ -118,37 +113,36 @@ namespace RarbgDownloader
             return false;
         }
 
-        private bool check(string genreStr)
+        private int check(string genreStr)
         {
-            bool hasKeyword = false;
             string[] notoks=DlConfig.demo4["notok"].ToString().Split(',');
             string[] oks = DlConfig.demo4["ok"].ToString().Split(',');
             string[] genres = genreStr.Split(',');
             foreach (string s in genres)
                 if (notoks.Contains(s))
                 {
-                    return false;
+                    return -1;
                 }
             foreach (string s in genres)
                 if (oks.Contains(s))
                 {
-                    return true;
+                    return 1;
                 }
-            foreach(string s in genres)
+            foreach (string s in genres)
+            {
+                
                 if (DlConfig.demo4.Contains(s))
                 {
-                    hasKeyword = true;
                     string[] strs = DlConfig.demo4[s].ToString().Split(',');
                     foreach (string s1 in genres)
                         if (strs.Contains(s1))
                         {
-                            hasKeyword = false;
-                            break;
+                            return -1;
                         }
-                    if (hasKeyword)
-                        break;
+                    return 1;
                 }
-            return hasKeyword;
+            }
+            return 0;
         }
     }
 }
