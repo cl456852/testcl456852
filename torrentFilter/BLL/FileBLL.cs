@@ -16,9 +16,9 @@ namespace BLL
     public class FileBLL
     {
 
-        static string filterString = "_avc_hd,_avc,_hd,480p,720p,1080p,2160p,_,480,720,1080,[,],.,2000,4000,8000,12000,6000,1500, ,540,qhd,fullhd,-,high";
+        static string filterString = "_avc_hd,_avc,_hd,480p,720p,1080p,2160p,_,480,720,1080,[,],.,2000,4000,8000,12000,6000,1500, ,540,qhd,fullhd,-,high,low";
         Dictionary<string, HisTorrent> dic;
-
+        Dictionary<string, HisTorrent> fileDic;
         DateTime startTime;
         public FileBLL()
         {
@@ -30,7 +30,7 @@ namespace BLL
             return FileDAL.selectMyFileInfo("");
         }
 
-        public void process(string directoryStr)
+        public void process(string directoryStr,bool ifCheckHis)
         {
             getList();
             startTime = DateTime.Now;
@@ -83,7 +83,7 @@ namespace BLL
                                     trt.File = s;
                                 }
                                 listTorrent.Add(trt);
-                                if (!check(trt))
+                                if (!check(trt,ifCheckHis))
                                 {
                                     flag = false;
                                     break;
@@ -109,7 +109,7 @@ namespace BLL
                                 trt.File = name;
                             }
                             listTorrent.Add(trt);
-                            if (!check(trt))
+                            if (!check(trt,ifCheckHis))
                             {
                                 flag = false;
                             }
@@ -124,7 +124,8 @@ namespace BLL
                             {
                                 if (his.Size > 60 * 1024 * 1024)
                                 {
-                                    DBHelper.insertTorrent(his);
+                                    if(ifCheckHis)
+                                        DBHelper.insertTorrent(his);
                                     try
                                     {
                                         dic.Add(filterName(his.File), his);
@@ -150,40 +151,45 @@ namespace BLL
 
         }
 
-        bool check(HisTorrent trt)
+        bool check(HisTorrent trt, bool ifCheckHis)
         {
             bool flag = true;
             if (trt.Size > 60 * 1024 * 1024)
             {
-                if (DBHelper.checkFiles(trt) > 0)
+                if (fileDic.ContainsKey(filterName( trt.File)) )
                 {
                     moveFile("duplicate", trt.Path);
                     return false;
                 }
-                HisTorrent t;
-                try
+                if (ifCheckHis)
                 {
-                    t = dic[filterName( trt.File)];
-            
-                }
-                catch (KeyNotFoundException e)
-                {
-                    t = null;
-                }
-                if (t != null)
-                {
+                    HisTorrent t;
+                    try
+                    {
+                        t = dic[filterName(trt.File)];
 
-                    if (t.Size >= trt.Size || t.CreateTime < startTime)
-                    {
-                        moveFile("duplicate", trt.Path);
-                        flag = false;
                     }
-                    else
+                    catch (KeyNotFoundException e)
                     {
-                        moveFile("duplicate", t.Path);
+                        t = null;
                     }
+                    if (t != null)
+                    {
+
+                        if (t.Size >= trt.Size || t.CreateTime < startTime)
+                        {
+                            moveFile("duplicate", trt.Path);
+                            flag = false;
+                        }
+                        else
+                        {
+                            moveFile("duplicate", t.Path);
+                        }
+                    }
+                    return flag;
                 }
-                return flag;
+                else
+                    return true;
             }
             else
                 return true;
@@ -222,6 +228,7 @@ namespace BLL
         void getList()
         {
             dic = DBHelper.getList(filterString);
+            fileDic = DBHelper.getFileList(filterString);
             //foreach (string s in dic.Keys)
             //{
             //    Console.WriteLine(s);

@@ -21,7 +21,7 @@ namespace DB
         public static SqlConnection conn = new SqlConnection(connstr);
         static string checkFilesSql1 = "  select * from his where ";
         //static string connstr = "server=.;uid=sa;pwd=a;database=cd";
-        static string filterString = "_avc_hd,_avc,_hd,720p,1080p,480p,_,480,720,1080,2160p,[,],.,2000,4000,8000,12000,6000,1500, ,";
+       // static string filterString = "_avc_hd,_avc,_hd,720p,1080p,480p,_,480,720,1080,2160p,[,],.,2000,4000,8000,12000,6000,1500, ,";
         public static int ExecuteSql(string sql)
         {
             int i = 0;
@@ -133,7 +133,7 @@ namespace DB
             }
         }
 
-        public static int checkFiles(HisTorrent his)
+        public static int checkFiles(HisTorrent his,string filter)
         {
             int res = 0;
             string sql = string.Format(checkFilesSql, his.File.Replace("'", "''")+ his.Ext);
@@ -159,39 +159,6 @@ namespace DB
                 res = Convert.ToInt32(sc.ExecuteScalar());
             }
             return res;
-        }
-
-        public static List<HisTorrent> checkFiles1(HisTorrent his)
-        {
-            string[] strs = filterString.Split(',');
-            string filterStr = " REPLACE('{0}','"+strs[0]+"','') ";
-            string filterStr1 = " REPLACE([file],' " + strs[0] + "','') ";
-            for (int i = 1; i < strs.Length; i++)
-            {
-                filterStr = "REPLACE(" + filterStr + ",'" + strs[i] + "','') ";
-                filterStr1 = "REPLACE(" + filterStr1 + ",'" + strs[i] + "','') ";
-            }
-            List<HisTorrent> list = new List<HisTorrent>();
-
-            string sql = string.Format(checkFilesSql1 + filterStr + "=" + filterStr1, his.File.Replace("'", "''"));
-            using (SqlConnection conn = new SqlConnection(connstr))
-            {
-                conn.Open();
-                SqlCommand sc = new SqlCommand(sql, conn);
-                SqlDataReader reader = sc.ExecuteReader();
-                while (reader.Read())
-                {
-                    HisTorrent t= new HisTorrent();
-                    t.File = reader["file"].ToString();
-                    t.CreateTime =Convert.ToDateTime(reader["createtime"]);
-                    t.Ext = reader["ext"].ToString();
-                    t.Path = reader["path"].ToString();
-                    t.Size = Convert.ToInt64(reader["size"].ToString());
-                    list.Add(t);    
-                }
-                return list;
-
-            }
         }
 
         public static Dictionary<string, HisTorrent> getList(string filterStr)
@@ -235,6 +202,45 @@ namespace DB
             }
         }
 
+        public static Dictionary<string, HisTorrent> getFileList(string filterStr)
+        {
+            Dictionary<string, HisTorrent> dic = new Dictionary<string, HisTorrent>();
+            string sql = "select fileName from files where length>100";
+            using (SqlConnection conn = new SqlConnection(connstr))
+            {
+                conn.Open();
+                SqlCommand sc = new SqlCommand(sql, conn);
+                SqlDataReader reader = sc.ExecuteReader();
+                while (reader.Read())
+                {
+                    try
+                    {
+                        string fileName=filterName(reader[0].ToString(),filterStr);
+                        dic.Add(fileName, new HisTorrent());
+                    }
+                    catch (ArgumentException e)
+                    {
+                    }
+                }
+                return dic;
+
+            }
+        }
+
+        static string filterName(string fileName, string filterString)
+        {
+            fileName = fileName.ToLower();
+            if (fileName.LastIndexOf('.') > 0)
+            {
+                fileName = fileName.Substring(0, fileName.LastIndexOf('.'));
+            }
+            string[] strs = filterString.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (string s in strs)
+            {
+                fileName = fileName.Replace(s, "");
+            }
+            return fileName;
+        }
         
     }
 }
