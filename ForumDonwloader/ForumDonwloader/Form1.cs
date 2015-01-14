@@ -46,8 +46,6 @@ namespace ForumDonwloader
             int end = Convert.ToInt32(textBox3.Text);
             
             IListPageDownloader lstDl = Config.Factory.createlstDl();
-            WaitCallback callBack;
-            callBack = new WaitCallback(lstDl.Download);
             Console.WriteLine("SETMAXTHREADS "+ ThreadPool.SetMaxThreads(17,17));
 
            
