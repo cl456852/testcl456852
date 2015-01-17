@@ -1,0 +1,9 @@
+D:\document\new\work\torrentFilter\DAL\bin\Debug\DAL.dll
+D:\document\new\work\torrentFilter\DAL\bin\Debug\DAL.pdb
+D:\document\new\work\torrentFilter\DAL\bin\Debug\DB.dll
+D:\document\new\work\torrentFilter\DAL\bin\Debug\MODEL.dll
+D:\document\new\work\torrentFilter\DAL\bin\Debug\DB.pdb
+D:\document\new\work\torrentFilter\DAL\bin\Debug\MODEL.pdb
+D:\document\new\work\torrentFilter\DAL\obj\Debug\DAL.dll
+D:\document\new\work\torrentFilter\DAL\obj\Debug\DAL.pdb
+D:\document\new\work\torrentFilter\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache

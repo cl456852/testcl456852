@@ -1,0 +1,12 @@
+D:\document\new\work\torrentFilter\UnknownTerrontFilter\bin\Debug\UnknownTerrontFilter.exe
+D:\document\new\work\torrentFilter\UnknownTerrontFilter\bin\Debug\UnknownTerrontFilter.pdb
+D:\document\new\work\torrentFilter\UnknownTerrontFilter\bin\Debug\DB.dll
+D:\document\new\work\torrentFilter\UnknownTerrontFilter\bin\Debug\MODEL.dll
+D:\document\new\work\torrentFilter\UnknownTerrontFilter\bin\Debug\DB.pdb
+D:\document\new\work\torrentFilter\UnknownTerrontFilter\bin\Debug\MODEL.pdb
+D:\document\new\work\torrentFilter\UnknownTerrontFilter\obj\x86\Debug\UnknownTerrontFilter.Form1.resources
+D:\document\new\work\torrentFilter\UnknownTerrontFilter\obj\x86\Debug\UnknownTerrontFilter.Properties.Resources.resources
+D:\document\new\work\torrentFilter\UnknownTerrontFilter\obj\x86\Debug\UnknownTerrontFilter.exe
+D:\document\new\work\torrentFilter\UnknownTerrontFilter\obj\x86\Debug\UnknownTerrontFilter.pdb
+D:\document\new\work\torrentFilter\UnknownTerrontFilter\obj\x86\Debug\UnknownTerrontFilter.csprojResolveAssemblyReference.cache
+D:\document\new\work\torrentFilter\UnknownTerrontFilter\obj\x86\Debug\UnknownTerrontFilter.csproj.GenerateResource.Cache
