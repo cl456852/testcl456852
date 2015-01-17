@@ -1,5 +1,0 @@
-D:\document\new\work\pageDownLoader\Test\bin\Debug\Test.exe
-D:\document\new\work\pageDownLoader\Test\bin\Debug\Test.pdb
-D:\document\new\work\pageDownLoader\Test\obj\x86\Debug\ResolveAssemblyReference.cache
-D:\document\new\work\pageDownLoader\Test\obj\x86\Debug\Test.exe
-D:\document\new\work\pageDownLoader\Test\obj\x86\Debug\Test.pdb
