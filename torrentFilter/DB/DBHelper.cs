@@ -12,7 +12,7 @@ namespace DB
         static string seachHisSql = "select * from his1 where LOWER(vid)=LOWER('{0}') and ABS((size-{1})/{1})<0.05 ";
         static string insertHisSql = "insert into his1 values('{0}',{1},'{2}',{3},'{4}',getdate())";
         static string checkTorrentSql = "select count(*) from his where LOWER([file])='{0}' and size> 104857600";
-        static string insertTorrentSql = "insert into his values('{0}',{1},'{2}',getdate(),'{3}')";
+        static string insertTorrentSql = "insert into his values('{0}',{1},'{2}',getdate(),'{3}','{4}')";
         public static string connstr = @"server=localhost\SQLEXPRESS;uid=sa;pwd=a;database=cd";
         static string checkFilesSql = "select count(*) from files where filename='{0}' and length>60";
 
@@ -124,7 +124,7 @@ namespace DB
 
         public static void insertTorrent(HisTorrent his)
         {
-            string sql = string.Format(insertTorrentSql, his.File.Replace("'","''"), his.Size, his.Path.Replace("'","''"), his.Ext );
+            string sql = string.Format(insertTorrentSql, his.File.Replace("'","''"), his.Size, his.Path.Replace("'","''"), his.Ext,his.Md5 );
             using (SqlConnection conn = new SqlConnection(connstr))
             {
                 conn.Open();
@@ -173,7 +173,7 @@ namespace DB
             }
             Dictionary<string, HisTorrent> dic = new Dictionary<string, HisTorrent>();
 
-            string sql = "select " + filterStr1 + " as [file] ,createtime,[path],[size],ext from his where size>100*1024*1024 and DATEDIFF(M,createtime,GETDATE())<6 order by createtime";
+            string sql = "select " + filterStr1 + " as [file] ,createtime,[path],[size],ext,md5 from his where size>100*1024*1024 and DATEDIFF(M,createtime,GETDATE())<1 order by createtime";
             using (SqlConnection conn = new SqlConnection(connstr))
             {
                 conn.Open();
@@ -187,6 +187,7 @@ namespace DB
                     t.Ext = reader["ext"].ToString();
                     t.Path = reader["path"].ToString();
                     t.Size = Convert.ToInt64(reader["size"].ToString());
+                    t.Md5 = reader["md5"].ToString();
                     try
                     {
                         dic.Add(t.File, t);
@@ -197,7 +198,7 @@ namespace DB
                         dic.Add(t.File, t);
                     }
                 }
-                return new Dictionary<string,HisTorrent>();
+                return dic;
 
             }
         }
@@ -205,7 +206,7 @@ namespace DB
         public static Dictionary<string, HisTorrent> getFileList(string filterStr)
         {
             Dictionary<string, HisTorrent> dic = new Dictionary<string, HisTorrent>();
-            string sql = "select fileName from files where length>100";
+            string sql = "select fileName from files where length>70";
             using (SqlConnection conn = new SqlConnection(connstr))
             {
                 conn.Open();
