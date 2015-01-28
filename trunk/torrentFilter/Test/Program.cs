@@ -8,6 +8,7 @@ using System.IO;
 using MODEL;
 using System.Reflection;
 using BencodeLibrary;
+using System.Security.Cryptography;
 namespace Test
 {
     class Program
@@ -56,6 +57,7 @@ namespace Test
 //                        .split('|'), 0, {}))
 //"));
         }
+
 
         void BencodeTest()
         {

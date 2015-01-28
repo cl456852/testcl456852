@@ -10,15 +10,17 @@ using System.Text.RegularExpressions;
 using GetSize;
 using BencodeLibrary;
 using DB;
+using System.Security.Cryptography;
 
 namespace BLL
 {
     public class FileBLL
     {
-
+        MD5 md5 = MD5.Create();
         static string filterString = "_avc_hd,_avc,_hd,480p,720p,1080p,2160p,_,480,720,1080,[,],.,2000,4000,8000,12000,6000,1500, ,540,qhd,fullhd,-,high,low";
         Dictionary<string, HisTorrent> dic;
         Dictionary<string, HisTorrent> fileDic;
+        HashSet<String> md5Set = new HashSet<string>();
         DateTime startTime;
         public FileBLL()
         {
@@ -32,6 +34,7 @@ namespace BLL
 
         public void process(string directoryStr,bool ifCheckHis)
         {
+            string md5;
             getList();
             startTime = DateTime.Now;
             String[] path = Directory.GetFiles(directoryStr, "*", SearchOption.TopDirectoryOnly);
@@ -39,6 +42,12 @@ namespace BLL
             {
                 if (p.EndsWith(".torrent"))
                 {
+                    md5 = GetMd5(p);
+                    if (md5Set.Contains(md5))
+                    {
+                        moveFile("Md5Duplicate",p);
+                        continue;
+                    }
                     BDict torrentFile = null;
                     bool hasBigFile = false;
                     try
@@ -124,10 +133,14 @@ namespace BLL
                             {
                                 if (his.Size > 60 * 1024 * 1024)
                                 {
-                                    if(ifCheckHis)
+                                    if (ifCheckHis)
+                                    {
+                                        his.Md5 = md5;
                                         DBHelper.insertTorrent(his);
+                                    }
                                     try
                                     {
+                                        md5Set.Add(md5);
                                         dic.Add(filterName(his.File), his);
                                     }catch(ArgumentException e)
                                     {
@@ -229,6 +242,11 @@ namespace BLL
         {
             dic = DBHelper.getList(filterString);
             fileDic = DBHelper.getFileList(filterString);
+            foreach (HisTorrent his in fileDic.Values)
+            {
+                if(his.Md5!=null)
+                    md5Set.Add(his.Md5);
+            }
             //foreach (string s in dic.Keys)
             //{
             //    Console.WriteLine(s);
@@ -244,6 +262,41 @@ namespace BLL
                 fileName = fileName.Replace(s, "");
             }
             return fileName;
+        }
+
+        public static string GetMd5(string pathName)
+        {
+            string strResult = "";
+            string strHashData = "";
+            byte[] arrbytHashValue;
+
+            System.IO.FileStream oFileStream = null;
+
+            System.Security.Cryptography.MD5CryptoServiceProvider oMD5Hasher = new System.Security.Cryptography.MD5CryptoServiceProvider();
+
+            try
+            {
+                oFileStream = new System.IO.FileStream(pathName.Replace("\"", ""), System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.ReadWrite);
+
+                arrbytHashValue = oMD5Hasher.ComputeHash(oFileStream); //计算指定Stream 对象的哈希值
+
+                oFileStream.Close();
+
+                //由以连字符分隔的十六进制对构成的String，其中每一对表示value 中对应的元素；例如“F-2C-4A”
+
+                strHashData = System.BitConverter.ToString(arrbytHashValue);
+
+                //替换-
+                strHashData = strHashData.Replace("-", "");
+
+                strResult = strHashData;
+            }
+
+            catch (System.Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return strResult;
         }
 
     }

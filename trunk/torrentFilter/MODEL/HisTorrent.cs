@@ -51,5 +51,13 @@ namespace MODEL
             set { ext = value; }
         }
 
+        string md5;
+
+        public string Md5
+        {
+            get { return md5; }
+            set { md5 = value; }
+        }
+
     }
 }
