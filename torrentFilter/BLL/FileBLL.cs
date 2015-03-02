@@ -21,6 +21,7 @@ namespace BLL
         Dictionary<string, HisTorrent> dic;
         Dictionary<string, HisTorrent> fileDic;
         HashSet<String> md5Set = new HashSet<string>();
+        Dictionary<string,HisTorrent> torrentNameSet = new Dictionary<string,HisTorrent>();
         DateTime startTime;
         public FileBLL()
         {
@@ -142,10 +143,13 @@ namespace BLL
                                     {
                                         md5Set.Add(md5);
                                         dic.Add(filterName(his.File), his);
+                                        torrentNameSet.Add(filterName(Path.GetFileNameWithoutExtension(his.Path)), his);
                                     }catch(ArgumentException e)
                                     {
                                         dic.Remove(filterName(his.File));
                                         dic.Add(filterName(his.File), his);
+                                        torrentNameSet.Remove(filterName(Path.GetFileNameWithoutExtension(his.Path)));
+                                        torrentNameSet.Add(filterName(Path.GetFileNameWithoutExtension(his.Path)), his);
                                     }
                                 }
                             }
@@ -184,7 +188,14 @@ namespace BLL
                     }
                     catch (KeyNotFoundException e)
                     {
-                        t = null;
+                        try
+                        {
+                            t = dic[filterName(Path.GetFileNameWithoutExtension(trt.Path))];
+                        }
+                        catch (KeyNotFoundException ex)
+                        {
+                            t = null;
+                        }
                     }
                     if (t != null)
                     {
@@ -242,10 +253,11 @@ namespace BLL
         {
             dic = DBHelper.getList(filterString);
             fileDic = DBHelper.getFileList(filterString);
-            foreach (HisTorrent his in fileDic.Values)
+            foreach (HisTorrent his in dic.Values)
             {
                 if(his.Md5!=null)
                     md5Set.Add(his.Md5);
+                torrentNameSet.Add(filterName(Path.GetFileNameWithoutExtension(his.Path)),his);
             }
             //foreach (string s in dic.Keys)
             //{
