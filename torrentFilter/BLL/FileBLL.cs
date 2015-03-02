@@ -17,7 +17,7 @@ namespace BLL
     public class FileBLL
     {
         MD5 md5 = MD5.Create();
-        static string filterString = "_avc_hd,_avc,_hd,480p,720p,1080p,2160p,_,480,720,1080,[,],.,2000,4000,8000,12000,6000,1500, ,540,qhd,fullhd,-,high,low";
+        static string filterString = "_avc_hd,_avc,_hd,480p,720p,1080p,1440p,2160p,_,480,720,1080,[,],.,2000,4000,8000,12000,6000,1500, ,540,qhd,fullhd,-,high,low,SD";
         Dictionary<string, HisTorrent> dic;
         Dictionary<string, HisTorrent> fileDic;
         HashSet<String> md5Set = new HashSet<string>();
