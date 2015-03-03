@@ -59,5 +59,14 @@ namespace MODEL
             set { md5 = value; }
         }
 
+        string filteredFileName;
+
+        public string FilteredFileName
+        {
+            get 
+            {
+                string s=path.Substring(path.LastIndexOf('$'));
+            }
+        }
     }
 }
