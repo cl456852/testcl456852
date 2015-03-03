@@ -17,11 +17,11 @@ namespace BLL
     public class FileBLL
     {
         MD5 md5 = MD5.Create();
-        static string filterString = "_avc_hd,_avc,_hd,480p,720p,1080p,1440p,2160p,_,480,720,1080,2160,[,],.,2000,4000,8000,12000,6000,1500, ,540,qhd,fullhd,-,high,low,SD,$$,rarbg.com,ktr,xxx,%22,%20";
+        
         Dictionary<string, HisTorrent> dic;
         Dictionary<string, HisTorrent> fileDic;
         HashSet<String> md5Set = new HashSet<string>();
-        Dictionary<string,HisTorrent> torrentNameSet = new Dictionary<string,HisTorrent>();
+        Dictionary<string,HisTorrent> torrentNameDic = new Dictionary<string,HisTorrent>();
         DateTime startTime;
         public FileBLL()
         {
@@ -142,14 +142,14 @@ namespace BLL
                                     try
                                     {
                                         md5Set.Add(md5);
-                                        dic.Add(filterName(his.File), his);
-                                        torrentNameSet.Add(filterName(Path.GetFileNameWithoutExtension(his.Path).Substring()), his);
+                                        dic.Add(Tool.filterName(his.File), his);
+                                        torrentNameDic.Add(his.FilteredFileName, his);
                                     }catch(ArgumentException e)
                                     {
-                                        dic.Remove(filterName(his.File));
-                                        dic.Add(filterName(his.File), his);
-                                        torrentNameSet.Remove(filterName(Path.GetFileNameWithoutExtension(his.Path)));
-                                        torrentNameSet.Add(filterName(Path.GetFileNameWithoutExtension(his.Path)), his);
+                                        dic.Remove(Tool.filterName(his.File));
+                                        dic.Add(Tool.filterName(his.File), his);
+                                        torrentNameDic.Remove(his.FilteredFileName);
+                                        torrentNameDic.Add(his.FilteredFileName, his);
                                     }
                                 }
                             }
@@ -173,7 +173,7 @@ namespace BLL
             bool flag = true;
             if (trt.Size > 60 * 1024 * 1024)
             {
-                if (fileDic.ContainsKey(filterName( trt.File)) )
+                if (fileDic.ContainsKey(Tool.filterName( trt.File)) )
                 {
                     moveFile("duplicate", trt.Path);
                     return false;
@@ -183,14 +183,14 @@ namespace BLL
                     HisTorrent t;
                     try
                     {
-                        t = dic[filterName(trt.File)];
+                        t = dic[Tool.filterName(trt.File)];
 
                     }
                     catch (KeyNotFoundException e)
                     {
                         try
                         {
-                            t = dic[filterName(Path.GetFileNameWithoutExtension(trt.Path))];
+                            t = torrentNameDic[trt.FilteredFileName];
                         }
                         catch (KeyNotFoundException ex)
                         {
@@ -251,13 +251,13 @@ namespace BLL
 
         void getList()
         {
-            dic = DBHelper.getList(filterString);
-            fileDic = DBHelper.getFileList(filterString);
+            dic = DBHelper.getList(Tool.filterString);
+            fileDic = DBHelper.getFileList(Tool.filterString);
             foreach (HisTorrent his in dic.Values)
             {
                 if(his.Md5!=null)
                     md5Set.Add(his.Md5);
-                torrentNameSet.Add(filterName(Path.GetFileNameWithoutExtension(his.Path)),his);
+                torrentNameDic.Add(Tool.filterName(Path.GetFileNameWithoutExtension(his.Path)),his);
             }
             //foreach (string s in dic.Keys)
             //{
@@ -265,16 +265,7 @@ namespace BLL
             //}
         }
 
-        static string filterName(string fileName)
-        {
-            fileName = fileName.ToLower();
-            string[] strs = filterString.Split(new string[]{","},StringSplitOptions.RemoveEmptyEntries);
-            foreach (string s in strs)
-            {
-                fileName = fileName.Replace(s, "");
-            }
-            return fileName;
-        }
+
 
         public static string GetMd5(string pathName)
         {
