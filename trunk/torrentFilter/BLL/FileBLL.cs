@@ -257,7 +257,18 @@ namespace BLL
             {
                 if(his.Md5!=null)
                     md5Set.Add(his.Md5);
-                torrentNameDic.Add(Tool.filterName(Path.GetFileNameWithoutExtension(his.Path)),his);
+                try
+                {
+                    torrentNameDic.Add(his.FilteredFileName, his);
+                }
+                catch
+                {
+                    if (his.Size > torrentNameDic[his.FilteredFileName].Size)
+                    {
+                        torrentNameDic.Remove(his.FilteredFileName);
+                        torrentNameDic.Add(his.FilteredFileName, his);
+                    }
+                }
             }
             //foreach (string s in dic.Keys)
             //{
