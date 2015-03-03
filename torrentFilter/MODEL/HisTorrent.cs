@@ -65,7 +65,7 @@ namespace MODEL
         {
             get 
             {
-                string s=path.Substring(path.LastIndexOf('$'));
+                string s=path.Substring(path.LastIndexOf('$')+1);
                 return Tool.filterName(s);
             }
         }
