@@ -17,7 +17,7 @@ namespace BLL
     public class FileBLL
     {
         MD5 md5 = MD5.Create();
-        static string filterString = "_avc_hd,_avc,_hd,480p,720p,1080p,1440p,2160p,_,480,720,1080,2160,[,],.,2000,4000,8000,12000,6000,1500, ,540,qhd,fullhd,-,high,low,SD,$$,rarbg.com,ktr,xxx";
+        static string filterString = "_avc_hd,_avc,_hd,480p,720p,1080p,1440p,2160p,_,480,720,1080,2160,[,],.,2000,4000,8000,12000,6000,1500, ,540,qhd,fullhd,-,high,low,SD,$$,rarbg.com,ktr,xxx,%22,%20";
         Dictionary<string, HisTorrent> dic;
         Dictionary<string, HisTorrent> fileDic;
         HashSet<String> md5Set = new HashSet<string>();
@@ -143,7 +143,7 @@ namespace BLL
                                     {
                                         md5Set.Add(md5);
                                         dic.Add(filterName(his.File), his);
-                                        torrentNameSet.Add(filterName(Path.GetFileNameWithoutExtension(his.Path)), his);
+                                        torrentNameSet.Add(filterName(Path.GetFileNameWithoutExtension(his.Path).Substring()), his);
                                     }catch(ArgumentException e)
                                     {
                                         dic.Remove(filterName(his.File));
@@ -265,7 +265,7 @@ namespace BLL
             //}
         }
 
-        string filterName(string fileName)
+        static string filterName(string fileName)
         {
             fileName = fileName.ToLower();
             string[] strs = filterString.Split(new string[]{","},StringSplitOptions.RemoveEmptyEntries);
