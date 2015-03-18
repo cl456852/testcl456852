@@ -7,7 +7,7 @@ using DB;
 using System.Data.SqlClient;
 using System.IO;
 using System.Text.RegularExpressions;
-using System.Collections.Generic;DD
+using System.Collections.Generic;
 
 namespace DAL
 {
