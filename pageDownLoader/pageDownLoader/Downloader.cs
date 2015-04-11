@@ -31,7 +31,7 @@ namespace pageDownLoader
                 cookieContainer.Add(__utma);
                 cookieContainer.Add(__utmb);
                 cookieContainer.Add(auth);
-                WebProxy proxy = new WebProxy("http://10.10.3.6:3128/", true);
+                WebProxy proxy = new WebProxy("http://127.0.0.1:8087/", true);
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
                 request.CookieContainer = cookieContainer;
                 request.Referer = "http://www.hellojav.com/include/file_downpage.php?idx=";
@@ -54,6 +54,51 @@ namespace pageDownLoader
                 Console.WriteLine(ex.Message);
                 if (!ex.Message.Contains("404"))
                     str= GetHtml(url);
+            }
+            return str;
+        }
+        CookieContainer container;
+
+        public string getHtml141Jav(string url)
+        {
+            Console.WriteLine(url);
+            string str = string.Empty;
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+                if (container == null)
+                {
+                    container = new CookieContainer();
+                    Cookie __cfduid = new Cookie("__atuvc", "5%7C12", "/", "www.141jav.com");
+                    Cookie __utma = new Cookie("__atuvs", "550e67d59d71e67c003", "/", "www.141jav.com");
+                }
+                request.CookieContainer = container;
+
+                //cookieContainer.Add(__cfduid);
+             //   cookieContainer.Add(__utma);
+                WebProxy proxy = new WebProxy("http://10.10.3.6:3128/", true);
+                
+    
+                request.Host = "www.141jav.com";
+                WebHeaderCollection myWebHeaderCollection = request.Headers;
+                myWebHeaderCollection.Add("Accept-Language", "zh-CN,zh;q=0.8,en;q=0.6,es;q=0.4");
+                //  request.Proxy = proxy;
+                request.Headers.Set("Pragma", "no-cache");
+                request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36";
+                WebResponse response = request.GetResponse();
+                
+                Stream streamReceive = response.GetResponseStream();
+                Encoding encoding = Encoding.GetEncoding("utf-8");
+                StreamReader streamReader = new StreamReader(streamReceive, encoding);
+                str = streamReader.ReadToEnd();
+                streamReader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("GET PATE ERROR  " + url);
+                Console.WriteLine(ex.Message);
+                //if (!ex.Message.Contains("404"))
+                str = getHtml141Jav(url);
             }
             return str;
         }

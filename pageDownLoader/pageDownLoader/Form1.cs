@@ -60,7 +60,7 @@ namespace pageDownLoader
         private void button2_Click(object sender, EventArgs e)
         {
             Downloader downloader = new Downloader();
-            for (int i = 1; i <= 118; i++)
+            for (int i = 1; i <=167; i++)
             {
                 string url = "http://www.18-jav.com/?paged=" + i;
                 //string url = "http://www.18-jav.com/?s=xxx-av&paged=" + i;
@@ -107,7 +107,7 @@ namespace pageDownLoader
             }
         }
 
-        string _141javUrl = "http://www.141jav.com/month/2014-10/";
+        string _141javUrl = "http://www.141jav.com/month/2015-01/";
       
         private void button4_Click(object sender, EventArgs e)
         {
@@ -115,7 +115,7 @@ namespace pageDownLoader
             callBack = new WaitCallback(downLoad);
 
             bool flag = ThreadPool.SetMaxThreads(1, 1);
-            for (int month = 1; month <= 65; month++)
+            for (int month = 1; month <= 54; month++)
             {
                
                     ThreadPool.QueueUserWorkItem(callBack, _141javUrl + month);
@@ -132,7 +132,7 @@ namespace pageDownLoader
 
             Downloader downloader = new Downloader();
             string url=(string)datetime;
-            string html = downloader.GetHtml( datetime.ToString());
+            string html = downloader.getHtml141Jav(datetime.ToString());
             MatchCollection mc= r.Matches(html);
             foreach (Match m in mc)
             {
@@ -150,16 +150,16 @@ namespace pageDownLoader
         {
             string urlString = (string)url;
             Downloader downloader = new Downloader();
-            string html = downloader.GetHtml((string)url);
+            string html = downloader.getHtml141Jav((string)url);
             downloader.SaveFile(html, "d:\\document\\Documents\\pagenew\\page\\141Jav\\" + urlString.Replace('/', '_').Replace(":", "^").Replace("?", "wenhao") + ".htm");
         }
         //http://btdigg.org/search?q=fangyuanli&p=2
         private void button5_Click(object sender, EventArgs e)
         {
             Downloader downloader = new Downloader();
-            for (int i = 0; i < 34; i++)
+            for (int i = 0; i < 87; i++)
             {
-                string url = "http://btdigg.org/search?q=fangyuanli&p=" + i;
+                string url = "http://btdigg.org/search?q=kidm&p=" + i;
                 string html = downloader.GetHtml(url);
                 string name = url.Replace('/', '_').Replace(":", "^").Replace("?", "wenhao");
                 downloader.SaveFile(html, @"D:\document\new\page\btdigg" + "\\" + name + ".htm");
