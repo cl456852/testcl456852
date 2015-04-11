@@ -105,7 +105,6 @@ D:\document\new\work\video filter - 副本 - 副本\DAL\bin\Debug\DB.dll
 D:\document\new\work\video filter - 副本 - 副本\DAL\bin\Debug\MODEL.dll
 D:\document\new\work\video filter - 副本 - 副本\DAL\bin\Debug\DB.pdb
 D:\document\new\work\video filter - 副本 - 副本\DAL\bin\Debug\MODEL.pdb
-D:\document\new\work\video filter - 副本 - 副本\DAL\obj\Debug\ResolveAssemblyReference.cache
 D:\document\new\work\video filter - 副本 - 副本\DAL\obj\Debug\DAL.dll
 D:\document\new\work\video filter - 副本 - 副本\DAL\obj\Debug\DAL.pdb
 C:\work\video filter - 副本 - 副本\DAL\bin\Debug\DAL.dll
@@ -117,3 +116,4 @@ C:\work\video filter - 副本 - 副本\DAL\bin\Debug\MODEL.pdb
 C:\work\video filter - 副本 - 副本\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
 C:\work\video filter - 副本 - 副本\DAL\obj\Debug\DAL.dll
 C:\work\video filter - 副本 - 副本\DAL\obj\Debug\DAL.pdb
+D:\document\new\work\video filter - 副本 - 副本\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache

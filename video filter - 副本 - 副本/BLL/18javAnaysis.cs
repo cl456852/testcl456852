@@ -17,7 +17,7 @@ namespace BLL
         Regex actressRegex = new Regex("Actress : .*?</p>");
         Regex imageRex = new Regex("http://www.18-jav.com/wp-content/.*?jpg");
         Regex torrentRex=new Regex("http://www.18-jav.com/./\\?download=.*?\"");
-        public ArrayList alys(string content,string path)
+        public ArrayList alys(string content,string path, string path1)
         {
             ArrayList resList = new ArrayList();
             string[] contents = content.Split(new string[] { "<h3>" }, StringSplitOptions.RemoveEmptyEntries);
@@ -38,6 +38,7 @@ namespace BLL
                     continue;
                 }
                 His his = new His();
+                his.HisTimeSpan = 1;
                 his.OriginalHtml = s;
                 his.Vid = r.Match(s).Value.Replace("Download <strong>", "").Replace("</strong>", "");
                 if (!his.Vid.ToLower().Contains("1pond"))
