@@ -30,6 +30,8 @@ namespace MoveFile
            list = new ArrayList();
             totalLength = 0;
             list.Add("D:\\THUNDER20150108");
+            list.Add("D:\\QQDownload");
+            list.Add("D:\\QQDownload1");
             //list.Add("D:\\VuzeDownloads1");
             //list.Add("D:\\新建文件夹");
             process();
@@ -71,7 +73,7 @@ namespace MoveFile
                 foreach(FileInfo f in fileInfos)
                 {
 
-                    if (f.Length / 1024 / 1024 > 60 && (f.Extension == ".bt!" || f.Extension == ".!ut" || f.Extension == ".bc!"||f.Extension==".az!"||f.Extension==".td"))
+                    if (f.Length / 1024 / 1024 > 60 && (f.Extension == ".bt!" || f.Extension == ".!ut" || f.Extension == ".bc!" || f.Extension == ".az!" || f.Extension == ".td" || f.Extension == ".tdl"))
                     {
                         hasIncomplete = true;
                         continue;
