@@ -15,13 +15,13 @@ namespace MailConsole
         {
            // DoGetHostAddresses("PC-201210302211");
             //GetIP();
-            ThunderMonitor tm=new ThunderMonitor();
+         //   ThunderMonitor tm=new ThunderMonitor();
             Program p = new Program();
-            ProcessMoitor processMonitor = new ProcessMoitor();
+           // ProcessMoitor processMonitor = new ProcessMoitor();
            // Thread thread = new Thread(processMonitor.start);
            // thread.Start();
-            Thread thread1 = new Thread(tm.start);
-            thread1.Start();
+           // Thread thread1 = new Thread(tm.start);
+           // thread1.Start();
             while (true)
             {
                 p.sendMail();
@@ -35,7 +35,14 @@ namespace MailConsole
             mail.ReceiverAddess = "cl4568521@gmail.com";
             mail.Subject = "MyIP";
             mail.Body = (GetIP());
-            mail.Send();
+            try
+            {
+                mail.Send();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         public static void DoGetHostAddresses(string hostname)

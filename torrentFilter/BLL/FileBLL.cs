@@ -36,7 +36,10 @@ namespace BLL
         public void process(string directoryStr,bool ifCheckHis)
         {
             string md5;
-            getList();
+            if (md5Set.Count == 0)
+            {
+                getList();
+            }
             startTime = DateTime.Now;
             String[] path = Directory.GetFiles(directoryStr, "*", SearchOption.TopDirectoryOnly);
             foreach (String p in path)

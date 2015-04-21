@@ -13,7 +13,7 @@ namespace DB
         static string insertHisSql = "insert into his1 values('{0}',{1},'{2}',{3},'{4}',getdate())";
         static string checkTorrentSql = "select count(*) from his where LOWER([file])='{0}' and size> 104857600";
         static string insertTorrentSql = "insert into his values('{0}',{1},'{2}',getdate(),'{3}','{4}')";
-        public static string connstr = @"server=localhost\SQLEXPRESS;uid=sa;pwd=a;database=cd";
+        public static string connstr = @"server=localhost;uid=sa;pwd=a;database=cd";
         static string checkFilesSql = "select count(*) from files where filename='{0}' and length>60";
 
         static string checkUnknownTorrentsSql = "select count(*) from files where directory like '{0}%'";
@@ -173,7 +173,7 @@ namespace DB
             }
             Dictionary<string, HisTorrent> dic = new Dictionary<string, HisTorrent>();
 
-            string sql = "select " + filterStr1 + " as [file] ,createtime,[path],[size],ext,md5 from his where size>100*1024*1024 and DATEDIFF(M,createtime,GETDATE())<=1 order by createtime";
+            string sql = "select " + filterStr1 + " as [file] ,createtime,[path],[size],ext,md5 from his where size>100*1024*1024 and DATEDIFF(M,createtime,GETDATE())<=500 order by createtime";
             using (SqlConnection conn = new SqlConnection(connstr))
             {
                 conn.Open();

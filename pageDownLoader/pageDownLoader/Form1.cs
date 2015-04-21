@@ -107,7 +107,7 @@ namespace pageDownLoader
             }
         }
 
-        string _141javUrl = "http://www.141jav.com/month/2015-01/";
+        string _141javUrl = "http://www.141jav.com/month/2015-02/";
       
         private void button4_Click(object sender, EventArgs e)
         {
@@ -115,7 +115,7 @@ namespace pageDownLoader
             callBack = new WaitCallback(downLoad);
 
             bool flag = ThreadPool.SetMaxThreads(1, 1);
-            for (int month = 1; month <= 54; month++)
+            for (int month = 1; month <= 50; month++)
             {
                
                     ThreadPool.QueueUserWorkItem(callBack, _141javUrl + month);
