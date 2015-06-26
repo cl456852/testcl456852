@@ -27,13 +27,13 @@ namespace Framework.tool
                 {
                     Config1.mre.WaitOne();
                     CookieContainer cookieContainer = new CookieContainer();
-                    Cookie _7fAY799j = new Cookie("7fAY799j", "VtdTzG69", "/", "rarbg.com");
-                    Cookie lastVisit = new Cookie("LastVisit", Config1.getLastVisit(), "/", "rarbg.com");
-                    Cookie __utma = new Cookie("__utma", "211336342.1125289540.1401355752.1409133475.1409194623.55", "/", ".rarbg.com");
-                    Cookie __utmb = new Cookie("__utmb", "211336342.25.10.1409194623", "/", ".rarbg.com");
-                    Cookie __utmc = new Cookie("__utmc", "211336342", "/", ".rarbg.com");
-                    Cookie __utmz = new Cookie("__utmz", "211336342.1407912383.29.2.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided)", "/", ".rarbg.com");
-         
+                    Cookie _7fAY799j = new Cookie("7fAY799j", "VtdTzG69", "/", "rarbg.to");
+                    Cookie lastVisit = new Cookie("LastVisit", Config1.getLastVisit(), "/", "rarbg.to");
+                    Cookie __utma = new Cookie("__utma", "9515318.860353583.1429342721.1434283337.1435333589.21", "/", ".rarbg.to");
+                    Cookie __utmb = new Cookie("__utmb", "9515318.19.10.1435333589", "/", ".rarbg.to");
+                    Cookie __utmc = new Cookie("__utmc", "9515318", "/", ".rarbg.to");
+                    Cookie __utmz = new Cookie("__utmz", "211336342.1407912383.29.2.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided)", "/", ".rarbg.to");
+                    Cookie __utmt = new Cookie("__utmt", "1", "/", ".rarbg.to");
                     cookieContainer.Add(_7fAY799j);
                     cookieContainer.Add(lastVisit);
                    // cookieContainer.Add(bSbTZF2j);
@@ -41,7 +41,7 @@ namespace Framework.tool
                     cookieContainer.Add(__utmb);
                     cookieContainer.Add(__utmc);
                     cookieContainer.Add(__utmz);
-                    
+                    cookieContainer.Add(__utmt);
                     request = (HttpWebRequest)WebRequest.Create(url);
                     request.CookieContainer = cookieContainer;
                     request.UserAgent = "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36";
@@ -135,14 +135,13 @@ namespace Framework.tool
                 {
                     Config1.mre.WaitOne();
                     CookieContainer cookieContainer = new CookieContainer();
-
-                    Cookie _7fAY799j = new Cookie("7fAY799j", "VtdTzG69", "/", "rarbg.com");
-                    Cookie lastVisit = new Cookie("LastVisit", Config1.getLastVisit(), "/", "rarbg.com");
-                    Cookie __utma = new Cookie("__utma", "211336342.1125289540.1401355752.1409133475.1409194623.55", "/", "rarbg.com");
-                    Cookie __utmb = new Cookie("__utmb", "211336342.25.10.1409194623", "/", "rarbg.com");
-                    Cookie __utmc = new Cookie("__utmc", "211336342", "/", "rarbg.com");
-                    Cookie __utmz = new Cookie("__utmz", "211336342.1407912383.29.2.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided)", "/", "rarbg.com");
-                    Cookie bSbTZF2j = new Cookie("bSbTZF2j", "6BdPQ9qs", "/", "rarbg.com");
+                    Cookie _7fAY799j = new Cookie("7fAY799j", "VtdTzG69", "/", "rarbg.to");
+                    Cookie lastVisit = new Cookie("LastVisit", Config1.getLastVisit(), "/", "rarbg.to");
+                    Cookie __utma = new Cookie("__utma", "9515318.860353583.1429342721.1434283337.1435333589.21", "/", ".rarbg.to");
+                    Cookie __utmb = new Cookie("__utmb", "9515318.19.10.1435333589", "/", ".rarbg.to");
+                    Cookie __utmc = new Cookie("__utmc", "9515318", "/", ".rarbg.to");
+                    Cookie __utmz = new Cookie("__utmz", "211336342.1407912383.29.2.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided)", "/", ".rarbg.to");
+                    Cookie __utmt = new Cookie("__utmt", "1", "/", ".rarbg.to");
                     cookieContainer.Add(_7fAY799j);
                     cookieContainer.Add(lastVisit);
                    // cookieContainer.Add(bSbTZF2j);
@@ -150,7 +149,7 @@ namespace Framework.tool
                     cookieContainer.Add(__utmb);
                     cookieContainer.Add(__utmc);
                     cookieContainer.Add(__utmz);
-                    
+                    cookieContainer.Add(__utmt);
                     request = (HttpWebRequest)WebRequest.Create(url);
                     request.CookieContainer = cookieContainer;
                     request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36";
