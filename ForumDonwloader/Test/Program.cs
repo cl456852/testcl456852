@@ -8,6 +8,7 @@ using System.Configuration;
 using System.Diagnostics;
 using System.Threading;
 using System.IO;
+using System.Net;
 
 namespace RarbgDownloader
 {
@@ -18,8 +19,10 @@ namespace RarbgDownloader
             Program p = new Program();
             //p.redail();
            // checkTime();
-            appendFile("nigga", "d:\\test\\failList.txt");
-            appendFile("nigga2", "d:\\test\\failList.txt");
+            //appendFile("nigga", "d:\\test\\failList.txt");
+            //appendFile("nigga2", "d:\\test\\failList.txt");
+
+            RouterTest();
             Console.ReadLine();
         }
 
@@ -100,6 +103,38 @@ namespace RarbgDownloader
                 sw.Flush();
                 sw.Close();
             }
+        }
+
+
+        public static void RouterTest()
+        {
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create("http://192.168.1.1/start_apply2.htm");
+
+                request.Method = "get";
+                request.ContentType = "application/x-www-form-urlencoded";
+                request.Credentials = CredentialCache.DefaultCredentials;
+
+                //获得用户名密码的Base64编码
+                string code = Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", "admin", "admin")));
+                request.Method = "POST";
+                //添加Authorization到HTTP头
+                request.Headers.Add("Authorization", "Basic " + code);
+                byte[] data = Encoding.ASCII.GetBytes("current_page=%2Findex.asp&next_page=%2Findex.asp&flag=Internet&action_mode=apply&action_script=restart_wan_if&action_wait=5&wan_enable=1&wans_dualwan=wan+none&wan_unit=0");
+                request.ContentLength = data.Length;
+                Stream requestStream = request.GetRequestStream();
+                requestStream.Write(data, 0, data.Length);
+                requestStream.Close();
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                response.Close();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
         }
 
 

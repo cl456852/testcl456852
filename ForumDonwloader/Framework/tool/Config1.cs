@@ -88,13 +88,49 @@ namespace Framework.tool
         public static void Check()
         {
             
-            lock (ob)
-            {
+            Monitor.TryEnter(ob);
                 mre.Reset();
                 if (!checkConnection())
                     redail();
                 mre.Set();
+                Monitor.Exit(ob);
+        }
+
+        public static void Flooding()
+        {
+
+            if (Monitor.TryEnter(ob))
+            {
+                mre.Reset();
+                redailRouter(0);
+                Thread.Sleep(20000);
+                redailRouter(1);
+                mre.Set();
+                Monitor.Exit(ob);
             }
+             
+        }
+
+        static void redailRouter(int param)
+        {
+            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create("http://192.168.1.1/start_apply2.htm");
+
+            request.Method = "get";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.Credentials = CredentialCache.DefaultCredentials;
+
+            //获得用户名密码的Base64编码
+            string code = Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", "admin", "admin")));
+            request.Method = "POST";
+            //添加Authorization到HTTP头
+            request.Headers.Add("Authorization", "Basic " + code);
+            byte[] data = Encoding.ASCII.GetBytes("current_page=%2Findex.asp&next_page=%2Findex.asp&flag=Internet&action_mode=apply&action_script=restart_wan_if&action_wait=5&wan_enable="+param+"&wans_dualwan=wan+none&wan_unit=0");
+            request.ContentLength = data.Length;
+            Stream requestStream = request.GetRequestStream();
+            requestStream.Write(data, 0, data.Length);
+            requestStream.Close();
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            response.Close();
         }
 
         static void redail()

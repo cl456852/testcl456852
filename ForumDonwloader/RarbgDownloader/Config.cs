@@ -13,6 +13,6 @@ namespace RarbgDownloader
 
         public static List<string> storage = new List<string>();
 
-        public static bool useProxy=true;
+        public static bool useProxy=false;
     }
 }

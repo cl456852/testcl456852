@@ -16,7 +16,7 @@ namespace RarbgDownloader
         Regex genresRegex = new Regex(@"Genres.*</a>");
         Regex genresRegex1 = new Regex("search=.*?\"");
         Regex releaseDateRegex=new Regex("\"releaseDate\">.*</td></tr>");
-        //http://rarbg.com/torrent/u1xt7vg
+        //https://rarbg.com/torrent/u1xt7vg
         public override void Download(object obj)
         {
             AsynObj o = (AsynObj)obj;
@@ -26,7 +26,7 @@ namespace RarbgDownloader
                     //href="/torrent/yirda45"
                     if (!m.Value.Contains("#comments") && !DlConfig.storage.Contains(m.Value.Replace("href=\"/torrent/", "").Replace("\"","")))
                     {
-                        ThreadPool.QueueUserWorkItem(new RarbgSgDl().work, new AsynObj(o.Path, "http://rarbg.com" + m.Value.Replace("href=", "").Replace("\"", "")));
+                        ThreadPool.QueueUserWorkItem(new RarbgSgDl().work, new AsynObj(o.Path, "https://rarbg.com" + m.Value.Replace("href=", "").Replace("\"", "")));
                     }
                     else
                         Console.WriteLine(m.Value);
@@ -44,7 +44,7 @@ namespace RarbgDownloader
             o.SingleContent = content;
             string dateString=releaseDateRegex.Match(content).Value.Replace("\"releaseDate\">","").Replace("</td></tr>","");
             DateTime releaseDate=Convert.ToDateTime(dateString);
-            string url = "http://rarbg.com/" + torrentRegex.Match(content).Value;
+            string url = "https://rarbg.com/" + torrentRegex.Match(content).Value;
             Match genres = genresRegex.Match(content);
             string path = "";
             if (genres!=null&& genres.Value != "")

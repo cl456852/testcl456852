@@ -55,7 +55,7 @@ namespace Framework.tool
                     if (useProxy)
                     {
 
-                        WebProxy proxy = new WebProxy("10.10.3.6", 3128);
+                        WebProxy proxy = new WebProxy("10.10.8.1", 3128);
                         request.Proxy = proxy;
                     }
                     response = (HttpWebResponse)request.GetResponse();
@@ -77,7 +77,7 @@ namespace Framework.tool
                         Config1.appendFile(url,"d:\\test\\failList.txt");
                         success = true;
                     }
-                    Config1.Check();
+                    //Config1.Check();
                 }
                 finally
                 {
@@ -103,7 +103,7 @@ namespace Framework.tool
             //实例化一个文件流--->与写入文件相关联
             FileStream fs = new FileStream(fileName, FileMode.Create);
             //实例化一个StreamWriter-->与fs相关联
-            StreamWriter sw = new StreamWriter(fs);
+            StreamWriter sw = new StreamWriter(fs,Encoding.UTF8);
             //开始写入
             sw.Write(content);
             //清空缓冲区
@@ -120,7 +120,7 @@ namespace Framework.tool
             sw.Flush();
             sw.Close();   
         }
-
+            
         public void downLoadFile(string url,string name,bool useProxy,string content)
         {
 
@@ -131,6 +131,9 @@ namespace Framework.tool
                 HttpWebResponse response = null;
                 FileStream fstream = null;
                 HttpWebRequest request = null;
+                Stream stream=null;
+                StreamReader reader = null;
+                Stream streamReceive=null;
                 try
                 {
                     Config1.mre.WaitOne();
@@ -158,13 +161,13 @@ namespace Framework.tool
                     request.Referer = "http://rarbg.com/torrent/j1kx3ny";
                     if (useProxy)
                     {
-                        WebProxy proxy = new WebProxy("10.10.3.6", 3128);
+                        WebProxy proxy = new WebProxy("10.10.8.1", 3128);
                         request.Proxy = proxy;
                     }
                     response = (HttpWebResponse)request.GetResponse();
                     if (response.Cookies["LastVisit"] != null)
                         Config1.setLastVisit(response.Cookies["LastVisit"].ToString());
-                    Stream streamReceive = response.GetResponseStream();
+                    streamReceive = response.GetResponseStream();
                     string path = Path.GetDirectoryName(name);
                     if (!Directory.Exists(path))
                         Directory.CreateDirectory(path);
@@ -173,8 +176,19 @@ namespace Framework.tool
                         name =Path.Combine( Path.GetDirectoryName(name),"duplicateName", Path.GetFileNameWithoutExtension(name) + "(" + System.Guid.NewGuid().ToString().Substring(0,4) + ").torrent");
                         Console.WriteLine("duplicate filename: " + name);
                     }
+                    stream = new MemoryStream();
+                    streamReceive.CopyTo(stream);
+                     reader = new StreamReader(stream);
+                    stream.Position = 0;
+                    string fileContent = reader.ReadToEnd();
+                    if (fileContent.Contains("We are sorry but this is pure flooding"))
+                    {
+                        Config1.Flooding();
+                        continue;
+                    }
+                    stream.Position = 0;
                     fstream = new FileStream(name, FileMode.Create);
-                    streamReceive.CopyTo(fstream);
+                    stream.CopyTo(fstream);
                     SaveFile(content, name+".htm");
                     success = true;
 
@@ -188,7 +202,7 @@ namespace Framework.tool
                         Config1.appendFile(url, "d:\\test\\failList.txt");
                         success = true;
                     }
-                    Config1.Check();
+                    //Config1.Check();
 
                 }
                 finally
@@ -199,7 +213,12 @@ namespace Framework.tool
                         fstream.Close();
                     if (response != null)
                         response.Close();
-               
+                    if (stream != null)
+                        stream.Close();
+                    if (reader != null)
+                        reader.Close();
+                    if (streamReceive != null)
+                        streamReceive.Close();
                     Thread.Sleep(1000);
                 }
             }
