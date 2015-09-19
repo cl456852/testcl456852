@@ -18,3 +18,6 @@ D:\document\new\work\torrentFilter\UI1\obj\Debug\UI1.exe
 D:\document\new\work\torrentFilter\UI1\obj\Debug\UI1.pdb
 D:\document\new\work\torrentFilter\UI1\obj\Debug\UI1.csprojResolveAssemblyReference.cache
 D:\document\new\work\torrentFilter\UI1\obj\Debug\UI1.csproj.GenerateResource.Cache
+D:\document\new\work - 副本\torrentFilter\UI1\bin\Debug\UI1.exe.config
+D:\document\new\work - 副本\torrentFilter\UI1\obj\Debug\UI1.exe
+D:\document\new\work - 副本\torrentFilter\UI1\obj\Debug\UI1.pdb

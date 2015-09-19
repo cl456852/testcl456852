@@ -37,7 +37,6 @@ D:\document\new\work\复件 Demo\DB\bin\Debug\DB.dll
 D:\document\new\work\复件 Demo\DB\bin\Debug\DB.pdb
 D:\document\new\work\复件 Demo\DB\bin\Debug\MODEL.dll
 D:\document\new\work\复件 Demo\DB\bin\Debug\MODEL.pdb
-D:\document\new\work\复件 Demo\DB\obj\Debug\ResolveAssemblyReference.cache
 D:\document\new\work\复件 Demo\DB\obj\Debug\DB.dll
 D:\document\new\work\复件 Demo\DB\obj\Debug\DB.pdb
 C:\Users\b\Source\Repos\testcl456852\复件 Demo\DB\bin\Debug\DB.dll
@@ -47,3 +46,4 @@ C:\Users\b\Source\Repos\testcl456852\复件 Demo\DB\bin\Debug\MODEL.pdb
 C:\Users\b\Source\Repos\testcl456852\复件 Demo\DB\obj\Debug\DB.csprojResolveAssemblyReference.cache
 C:\Users\b\Source\Repos\testcl456852\复件 Demo\DB\obj\Debug\DB.dll
 C:\Users\b\Source\Repos\testcl456852\复件 Demo\DB\obj\Debug\DB.pdb
+D:\document\new\work\复件 Demo\DB\obj\Debug\DB.csprojResolveAssemblyReference.cache

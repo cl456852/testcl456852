@@ -25,7 +25,7 @@ namespace MailConsole
             while (true)
             {
                 p.sendMail();
-                Thread.Sleep(4 * 60 * 1000);
+                Thread.Sleep(30* 1000);
             }
         }
 

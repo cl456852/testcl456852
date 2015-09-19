@@ -49,7 +49,6 @@ D:\document\new\work\复件 Demo\DAL\bin\Debug\DB.dll
 D:\document\new\work\复件 Demo\DAL\bin\Debug\MODEL.dll
 D:\document\new\work\复件 Demo\DAL\bin\Debug\DB.pdb
 D:\document\new\work\复件 Demo\DAL\bin\Debug\MODEL.pdb
-D:\document\new\work\复件 Demo\DAL\obj\Debug\ResolveAssemblyReference.cache
 D:\document\new\work\复件 Demo\DAL\obj\Debug\DAL.dll
 D:\document\new\work\复件 Demo\DAL\obj\Debug\DAL.pdb
 C:\Users\b\Source\Repos\testcl456852\复件 Demo\DAL\bin\Debug\DAL.dll
@@ -61,3 +60,4 @@ C:\Users\b\Source\Repos\testcl456852\复件 Demo\DAL\bin\Debug\MODEL.pdb
 C:\Users\b\Source\Repos\testcl456852\复件 Demo\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
 C:\Users\b\Source\Repos\testcl456852\复件 Demo\DAL\obj\Debug\DAL.dll
 C:\Users\b\Source\Repos\testcl456852\复件 Demo\DAL\obj\Debug\DAL.pdb
+D:\document\new\work\复件 Demo\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache

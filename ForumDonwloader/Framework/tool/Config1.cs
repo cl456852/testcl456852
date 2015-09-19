@@ -12,7 +12,7 @@ namespace Framework.tool
     public class Config1
     {
         static object txtLock = new object();
-        public static void appendFile(string content,string path)
+        public static void appendFile(string content, string path)
         {
 
             lock (txtLock)
@@ -33,7 +33,7 @@ namespace Framework.tool
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("FileApprendError:  "+e.Message + content + ":" + path);
+                    Console.WriteLine("FileApprendError:  " + e.Message + content + ":" + path);
                 }
             }
         }
@@ -45,7 +45,7 @@ namespace Framework.tool
         public static bool checkTime()
         {
             Console.WriteLine("开始检测时间");
-            TimeSpan ts2= new TimeSpan(DateTime.Now.Ticks);
+            TimeSpan ts2 = new TimeSpan(DateTime.Now.Ticks);
             TimeSpan ts = ts1.Subtract(ts2).Duration();
             if (!isFisrtTimeConnectionReset)
             {
@@ -69,10 +69,10 @@ namespace Framework.tool
                 return false;
             }
         }
-        public DateTime time=new DateTime();
+        public DateTime time = new DateTime();
 
         static object lock1 = new object();
-        public static string failList="";
+        public static string failList = "";
 
         public static void setFailList(string s)
         {
@@ -83,17 +83,17 @@ namespace Framework.tool
         }
 
         static object ob = new object();
-        public static ManualResetEvent mre=new ManualResetEvent(true);
+        public static ManualResetEvent mre = new ManualResetEvent(true);
 
         public static void Check()
         {
-            
+
             Monitor.TryEnter(ob);
-                mre.Reset();
-                if (!checkConnection())
-                    redail();
-                mre.Set();
-                Monitor.Exit(ob);
+            mre.Reset();
+            if (!checkConnection())
+                redail();
+            mre.Set();
+            Monitor.Exit(ob);
         }
 
         public static void Flooding()
@@ -102,13 +102,12 @@ namespace Framework.tool
             if (Monitor.TryEnter(ob))
             {
                 mre.Reset();
-                redailRouter(0);
-                Thread.Sleep(20000);
-                redailRouter(1);
+                RouterRedail(0);
+                RouterRedail(1);
                 mre.Set();
                 Monitor.Exit(ob);
             }
-             
+
         }
 
         static void redailRouter(int param)
@@ -124,7 +123,7 @@ namespace Framework.tool
             request.Method = "POST";
             //添加Authorization到HTTP头
             request.Headers.Add("Authorization", "Basic " + code);
-            byte[] data = Encoding.ASCII.GetBytes("current_page=%2Findex.asp&next_page=%2Findex.asp&flag=Internet&action_mode=apply&action_script=restart_wan_if&action_wait=5&wan_enable="+param+"&wans_dualwan=wan+none&wan_unit=0");
+            byte[] data = Encoding.ASCII.GetBytes("current_page=%2Findex.asp&next_page=%2Findex.asp&flag=Internet&action_mode=apply&action_script=restart_wan_if&action_wait=5&wan_enable=" + param + "&wans_dualwan=wan+none&wan_unit=0");
             request.ContentLength = data.Length;
             Stream requestStream = request.GetRequestStream();
             requestStream.Write(data, 0, data.Length);
@@ -156,7 +155,7 @@ namespace Framework.tool
         static bool checkConnection()
         {
             string url = "http://rarbg.com/index5.php";
-            bool success=false;
+            bool success = false;
             string str;
             HttpWebRequest request = null;
             HttpWebResponse response = null;
@@ -187,7 +186,7 @@ namespace Framework.tool
                 request.KeepAlive = false;
                 request.Referer = "http://rarbg.com/torrent/j1kx3ny";
 
-   
+
                 response = (HttpWebResponse)request.GetResponse();
                 if (response.Cookies["LastVisit"] != null)
                     Config1.setLastVisit(response.Cookies["LastVisit"].ToString());
@@ -221,7 +220,8 @@ namespace Framework.tool
         }
 
 
-        static object o=new object();
+
+        static object o = new object();
         private static string lastVisit = "1374857595";
 
         public static void setLastVisit(string s)
@@ -237,7 +237,68 @@ namespace Framework.tool
         }
 
 
+        public static void RouterRedail(int param)
+        {
+            if (param == 0)
+                while (true)
+                {
+                    redailRouter(0);
+                    Console.WriteLine("disconnect");
+                    Thread.Sleep(5000);
+                    if (checkRouterStatus(5))
+                    {
+                        Console.WriteLine("disconnect Check Successful");
+                        break;
+                    }
+                    Console.WriteLine("disconnect Check Fail");
 
+                }
+            if (param == 1)
+                while (true)
+                {
+                    redailRouter(1);
+                    Console.WriteLine("connect");
+                    Thread.Sleep(10000);
+                    if (checkRouterStatus(2))
+                    {
+                        Console.WriteLine("connect Check Successful");
+                        break;
+                    }
+                    Console.WriteLine("connect Check Fail");
+                }
+        }
+
+        public static bool checkRouterStatus(int status)
+        {
+            string code = Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", "admin", "admin")));
+
+            HttpWebRequest request = null;
+            HttpWebResponse response = null;
+
+            StreamReader streamReader = null;
+            request = (HttpWebRequest)WebRequest.Create("http://192.168.1.1/ajax_status.asp");
+            request.Method = "POST";
+            //添加Authorization到HTTP头
+            request.Headers.Add("Authorization", "Basic " + code);
+            byte[] data = Encoding.ASCII.GetBytes("current_page=%2Findex.asp&next_page=%2Findex.asp&flag=Internet&action_mode=apply&action_script=restart_wan_if&action_wait=5&wan_enable=" + status + "&wans_dualwan=wan+none&wan_unit=0");
+            request.ContentLength = data.Length;
+            Stream requestStream = request.GetRequestStream();
+            requestStream.Write(data, 0, data.Length);
+
+
+
+
+            response = (HttpWebResponse)request.GetResponse();
+            Stream streamReceive = response.GetResponseStream();
+            Encoding encoding = Encoding.GetEncoding("GB2312");
+            streamReader = new StreamReader(streamReceive, encoding);
+            string str;
+            str = streamReader.ReadToEnd();
+            if (str.Contains("<wan>" + status + "</wan>"))
+                return true;
+            else
+                return false;
+        }
 
     }
 }

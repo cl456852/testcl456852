@@ -38,7 +38,7 @@ namespace pageDownLoader
                 request.Host = "www.hellojav.com";
                 WebHeaderCollection myWebHeaderCollection = request.Headers;
                 myWebHeaderCollection.Add("Accept-Language", "zh-CN,zh;q=0.8,en;q=0.6,es;q=0.4");
-                request.Proxy = proxy;
+               // request.Proxy = proxy;
                 request.Headers.Set("Pragma", "no-cache");
                 request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36";
                 WebResponse response = request.GetResponse();

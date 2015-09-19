@@ -1,5 +1,4 @@
 D:\document\new\work\torrentFilter\bt\BencodeLibrary\bin\Debug\BencodeLibrary.dll
 D:\document\new\work\torrentFilter\bt\BencodeLibrary\bin\Debug\BencodeLibrary.pdb
-D:\document\new\work\torrentFilter\bt\BencodeLibrary\obj\Debug\ResolveAssemblyReference.cache
 D:\document\new\work\torrentFilter\bt\BencodeLibrary\obj\Debug\BencodeLibrary.dll
 D:\document\new\work\torrentFilter\bt\BencodeLibrary\obj\Debug\BencodeLibrary.pdb

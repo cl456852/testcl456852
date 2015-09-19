@@ -15,9 +15,9 @@ namespace BLL
     {
 
       //  Analysis ana;
-       // _18javAnaysis ana;
+        _18javAnaysis ana;
         //HelloJavAnalysis ana;
-        _141javAnalysisNew ana;
+      //  _141javAnalysisNew ana;
       //  BtdiggAnalysis ana;
         Filter filter;
 
@@ -25,8 +25,8 @@ namespace BLL
         {
             filter = new Filter();
            // ana = new Analysis();
-            ana = new _141javAnalysisNew();
-         //   ana = new _18javAnaysis();
+            // ana = new _141javAnalysisNew();
+            ana = new _18javAnaysis();
         //    ana = new BtdiggAnalysis();
         }
 

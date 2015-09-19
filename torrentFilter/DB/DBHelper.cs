@@ -178,6 +178,7 @@ namespace DB
             {
                 conn.Open();
                 SqlCommand sc = new SqlCommand(sql, conn);
+                sc.CommandTimeout = 180;  
                 SqlDataReader reader = sc.ExecuteReader();
                 while (reader.Read())
                 {

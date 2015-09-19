@@ -72,7 +72,6 @@ D:\document\new\work\复件 Demo\BLL\bin\Debug\DB.dll
 D:\document\new\work\复件 Demo\BLL\bin\Debug\DAL.pdb
 D:\document\new\work\复件 Demo\BLL\bin\Debug\MODEL.pdb
 D:\document\new\work\复件 Demo\BLL\bin\Debug\DB.pdb
-D:\document\new\work\复件 Demo\BLL\obj\Debug\ResolveAssemblyReference.cache
 D:\document\new\work\复件 Demo\BLL\obj\Debug\BLL.dll
 D:\document\new\work\复件 Demo\BLL\obj\Debug\BLL.pdb
 C:\Users\b\Source\Repos\testcl456852\复件 Demo\BLL\bin\Debug\BLL.dll
@@ -86,3 +85,4 @@ C:\Users\b\Source\Repos\testcl456852\复件 Demo\BLL\bin\Debug\DB.pdb
 C:\Users\b\Source\Repos\testcl456852\复件 Demo\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
 C:\Users\b\Source\Repos\testcl456852\复件 Demo\BLL\obj\Debug\BLL.dll
 C:\Users\b\Source\Repos\testcl456852\复件 Demo\BLL\obj\Debug\BLL.pdb
+D:\document\new\work\复件 Demo\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
