@@ -21,34 +21,36 @@ namespace RarbgDownloader
             // checkTime();
             //appendFile("nigga", "d:\\test\\failList.txt");
             //appendFile("nigga2", "d:\\test\\failList.txt");
-            while (true)
-            {
-                while (true)
-                {
-                    RouterTest(0);
-                    Console.WriteLine("disconnect");
-                    Thread.Sleep(5000);
-                    if (checkRouterStatus(5))
-                    {
-                        Console.WriteLine("disconnect Check Successful");
-                        break;
-                    }
-                    Console.WriteLine("disconnect Check Fail");
+            //while (true)
+            //{
+            //    while (true)
+            //    {
+            //        RouterTest(0);
+            //        Console.WriteLine("disconnect");
+            //        Thread.Sleep(5000);
+            //        if (checkRouterStatus(5))
+            //        {
+            //            Console.WriteLine("disconnect Check Successful");
+            //            break;
+            //        }
+            //        Console.WriteLine("disconnect Check Fail");
 
-                }
-                while (true)
-                {
-                    RouterTest(1);
-                    Console.WriteLine("connect");
-                    Thread.Sleep(10000);
-                    if (checkRouterStatus(2))
-                    {
-                        Console.WriteLine("connect Check Successful");
-                        break;
-                    }
-                    Console.WriteLine("connect Check Fail");
-                }
-            }
+            //    }
+            //    w0hile (true)
+            //    {
+            //        RouterTest(1);
+            //        Console.WriteLine("connect");
+            //        Thread.Sleep(10000);
+            //        if (checkRouterStatus(2))
+            //        {
+            //            Console.WriteLine("connect Check Successful");
+            //            break;
+            //        }
+            //        Console.WriteLine("connect Check Fail");
+            //    }
+            //}
+
+            checkRouterStatusNew(0);
             Console.ReadLine();
         }
 
@@ -193,6 +195,54 @@ namespace RarbgDownloader
                 return true;
             else
                 return false;
+        }
+
+        public static void checkRouterStatusNew(int status)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://192.168.1.1:80/login.cgi");
+            request.Method = "POST";
+            ASCIIEncoding encoding = new ASCIIEncoding();
+            byte[] b = encoding.GetBytes("group_id=&action_mode=&action_script=&action_wait=5&current_page=Main_Login.asp&next_page=index.asp&login_authorization=YWRtaW46YWRtaW4%3D");
+            request.Host = "192.168.1.1";
+            request.Referer = "http://192.168.1.1/Main_Login.asp";
+
+            request.UserAgent = "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.89 Safari/537.36";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = 138;
+            request.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";
+            using (Stream stream = request.GetRequestStream())
+            {
+                stream.Write(b, 0, b.Length);
+            }  
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            String token = response.Headers["set-Cookie"].Split(new char[] { '=', ';' })[1];
+            HttpWebRequest request1 = (HttpWebRequest)WebRequest.Create("http://192.168.1.1/ajax_status.xml");
+            request1.Method = "GET";
+            CookieContainer container = new CookieContainer();
+            container.Add(new Cookie("asus_token", token, "/", "192.168.1.1"));
+            container.Add(new Cookie("dm_enable", "no", "/", "192.168.1.1"));
+            container.Add(new Cookie("dm_install", "no", "/", "192.168.1.1"));
+            container.Add(new Cookie("hwaddr", "40:16:7E:A3:02:C8", "/", "192.168.1.1"));
+            container.Add(new Cookie("nwmapRefreshTime", "1446483367482", "/", "192.168.1.1"));
+          //  container.Add(new Cookie("ouiClientList", "<8C:3A:E3:3D:F8:C6>LG Electronics<CC:FA:00:C7:B7:3B>LG Electronics<38:BC:1A:EF:5F:54>Meizu technology co.,ltd<BC:5F:F4:89:66:2D>ASRock Incorporation<44:2A:60:9A:7E:47>apple<D8:CB:8A:39:C7:E2>Micro-Star INTL CO., LTD.", "/", "192.168.1.1"));
+            container.Add(new Cookie("traffic_warning_0", "2015.10:1", "/", "192.168.1.1"));
+            container.Add(new Cookie("wireless_list", "<8C:3A:E3:3D:F8:C6>Yes<44:2A:60:9A:7E:47>Yes<CC:FA:00:C7:B7:3B>Yes<38:BC:1A:EF:5F:54>No", "/", "192.168.1.1"));
+           // container.Add(new Cookie("asus_token", token, "/", "192.168.1.1"));
+            request1.CookieContainer = container;
+            request1.Host = "192.168.1.1";
+            request1.Connection = "keep-alive";
+            request1.Referer = "http://192.168.1.1/login.cgi";
+            request1.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";
+            request1.UserAgent = "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.89 Safari/537.36";
+            request1.Headers.Add("Accept-Encoding", "gzip, deflate, sdch");
+            request1.Headers.Add("Accept-Language", "zh-CN,zh;q=0.8,en;q=0.6,es;q=0.4");
+            request1.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";
+            HttpWebResponse statusResp = (HttpWebResponse)request1.GetResponse();
+            Stream streamReceive = response.GetResponseStream();
+            StreamReader streamReader = new StreamReader(streamReceive, encoding);
+            string str;
+            str = streamReader.ReadToEnd();
         }
 
 
