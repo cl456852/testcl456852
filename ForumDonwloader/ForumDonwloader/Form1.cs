@@ -38,7 +38,7 @@ namespace ForumDonwloader
             foreach (FileInfo f in finfo)
             {
                 if (f.Name.Contains("_torrent_")&&f.Name.EndsWith(".htm"))
-                    DlConfig.storage.Add(f.Name.Replace("http^__rarbg.com_torrent_", "").Replace(".htm", ""));
+                    DlConfig.storage.Add(f.Name.Replace("http^__rarbg.to_torrent_", "").Replace(".htm", ""));
             }
             IListPageDownloader lpd = Config.Factory.createlstDl();
             string url = textBox1.Text;

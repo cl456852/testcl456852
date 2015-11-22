@@ -154,24 +154,24 @@ namespace Framework.tool
 
         static bool checkConnection()
         {
-            string url = "http://rarbg.com/index5.php";
+            string url = "http://rarbg.to/index5.php";
             bool success = false;
             string str;
             HttpWebRequest request = null;
             HttpWebResponse response = null;
-            Console.WriteLine("CHECKCONNECT:" + "http://rarbg.com/index5.php");
+            Console.WriteLine("CHECKCONNECT:" + "http://rarbg.to/index5.php");
             StreamReader streamReader = null;
 
             try
             {
                 CookieContainer cookieContainer = new CookieContainer();
 
-                Cookie lastVisit = new Cookie("LastVisit", Config1.getLastVisit(), "/", "rarbg.com");
-                Cookie __utma = new Cookie("__utma", "211336342.1333136546.1369105449.1369109171.1369112684.3", "/", "rarbg.com");
-                Cookie __utmb = new Cookie("__utmb", "211336342.5.10.1369112684", "/", "rarbg.com");
-                Cookie __utmc = new Cookie("__utmc", "211336342", "/", "rarbg.com");
-                Cookie __utmz = new Cookie("__utmz", "211336342.1369105449.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)", "/", "rarbg.com");
-                Cookie bSbTZF2j = new Cookie("bSbTZF2j", "6BdPQ9qs", "/", "rarbg.com");
+                Cookie lastVisit = new Cookie("LastVisit", Config1.getLastVisit(), "/", "rarbg.to");
+                Cookie __utma = new Cookie("__utma", "211336342.1333136546.1369105449.1369109171.1369112684.3", "/", "rarbg.to");
+                Cookie __utmb = new Cookie("__utmb", "211336342.5.10.1369112684", "/", "rarbg.to");
+                Cookie __utmc = new Cookie("__utmc", "211336342", "/", "rarbg.to");
+                Cookie __utmz = new Cookie("__utmz", "211336342.1369105449.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)", "/", "rarbg.to");
+                Cookie bSbTZF2j = new Cookie("bSbTZF2j", "6BdPQ9qs", "/", "rarbg.to");
                 cookieContainer.Add(lastVisit);
                 cookieContainer.Add(bSbTZF2j);
                 cookieContainer.Add(__utma);
@@ -184,7 +184,7 @@ namespace Framework.tool
                 request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36";
                 request.Timeout = 15000;
                 request.KeepAlive = false;
-                request.Referer = "http://rarbg.com/torrent/j1kx3ny";
+                request.Referer = "http://rarbg.to/torrent/j1kx3ny";
 
 
                 response = (HttpWebResponse)request.GetResponse();

@@ -158,7 +158,7 @@ namespace Framework.tool
                     request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36";
                     request.Timeout = 15000;
                     request.KeepAlive = false;
-                    request.Referer = "http://rarbg.com/torrent/j1kx3ny";
+                    request.Referer = "http://rarbg.to/torrent/j1kx3ny";
                     if (useProxy)
                     {
                         WebProxy proxy = new WebProxy("10.10.8.1", 3128);

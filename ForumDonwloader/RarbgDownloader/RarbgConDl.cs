@@ -8,7 +8,7 @@ using System.IO;
 
 namespace RarbgDownloader
 {
-    //http://rarbg.com/download.php?id=sgxzclp&f=Layered-Nylons.13.05.06.Gracie.XXX.720p.WMV-GAGViD-[rarbg.com].torrent
+    //http://rarbg.to/download.php?id=sgxzclp&f=Layered-Nylons.13.05.06.Gracie.XXX.720p.WMV-GAGViD-[rarbg.com].torrent
     public class RarbgConDl : AbsConDl
     {
         Regex regex=new Regex(@"download.php\?id=.*?\.torrent");
@@ -21,7 +21,7 @@ namespace RarbgDownloader
             if(genres.Value!="")
                 genresMatches = genresRegex1.Matches(genres.Value);
 
-            string url ="https://rarbg.com/"+ regex.Match(content).Value;
+            string url ="https://rarbg.to/"+ regex.Match(content).Value;
             //dt.downLoadFile(url,Path.Combine(path, url.Substring(url.LastIndexOf('=')+1)),DlConfig.useProxy);
         }
     }
