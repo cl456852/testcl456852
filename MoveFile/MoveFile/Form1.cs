@@ -31,7 +31,7 @@ namespace MoveFile
             totalLength = 0;
             list.Add("D:\\THUNDER20150108");
             list.Add("D:\\QQDownload");
-            list.Add("D:\\QQDownload1");
+      
             //list.Add("D:\\VuzeDownloads1");
             //list.Add("D:\\新建文件夹");
             process();
