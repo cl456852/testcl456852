@@ -9,10 +9,6 @@ namespace RarbgDownloader
     class RarbgFactory : AbstractFactory
     {
 
-        public override Framework.interf.IContentDownloader createContentDownloader()
-        {
-            return new RarbgConDl();
-        }
 
         public override Framework.interf.IListPageDownloader createlstDl()
         {

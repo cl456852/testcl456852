@@ -10,8 +10,6 @@ namespace Framework
     public abstract class AbstractFactory
     {
 
-        public abstract IContentDownloader createContentDownloader();
-
         public abstract IListPageDownloader createlstDl();
 
         public abstract ISinglePageDonwloader createSlDl();

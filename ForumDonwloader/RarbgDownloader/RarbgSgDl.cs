@@ -6,6 +6,7 @@ using Framework.abs;
 using System.Text.RegularExpressions;
 using System.IO;
 using System.Threading;
+using Framework.tool;
 
 namespace RarbgDownloader
 {
@@ -40,7 +41,7 @@ namespace RarbgDownloader
             string genreStr="";
             MatchCollection genresMatches;
             AsynObj o = (AsynObj)obj;
-            string content = dt.GetHtml(o.Url,DlConfig.useProxy);
+            string content =  DlTool.GetHtml(o.Url,DlConfig.useProxy);
             o.SingleContent = content;
             string dateString=releaseDateRegex.Match(content).Value.Replace("\"releaseDate\">","").Replace("</td></tr>","");
             DateTime releaseDate=Convert.ToDateTime(dateString);
@@ -92,7 +93,7 @@ namespace RarbgDownloader
 
             }
             path = path.Replace("%20", " ").Replace("%2C", " ");
-            dt.downLoadFile(url, path, DlConfig.useProxy,content);
+            DlTool.downLoadFile(url, path, DlConfig.useProxy,content);
         }
 
         private bool check2(string name)

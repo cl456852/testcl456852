@@ -48,9 +48,11 @@
     <Compile Include="interf\IListPageDownloader.cs" />
     <Compile Include="interf\ISinglePageDonwloader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tool\AsynObj.cs" />
     <Compile Include="tool\Config1.cs" />
     <Compile Include="tool\DlTool.cs" />
     <Compile Include="tool\Singl.cs" />
+    <Compile Include="tool\Sis001DlTool.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

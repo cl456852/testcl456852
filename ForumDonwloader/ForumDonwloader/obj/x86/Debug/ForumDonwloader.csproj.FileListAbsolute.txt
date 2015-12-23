@@ -28,3 +28,6 @@ D:\document\new\work\ForumDonwloader\ForumDonwloader\obj\x86\Debug\ForumDonwload
 D:\document\new\work\ForumDonwloader\ForumDonwloader\obj\x86\Debug\ForumDonwloader.Properties.Resources.resources
 D:\document\new\work\ForumDonwloader\ForumDonwloader\obj\x86\Debug\ForumDonwloader.csprojResolveAssemblyReference.cache
 D:\document\new\work\ForumDonwloader\ForumDonwloader\obj\x86\Debug\ForumDonwloader.csproj.GenerateResource.Cache
+D:\document\new\work\ForumDonwloader\ForumDonwloader\bin\Debug\Microsoft.QualityTools.Testing.Fakes.dll
+D:\document\new\work\ForumDonwloader\ForumDonwloader\bin\Debug\Sis001Downloader.dll
+D:\document\new\work\ForumDonwloader\ForumDonwloader\bin\Debug\Sis001Downloader.pdb

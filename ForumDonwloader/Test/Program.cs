@@ -9,8 +9,9 @@ using System.Diagnostics;
 using System.Threading;
 using System.IO;
 using System.Net;
+using System.Text.RegularExpressions;
 
-namespace RarbgDownloader
+namespace Framework.tool
 {
     class Program
     {
@@ -246,5 +247,11 @@ namespace RarbgDownloader
         }
 
 
+
+        void RegexTest()
+        {
+            Regex regex = new Regex("href=\"/torrent/.*?\"");
+
+        }
     }
 }
