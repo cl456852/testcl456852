@@ -46,10 +46,10 @@ C:\testcl456852\video filter - 副本 - 副本\MODEL\obj\Debug\MODEL.dll
 C:\testcl456852\video filter - 副本 - 副本\MODEL\obj\Debug\MODEL.pdb
 D:\document\new\work\video filter - 副本 - 副本\MODEL\bin\Debug\MODEL.dll
 D:\document\new\work\video filter - 副本 - 副本\MODEL\bin\Debug\MODEL.pdb
-D:\document\new\work\video filter - 副本 - 副本\MODEL\obj\Debug\ResolveAssemblyReference.cache
 D:\document\new\work\video filter - 副本 - 副本\MODEL\obj\Debug\MODEL.dll
 D:\document\new\work\video filter - 副本 - 副本\MODEL\obj\Debug\MODEL.pdb
 C:\work\video filter - 副本 - 副本\MODEL\bin\Debug\MODEL.dll
 C:\work\video filter - 副本 - 副本\MODEL\bin\Debug\MODEL.pdb
 C:\work\video filter - 副本 - 副本\MODEL\obj\Debug\MODEL.dll
 C:\work\video filter - 副本 - 副本\MODEL\obj\Debug\MODEL.pdb
+D:\document\new\work\video filter - 副本 - 副本\MODEL\obj\Debug\MODEL.csprojResolveAssemblyReference.cache
