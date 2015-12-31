@@ -12,7 +12,7 @@ namespace Framework.tool
     public class DlTool
     {
 
-        public string GetHtml(string url,bool useProxy)
+        public static string GetHtml(string url,bool useProxy)
         {
             string str = string.Empty;
             bool success=false;
@@ -52,12 +52,12 @@ namespace Framework.tool
                     request.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";
                  //   request.TransferEncoding = "gzip,deflate,sdch";
 
-                    if (useProxy)
-                    {
+                    //if (useProxy)
+                    //{
 
-                        WebProxy proxy = new WebProxy("10.10.8.1", 3128);
-                        request.Proxy = proxy;
-                    }
+                    //    WebProxy proxy = new WebProxy("10.10.8.1", 3128);
+                    //    request.Proxy = proxy;
+                    //}
                     response = (HttpWebResponse)request.GetResponse();
                     if (response.Cookies["LastVisit"] != null)
                         Config1.setLastVisit( response.Cookies["LastVisit"].ToString());
@@ -97,7 +97,7 @@ namespace Framework.tool
             return str;
         }
 
-        public void SaveFile(string content, string fileName)
+        public static void SaveFile(string content, string fileName)
         {
             fileName = fileName.Replace("%20", "").Replace("%2C", "").Replace("%22","");
             //实例化一个文件流--->与写入文件相关联
@@ -113,7 +113,7 @@ namespace Framework.tool
             fs.Close();
         }
 
-        public void AppendFile(string content,string fileName)
+        public static void AppendFile(string content,string fileName)
         {
             StreamWriter sw = File.AppendText(fileName);
             sw.WriteLine(content);
@@ -121,7 +121,7 @@ namespace Framework.tool
             sw.Close();   
         }
             
-        public void downLoadFile(string url,string name,bool useProxy,string content)
+        public static void downLoadFile(string url,string name,bool useProxy,string content)
         {
 
             bool success = false;
@@ -159,11 +159,11 @@ namespace Framework.tool
                     request.Timeout = 15000;
                     request.KeepAlive = false;
                     request.Referer = "http://rarbg.to/torrent/j1kx3ny";
-                    if (useProxy)
-                    {
-                        WebProxy proxy = new WebProxy("10.10.8.1", 3128);
-                        request.Proxy = proxy;
-                    }
+                    //if (useProxy)
+                    //{
+                    //    WebProxy proxy = new WebProxy("10.10.8.1", 3128);
+                    //    request.Proxy = proxy;
+                    //}
                     response = (HttpWebResponse)request.GetResponse();
                     if (response.Cookies["LastVisit"] != null)
                         Config1.setLastVisit(response.Cookies["LastVisit"].ToString());

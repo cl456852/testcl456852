@@ -8,7 +8,7 @@
     <ProjectGuid>{8976EE64-481B-41A4-A53D-3AE28AEE9C75}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RarbgDownloader</RootNamespace>
+    <RootNamespace>Framework.tool</RootNamespace>
     <AssemblyName>RarbgDownloader</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -41,11 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AsynObj.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RarbgFactory.cs" />
-    <Compile Include="RarbgConDl.cs" />
     <Compile Include="RarbgLstDl.cs" />
     <Compile Include="RarbgSgDl.cs" />
   </ItemGroup>

@@ -34,6 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -90,6 +91,10 @@
     <ProjectReference Include="..\RarbgDownloader\RarbgDownloader.csproj">
       <Project>{8976EE64-481B-41A4-A53D-3AE28AEE9C75}</Project>
       <Name>RarbgDownloader</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sis001Downloader\Sis001Downloader.csproj">
+      <Project>{457b00ce-7f10-4434-b9f2-abcab82fe289}</Project>
+      <Name>Sis001Downloader</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

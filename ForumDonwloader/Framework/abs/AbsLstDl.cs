@@ -9,7 +9,7 @@ namespace Framework.abs
 {
     abstract public class AbsLstDl:IListPageDownloader
 	{
-        protected DlTool tool = new DlTool();
+
 
         abstract public void Download(object obj);
         

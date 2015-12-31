@@ -9,11 +9,13 @@ using System.Windows.Forms;
 using System.Threading;
 using Framework;
 using Framework.interf;
-using RarbgDownloader;
+using Framework.tool;
 using System.Collections.Specialized;
 using System.Configuration;
 using System.Collections;
 using System.IO;
+using RarbgDownloader;
+using Sis001Downloader;
 
 namespace ForumDonwloader
 {
@@ -24,13 +26,15 @@ namespace ForumDonwloader
             InitializeComponent();
         }
 
+        string url=null;
+        string path;
+        int start;
+        int end;
+
         private void button1_Click(object sender, EventArgs e)
         {
 
-            string path = textBox4.Text;
-            if (!Directory.Exists(path))
-                Directory.CreateDirectory(path);
-            System.Net.ServicePointManager.DefaultConnectionLimit = 200;
+            init();
 
             DlConfig.storage.Clear();
             DirectoryInfo dinfo = new DirectoryInfo(textBox4.Text);
@@ -41,26 +45,33 @@ namespace ForumDonwloader
                     DlConfig.storage.Add(f.Name.Replace("http^__rarbg.to_torrent_", "").Replace(".htm", ""));
             }
             IListPageDownloader lpd = Config.Factory.createlstDl();
-            string url = textBox1.Text;
-            int start =Convert.ToInt32( textBox2.Text);
-            int end = Convert.ToInt32(textBox3.Text);
-            
-            IListPageDownloader lstDl = Config.Factory.createlstDl();
-            Console.WriteLine("SETMAXTHREADS "+ ThreadPool.SetMaxThreads(17,17));
-
-           
             for (int i = start; i <= end; i++)
             {
                 ThreadPool.QueueUserWorkItem(lpd.Download,new AsynObj(path,string.Format( url,i)));
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        void init()
         {
-            if (RarbgDownloader.DlConfig.useProxy)
-                RarbgDownloader.DlConfig.useProxy = false;
-            else
-                RarbgDownloader.DlConfig.useProxy =true;
+            path = textBox4.Text;
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+            System.Net.ServicePointManager.DefaultConnectionLimit = 200;
+            url= textBox1.Text;
+            start= Convert.ToInt32(textBox2.Text);
+            end= Convert.ToInt32(textBox3.Text);
+            Console.WriteLine("SETMAXTHREADS " + ThreadPool.SetMaxThreads(17, 17));
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            init();
+            IListPageDownloader lpd = new Sis001LstDl();
+            for (int i = start; i <= end; i++)
+            {
+                ThreadPool.QueueUserWorkItem(lpd.Download, new AsynObj(path, string.Format(url, i)));
+            }
+            
         }
 
       

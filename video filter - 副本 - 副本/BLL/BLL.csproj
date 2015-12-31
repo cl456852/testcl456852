@@ -71,6 +71,7 @@
     <Compile Include="Filter.cs" />
     <Compile Include="HelloJavAnalysis.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sis001Analysis.cs" />
     <Compile Include="Tool.cs" />
     <Compile Include="_141javNew.cs" />
   </ItemGroup>

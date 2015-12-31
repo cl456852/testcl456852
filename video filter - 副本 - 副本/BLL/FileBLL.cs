@@ -15,10 +15,11 @@ namespace BLL
     {
 
       //  Analysis ana;
-        _18javAnaysis ana;
+     //   _18javAnaysis ana;
         //HelloJavAnalysis ana;
       //  _141javAnalysisNew ana;
       //  BtdiggAnalysis ana;
+        Sis001Analysis ana;
         Filter filter;
 
         public FileBLL()
@@ -26,7 +27,7 @@ namespace BLL
             filter = new Filter();
            // ana = new Analysis();
             // ana = new _141javAnalysisNew();
-            ana = new _18javAnaysis();
+            ana = new Sis001Analysis();
         //    ana = new BtdiggAnalysis();
         }
 
@@ -53,7 +54,7 @@ namespace BLL
                 string vid="";
                 if (strs.Length > 4)
                     vid = strs[4];
-                ArrayList list= ana.alys(content,Path.Combine(directoryStr,"nIn1.htm"),vid);
+                ArrayList list = ana.alys(content, p, vid);
                 foreach (His his in list)
                 {
                     if (filter.checkValid(his))

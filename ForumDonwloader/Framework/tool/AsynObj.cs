@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Framework.interf;
 
-namespace RarbgDownloader
+namespace Framework.tool
 {
     public class AsynObj
     {
